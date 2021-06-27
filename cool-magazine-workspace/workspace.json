@@ -1,7 +1,67 @@
 {
   "version": 2,
-  "projects": {},
+  "projects": {
+    "services-identity-provider": {
+      "root": "apps/services/identity-provider",
+      "sourceRoot": "apps/services/identity-provider/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/apps/services/identity-provider",
+            "main": "apps/services/identity-provider/src/main.ts",
+            "tsConfig": "apps/services/identity-provider/tsconfig.app.json",
+            "assets": [
+              "apps/services/identity-provider/src/assets"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/services/identity-provider/src/environments/environment.ts",
+                  "with": "apps/services/identity-provider/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "services-identity-provider:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/services/identity-provider/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/apps/services/identity-provider"
+          ],
+          "options": {
+            "jestConfig": "apps/services/identity-provider/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    }
+  },
   "cli": {
-    "defaultCollection": "@nrwl/workspace"
-  }
+    "defaultCollection": "@nrwl/nest"
+  },
+  "defaultProject": "services-identity-provider"
 }
