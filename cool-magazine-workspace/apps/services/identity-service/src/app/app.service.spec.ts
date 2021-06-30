@@ -14,9 +14,9 @@ describe('AppService', () => {
   });
 
   describe('getData', () => {
-    it('should return "Welcome to identity-provider!"', () => {
+    it('should return "Welcome to identity-service!"', () => {
       expect(service.getData()).toEqual({
-        message: 'Welcome to identity-provider!',
+        message: 'Welcome to identity-service!',
       });
     });
   });

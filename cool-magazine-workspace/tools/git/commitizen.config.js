@@ -19,7 +19,7 @@ module.exports = {
   scopes: [
     { name: "packaging" },
     { name: "commitizen" },
-    { name: "identity-provider" },
+    { name: "identity-service" },
   ],
 
   // Возможность задать спец ОБЛАСТЬ для определенного типа коммита (пример для 'fix')

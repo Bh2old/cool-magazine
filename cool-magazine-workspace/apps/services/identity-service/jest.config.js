@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'services-identity-provider',
+  displayName: 'services-identity-service',
   preset: '../../../jest.preset.js',
   globals: {
     'ts-jest': {
@@ -11,5 +11,5 @@ module.exports = {
     '^.+\\.[tj]s$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../../coverage/apps/services/identity-provider',
+  coverageDirectory: '../../../coverage/apps/services/identity-service',
 };

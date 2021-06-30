@@ -19,8 +19,8 @@
     }
   },
   "projects": {
-    "services-identity-provider": {
-      "tags": ["identity-provider"]
+    "services-identity-service": {
+      "tags": ["identity-service"]
     }
   }
 }

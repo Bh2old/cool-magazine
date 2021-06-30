@@ -1,23 +1,19 @@
 {
   "version": 2,
   "projects": {
-    "services-identity-provider": {
-      "root": "apps/services/identity-provider",
-      "sourceRoot": "apps/services/identity-provider/src",
+    "services-identity-service": {
+      "root": "apps/services/identity-service",
+      "sourceRoot": "apps/services/identity-service/src",
       "projectType": "application",
       "targets": {
         "build": {
           "executor": "@nrwl/node:build",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
-            "outputPath": "dist/apps/services/identity-provider",
-            "main": "apps/services/identity-provider/src/main.ts",
-            "tsConfig": "apps/services/identity-provider/tsconfig.app.json",
-            "assets": [
-              "apps/services/identity-provider/src/assets"
-            ]
+            "outputPath": "dist/apps/services/identity-service",
+            "main": "apps/services/identity-service/src/main.ts",
+            "tsConfig": "apps/services/identity-service/tsconfig.app.json",
+            "assets": ["apps/services/identity-service/src/assets"]
           },
           "configurations": {
             "production": {
@@ -26,8 +22,8 @@
               "inspect": false,
               "fileReplacements": [
                 {
-                  "replace": "apps/services/identity-provider/src/environments/environment.ts",
-                  "with": "apps/services/identity-provider/src/environments/environment.prod.ts"
+                  "replace": "apps/services/identity-service/src/environments/environment.ts",
+                  "with": "apps/services/identity-service/src/environments/environment.prod.ts"
                 }
               ]
             }
@@ -36,24 +32,20 @@
         "serve": {
           "executor": "@nrwl/node:execute",
           "options": {
-            "buildTarget": "services-identity-provider:build"
+            "buildTarget": "services-identity-service:build"
           }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/services/identity-provider/**/*.ts"
-            ]
+            "lintFilePatterns": ["apps/services/identity-service/**/*.ts"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/services/identity-provider"
-          ],
+          "outputs": ["coverage/apps/services/identity-service"],
           "options": {
-            "jestConfig": "apps/services/identity-provider/jest.config.js",
+            "jestConfig": "apps/services/identity-service/jest.config.js",
             "passWithNoTests": true
           }
         }
@@ -63,5 +55,5 @@
   "cli": {
     "defaultCollection": "@nrwl/nest"
   },
-  "defaultProject": "services-identity-provider"
+  "defaultProject": "services-identity-service"
 }

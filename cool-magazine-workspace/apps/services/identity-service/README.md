@@ -1,4 +1,3 @@
-
 # Identity Provider Auth2 Oidc
 
 [**Auth0:** "Authentication and Authorization Flows"](https://auth0.com/docs/flows#authorization-code-flow)
