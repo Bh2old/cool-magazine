@@ -1,6 +1,37 @@
 {
   "version": 2,
   "projects": {
+    "identity-node-oidc-provider": {
+      "root": "libs/identity/node-oidc-provider",
+      "sourceRoot": "libs/identity/node-oidc-provider/src",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/workspace:tsc",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/identity/node-oidc-provider",
+            "main": "libs/identity/node-oidc-provider/src/index.ts",
+            "tsConfig": "libs/identity/node-oidc-provider/tsconfig.lib.json",
+            "assets": ["libs/identity/node-oidc-provider/*.md"]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/identity/node-oidc-provider/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/identity/node-oidc-provider"],
+          "options": {
+            "jestConfig": "libs/identity/node-oidc-provider/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "services-identity-service": {
       "root": "apps/services/identity-service",
       "sourceRoot": "apps/services/identity-service/src",

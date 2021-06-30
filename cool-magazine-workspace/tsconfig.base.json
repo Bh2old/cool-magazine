@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@cool-magazine/identity/node-oidc-provider": [
+        "libs/identity/node-oidc-provider/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

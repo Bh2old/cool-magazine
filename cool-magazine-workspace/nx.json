@@ -19,6 +19,9 @@
     }
   },
   "projects": {
+    "identity-node-oidc-provider": {
+      "tags": ["node-oidc-provider"]
+    },
     "services-identity-service": {
       "tags": ["identity-service"]
     }
