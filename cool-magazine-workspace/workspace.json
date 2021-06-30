@@ -32,6 +32,37 @@
         }
       }
     },
+    "identity-oidc-core": {
+      "root": "libs/identity/oidc-core",
+      "sourceRoot": "libs/identity/oidc-core/src",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/workspace:tsc",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/identity/oidc-core",
+            "main": "libs/identity/oidc-core/src/index.ts",
+            "tsConfig": "libs/identity/oidc-core/tsconfig.lib.json",
+            "assets": ["libs/identity/oidc-core/*.md"]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/identity/oidc-core/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/identity/oidc-core"],
+          "options": {
+            "jestConfig": "libs/identity/oidc-core/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "services-identity-service": {
       "root": "apps/services/identity-service",
       "sourceRoot": "apps/services/identity-service/src",

@@ -17,7 +17,8 @@
     "paths": {
       "@cool-magazine/identity/node-oidc-provider": [
         "libs/identity/node-oidc-provider/src/index.ts"
-      ]
+      ],
+      "@cool-magazine/oidc-core": ["libs/identity/oidc-core/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
