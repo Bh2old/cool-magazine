@@ -112,6 +112,37 @@
           }
         }
       }
+    },
+    "shared-ddd-expc": {
+      "root": "libs/shared/ddd-expc",
+      "sourceRoot": "libs/shared/ddd-expc/src",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/workspace:tsc",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/shared/ddd-expc",
+            "main": "libs/shared/ddd-expc/src/index.ts",
+            "tsConfig": "libs/shared/ddd-expc/tsconfig.lib.json",
+            "assets": ["libs/shared/ddd-expc/*.md"]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/shared/ddd-expc/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/ddd-expc"],
+          "options": {
+            "jestConfig": "libs/shared/ddd-expc/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

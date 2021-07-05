@@ -3,5 +3,6 @@ module.exports = {
     '<rootDir>/apps/services/identity-service',
     '<rootDir>/libs/identity/node-oidc-provider',
     '<rootDir>/libs/identity/oidc-core',
+    '<rootDir>/libs/shared/ddd-expc',
   ],
 };

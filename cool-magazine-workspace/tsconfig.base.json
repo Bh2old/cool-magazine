@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@bh2old/ddd-expc": ["libs/shared/ddd-expc/src/index.ts"],
       "@cool-magazine/identity/node-oidc-provider": [
         "libs/identity/node-oidc-provider/src/index.ts"
       ],

@@ -27,6 +27,9 @@
     },
     "services-identity-service": {
       "tags": ["identity-service"]
+    },
+    "shared-ddd-expc": {
+      "tags": ["ddd-expc"]
     }
   }
 }
