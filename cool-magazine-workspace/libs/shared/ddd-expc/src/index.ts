@@ -1,1 +1,1 @@
-export * from './lib/shared-ddd-expc';
+export * from './lib';
