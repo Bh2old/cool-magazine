@@ -2,7 +2,7 @@
   "version": 2,
   "projects": {
     "identity-node-oidc-provider": {
-      "root": "libs/identity/node-oidc-provider",
+      "root": ".",
       "sourceRoot": "libs/identity/node-oidc-provider/src",
       "projectType": "library",
       "targets": {
@@ -33,7 +33,7 @@
       }
     },
     "identity-oidc-core": {
-      "root": "libs/identity/oidc-core",
+      "root": ".",
       "sourceRoot": "libs/identity/oidc-core/src",
       "projectType": "library",
       "targets": {
@@ -64,7 +64,7 @@
       }
     },
     "services-identity-service": {
-      "root": "apps/services/identity-service",
+      "root": ".",
       "sourceRoot": "apps/services/identity-service/src",
       "projectType": "application",
       "targets": {
@@ -114,7 +114,7 @@
       }
     },
     "shared-ddd-expc": {
-      "root": "libs/shared/ddd-expc",
+      "root": ".",
       "sourceRoot": "libs/shared/ddd-expc/src",
       "projectType": "library",
       "targets": {
