@@ -1,1 +1,1 @@
-export * from './lib/identity-oidc-core';
+export * from './lib';
