@@ -28,7 +28,11 @@ export class StaticClient extends Entity implements ICloneable<StaticClient> {
   }
 
   clone(): StaticClient {
-    throw new Error('Method not implemented.');
+    return new StaticClient(
+      this.id,
+      this.secret,
+      this.metadata
+    );
   }
 
   static create(clientRegistrationData: IClientRegistrationData): StaticClient {
