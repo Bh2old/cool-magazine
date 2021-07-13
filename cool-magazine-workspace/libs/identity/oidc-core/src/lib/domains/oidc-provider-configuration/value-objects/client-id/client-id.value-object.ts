@@ -9,4 +9,8 @@ export class ClientId extends ValueObject {
     super();
     this._value = value;
   }
+
+  public static create(value: string): ClientId {
+    return new ClientId(value);
+  }
 }
