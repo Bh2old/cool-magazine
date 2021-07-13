@@ -1,9 +1,11 @@
+import {
+  AndNotSpecification,
+  AndSpecification,
+  NotSpecification,
+  OrNotSpecification,
+  OrSpecification,
+} from '.';
 import { ISpecification } from '../../interfaces';
-import { AndNotSpecification } from './and-not-specification';
-import { AndSpecification } from './and-specification';
-import { NotSpecification } from './not-specification';
-import { OrNotSpecification } from './or-not-specification';
-import { OrSpecification } from './or-specification';
 
 export abstract class CompositeSpecification<TSpecified>
   implements ISpecification<TSpecified>

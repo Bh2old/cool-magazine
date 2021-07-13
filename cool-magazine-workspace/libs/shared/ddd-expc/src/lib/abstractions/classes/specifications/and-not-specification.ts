@@ -1,5 +1,5 @@
 import { ISpecification } from '../../interfaces';
-import { CompositeSpecification } from './composite-specification';
+import { CompositeSpecification } from '.';
 
 export class AndNotSpecification<
   TSpecified
