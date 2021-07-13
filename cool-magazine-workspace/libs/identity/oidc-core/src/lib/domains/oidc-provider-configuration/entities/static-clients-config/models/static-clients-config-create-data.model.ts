@@ -1,5 +1,5 @@
-import { StaticClient } from "../../static-client";
+import { IClientRegistrationData } from "../../static-client";
 
 export interface StaticClientsConfigCreateData {
-  clients: StaticClient[]
+  clients: IClientRegistrationData[]
 }

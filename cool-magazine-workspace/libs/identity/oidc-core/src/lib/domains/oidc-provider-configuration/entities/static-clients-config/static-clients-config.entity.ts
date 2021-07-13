@@ -10,7 +10,7 @@ import {
 
 export class StaticClientsConfig extends AggregateRoot {
   private readonly _clients: StaticClient[];
-  public get clients(): Readonly<StaticClient>[] {
+  public get clients(): Readonly<Readonly<StaticClient>[]> {
     return getCollectionClonedItems(this._clients);
   }
 
@@ -81,7 +81,10 @@ export class StaticClientsConfig extends AggregateRoot {
   static create(
     staticClientsConfigCreateData: StaticClientsConfigCreateData
   ): StaticClientsConfig {
-    this._validateUniqRequiredProperties(staticClientsConfigCreateData.clients);
-    return new StaticClientsConfig(staticClientsConfigCreateData.clients);
+    const clients: StaticClient[] = staticClientsConfigCreateData.clients.map(
+      (clientCreteData) => StaticClient.create(clientCreteData)
+    );
+
+    return new StaticClientsConfig(clients);
   }
 }
