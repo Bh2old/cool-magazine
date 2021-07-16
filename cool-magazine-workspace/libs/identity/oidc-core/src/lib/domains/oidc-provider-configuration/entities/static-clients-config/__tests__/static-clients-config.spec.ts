@@ -10,60 +10,83 @@ import { StaticClientsConfigCreateData } from '../models';
 import { StaticClientsConfig } from '../static-clients-config.entity';
 
 describe('StaticClientsConfig', () => {
-  describe('create', () => {
+  let staticClientsConfigCreateData: StaticClientsConfigCreateData;
+
+  beforeEach(() => {
+    const idValue = '123';
+    const id: ClientId = ClientId.create(idValue);
+
+    const redirectUriValue = 'http://qwerty.mn/';
+    const redirectUri: RedirectUri = RedirectUri.create(redirectUriValue);
+
+    const responseTypeValue = 'code';
+    const responseType: ResponseType = ResponseType.create(responseTypeValue);
+
+    const grantTypeValue = 'access_code';
+    const grantType: GrantType = GrantType.create(grantTypeValue);
+
+    const metadata: ClientMetadata = ClientMetadata.create({
+      redirectUris: [redirectUri],
+      responseTypes: [responseType],
+      grantTypes: [grantType],
+    });
+
+    const clientRegistrationData: IClientRegistrationData = {
+      id,
+      metadata,
+    };
+
+    staticClientsConfigCreateData = {
+      clients: [clientRegistrationData],
+    };
+  });
+
+  describe('instance creation', () => {
     test('should return instance of StaticClientsConfig', () => {
-      expect(StaticClientsConfig.create({ clients: [] })).toBeInstanceOf(
-        StaticClientsConfig
-      );
+      expect(
+        StaticClientsConfig.create(staticClientsConfigCreateData)
+      ).toBeInstanceOf(StaticClientsConfig);
     });
   });
 
-  describe('clients', () => {
-    test('should return cloned clients', () => {
-      const idValue = '123';
-      const id: ClientId = ClientId.create(idValue);
-
-      const redirectUriValue = 'http://qwerty.mn/';
-      const redirectUri: RedirectUri = RedirectUri.create(redirectUriValue);
-
-      const responseTypeValue = 'code';
-      const responseType: ResponseType = ResponseType.create(responseTypeValue);
-
-      const grantTypeValue = 'access_code';
-      const grantType: GrantType = GrantType.create(grantTypeValue);
-
-      const metadata: ClientMetadata = ClientMetadata.create({
-        redirectUris: [redirectUri],
-        responseTypes: [responseType],
-        grantTypes: [grantType],
-      });
-
-      const clientRegistrationData: IClientRegistrationData = {
-        id,
-        metadata,
-      };
-
-      const staticClientsConfigCreateData: StaticClientsConfigCreateData = {
-        clients: [clientRegistrationData],
-      };
-
-      const staticClientsConfig: StaticClientsConfig =
-        StaticClientsConfig.create(staticClientsConfigCreateData);
+  describe('getting clients', () => {
+    test('should return collection which do not mutate internal collection when push', () => {
+      // Arrange
+      const staticClientsConfig = StaticClientsConfig.create(
+        staticClientsConfigCreateData
+      );
 
       const clonedClientsForMutation: unknown[] =
         staticClientsConfig.clients as unknown[];
-      const originalCountClients = staticClientsConfig.clients.length;
 
+      // Act
       const countNewItemForPush = 3;
       for (let index = 0; index < countNewItemForPush; index++) {
         clonedClientsForMutation.push({});
       }
 
-      expect(staticClientsConfig.clients.length).toEqual(originalCountClients);
-
-      expect(clonedClientsForMutation.length).toEqual(
-        originalCountClients + countNewItemForPush
+      // Assert
+      expect(clonedClientsForMutation.length).toBe(
+        staticClientsConfig.clients.length + countNewItemForPush
       );
+    });
+
+    test('should return collection which do not mutate internal collection when item mutated', () => {
+      // Arrange
+      const staticClientsConfig = StaticClientsConfig.create(
+        staticClientsConfigCreateData
+      );
+
+      const clonedClientsForMutation: unknown[] =
+        staticClientsConfig.clients as unknown[];
+
+      // Act
+      const indexMutatedItem = 0;
+      const nameNewProperty = 'addNewPropWithJoke';
+      clonedClientsForMutation[indexMutatedItem][nameNewProperty] = true;
+
+      // Assert
+      expect(staticClientsConfig.clients[indexMutatedItem]).not.toHaveProperty(nameNewProperty);
     });
   });
 });
