@@ -1,6 +1,6 @@
 import { AggregateRoot, getCollectionClonedItems } from '@bh2old/ddd-expc';
 import { ClientId, ClientSecret } from '../../value-objects';
-import { StaticClient } from '../static-client';
+import { StaticClient } from '../../entities/static-client';
 import { StaticClientsConfigCreateData } from './models';
 import {
   IndexedStaticClients,

@@ -3,9 +3,9 @@ import {
   ClientMetadata,
   GrantType,
   RedirectUri,
-  ResponseType,
+  ResponseType
 } from '../../../value-objects';
-import { IClientRegistrationData } from '../../static-client';
+import { IClientRegistrationData } from '../../../entities/static-client';
 import { StaticClientsConfigCreateData } from '../models';
 import { StaticClientsConfig } from '../static-clients-config.entity';
 
