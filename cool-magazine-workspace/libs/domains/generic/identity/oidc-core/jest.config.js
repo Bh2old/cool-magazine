@@ -1,6 +1,6 @@
 module.exports = {
-  displayName: 'identity-oidc-core',
-  preset: '../../../jest.preset.js',
+  displayName: 'generic-subdomain-identity-oidc-core',
+  preset: '../../../../../jest.preset.js',
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.spec.json',
@@ -11,5 +11,5 @@ module.exports = {
     '^.+\\.[tj]sx?$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../../coverage/libs/identity/oidc-core',
+  coverageDirectory: '../../../../../coverage/libs/domains/generic/identity/oidc-core',
 };

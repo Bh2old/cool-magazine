@@ -32,32 +32,32 @@
         }
       }
     },
-    "identity-oidc-core": {
+    "generic-subdomain-identity-oidc-core": {
       "root": ".",
-      "sourceRoot": "libs/identity/oidc-core/src",
+      "sourceRoot": "libs/domains/generic/identity/oidc-core/src",
       "projectType": "library",
       "targets": {
         "build": {
           "executor": "@nrwl/workspace:tsc",
           "outputs": ["{options.outputPath}"],
           "options": {
-            "outputPath": "dist/libs/identity/oidc-core",
-            "main": "libs/identity/oidc-core/src/index.ts",
-            "tsConfig": "libs/identity/oidc-core/tsconfig.lib.json",
-            "assets": ["libs/identity/oidc-core/*.md"]
+            "outputPath": "dist/libs/domains/generic/identity/oidc-core",
+            "main": "libs/domains/generic/identity/oidc-core/src/index.ts",
+            "tsConfig": "libs/domains/generic/identity/oidc-core/tsconfig.lib.json",
+            "assets": ["libs/domains/generic/identity/oidc-core/*.md"]
           }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/identity/oidc-core/**/*.ts"]
+            "lintFilePatterns": ["libs/domains/generic/identity/oidc-core/**/*.ts"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/identity/oidc-core"],
+          "outputs": ["coverage/libs/domains/generic/identity/oidc-core"],
           "options": {
-            "jestConfig": "libs/identity/oidc-core/jest.config.js",
+            "jestConfig": "libs/domains/generic/identity/oidc-core/jest.config.js",
             "passWithNoTests": true
           }
         }

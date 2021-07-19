@@ -22,8 +22,8 @@
     "identity-node-oidc-provider": {
       "tags": ["node-oidc-provider"]
     },
-    "identity-oidc-core": {
-      "tags": ["oidc-core"]
+    "generic-subdomain-identity-oidc-core": {
+      "tags": ["generic", "subdomain", "identity", "oidc-core"]
     },
     "services-identity-service": {
       "tags": ["identity-service"]
