@@ -19,8 +19,8 @@
     }
   },
   "projects": {
-    "identity-node-oidc-provider": {
-      "tags": ["node-oidc-provider"]
+    "adapter-identity-node-oidc-provider": {
+      "tags": ["adapter", "identity", "node-oidc-provider"]
     },
     "generic-subdomain-identity-oidc-core": {
       "tags": ["generic", "subdomain", "identity", "oidc-core"]

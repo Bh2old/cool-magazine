@@ -1,32 +1,32 @@
 {
   "version": 2,
   "projects": {
-    "identity-node-oidc-provider": {
+    "adapter-identity-node-oidc-provider": {
       "root": ".",
-      "sourceRoot": "libs/identity/node-oidc-provider/src",
+      "sourceRoot": "libs/adapters/identity/node-oidc-provider/src",
       "projectType": "library",
       "targets": {
         "build": {
           "executor": "@nrwl/workspace:tsc",
           "outputs": ["{options.outputPath}"],
           "options": {
-            "outputPath": "dist/libs/identity/node-oidc-provider",
-            "main": "libs/identity/node-oidc-provider/src/index.ts",
-            "tsConfig": "libs/identity/node-oidc-provider/tsconfig.lib.json",
-            "assets": ["libs/identity/node-oidc-provider/*.md"]
+            "outputPath": "dist/libs/adapters/identity/node-oidc-provider",
+            "main": "libs/adapters/identity/node-oidc-provider/src/index.ts",
+            "tsConfig": "libs/adapters/identity/node-oidc-provider/tsconfig.lib.json",
+            "assets": ["libs/adapters/identity/node-oidc-provider/*.md"]
           }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/identity/node-oidc-provider/**/*.ts"]
+            "lintFilePatterns": ["libs/adapters/identity/node-oidc-provider/**/*.ts"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/identity/node-oidc-provider"],
+          "outputs": ["coverage/libs/adapters/identity/node-oidc-provider"],
           "options": {
-            "jestConfig": "libs/identity/node-oidc-provider/jest.config.js",
+            "jestConfig": "libs/adapters/identity/node-oidc-provider/jest.config.js",
             "passWithNoTests": true
           }
         }
