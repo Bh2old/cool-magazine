@@ -1,3 +1,4 @@
+import { IClientRegistrationData } from '../../../entities/static-client';
 import {
   ClientId,
   ClientMetadata,
@@ -5,7 +6,7 @@ import {
   RedirectUri,
   ResponseType
 } from '../../../value-objects';
-import { IClientRegistrationData } from '../../../entities/static-client';
+import { GrantTypes } from '../../../value-objects/grant-type/enums/grant-types';
 import { StaticClientsConfigCreateData } from '../models';
 import { StaticClientsConfig } from '../static-clients-config.entity';
 
@@ -22,7 +23,7 @@ describe('StaticClientsConfig', () => {
     const responseTypeValue = 'code';
     const responseType: ResponseType = ResponseType.create(responseTypeValue);
 
-    const grantTypeValue = 'access_code';
+    const grantTypeValue = GrantTypes.authorizationCode;
     const grantType: GrantType = GrantType.create(grantTypeValue);
 
     const metadata: ClientMetadata = ClientMetadata.create({

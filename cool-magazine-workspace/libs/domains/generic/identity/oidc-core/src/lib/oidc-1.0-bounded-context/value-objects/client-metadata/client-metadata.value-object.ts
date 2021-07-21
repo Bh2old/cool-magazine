@@ -2,7 +2,7 @@ import { GrantType } from '../grant-type';
 import { ResponseType } from '../response-type';
 import { RedirectUri } from '../redirect-uri';
 import { IClientMetadataCreateValues } from './models';
-import { GrantTypes, RedirectUris, ResponseTypes } from './types';
+import { GrantTypesIndexTable, RedirectUris, ResponseTypes } from './types';
 import { ValueObject } from '@bh2old/ddd-expc';
 
 export class ClientMetadata extends ValueObject {
@@ -41,7 +41,7 @@ export class ClientMetadata extends ValueObject {
     return Object.values(this._responseTypes);
   }
 
-  private readonly _grantTypes: GrantTypes = {};
+  private readonly _grantTypes: GrantTypesIndexTable = {};
   private _addGrantTypes(newGrantTypes: GrantType[]) {
     newGrantTypes.forEach((newGrantType) => {
       const isUniqGrantType: boolean = Object.prototype.hasOwnProperty.call(

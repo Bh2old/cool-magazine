@@ -1,3 +1,3 @@
 import { GrantType } from '../../grant-type';
 
-export type GrantTypes = { [key: string]: GrantType };
+export type GrantTypesIndexTable = { [key: string]: GrantType };

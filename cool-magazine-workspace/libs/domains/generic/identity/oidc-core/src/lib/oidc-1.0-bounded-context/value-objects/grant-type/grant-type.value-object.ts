@@ -1,20 +1,18 @@
-import { ValueObject } from "@bh2old/ddd-expc";
+import { ValueObject } from '@bh2old/ddd-expc';
+import { GrantTypeVariants } from './types';
 
 export class GrantType extends ValueObject {
-  private _value: string;
-  private setValue(value: string) {
-    this._value = value;
-  }
+  private _value: GrantTypeVariants;
   public get value(): string {
     return this._value;
   }
 
-  private constructor(type: string) {
+  private constructor(type: GrantTypeVariants) {
     super();
     this._value = type;
   }
 
-  public static create(type: string): GrantType {
+  public static create(type: GrantTypeVariants): GrantType {
     return new GrantType(type);
   }
 }
