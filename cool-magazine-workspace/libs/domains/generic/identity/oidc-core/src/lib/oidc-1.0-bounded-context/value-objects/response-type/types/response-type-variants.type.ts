@@ -1,3 +1,3 @@
-import { ResponseTypes } from '../enums';
+import { RESPONSE_TYPE_VARIANTS } from "../constants";
 
-export type ResponseTypeVariants = typeof ResponseTypes[keyof typeof ResponseTypes];
+export type ResponseTypeVariants = (typeof RESPONSE_TYPE_VARIANTS)[number];

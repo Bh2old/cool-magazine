@@ -1,11 +1,17 @@
 import { ValueObject } from '@bh2old/ddd-expc';
-import { ResponseTypes } from './enums';
-import { ResponseTypeVariants } from './types';
+import { ResponseTypesByVariants, ResponseTypeVariants } from './types';
 
 export class ResponseType extends ValueObject {
+  private readonly _responseTypesByVariants: ResponseTypesByVariants = {
+    codeIdToken: 'code id_token',
+    code: 'code',
+    idToken: 'id_token',
+    none: 'none',
+  };
+
   private _value: ResponseTypeVariants;
   public get value(): string {
-    return this._value;
+    return this._responseTypesByVariants[this._value];
   }
 
   private constructor(type: ResponseTypeVariants) {
@@ -18,6 +24,6 @@ export class ResponseType extends ValueObject {
   }
 
   public static createAsDefault(): ResponseType {
-    return new ResponseType(ResponseTypes.code);
+    return new ResponseType('code');
   }
 }

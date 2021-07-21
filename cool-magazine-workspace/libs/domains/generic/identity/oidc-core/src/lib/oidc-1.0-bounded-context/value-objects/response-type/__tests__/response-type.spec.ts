@@ -1,11 +1,12 @@
-import { ResponseTypes } from '../enums';
 import { ResponseType } from '../response-type.value-object';
+import { RESPONSE_TYPE_VARIANTS } from '../constants/response-type-variants';
+import { RESPONSE_TYPES } from '../constants/response-types';
 
 describe('ResponseType', () => {
   describe('instance creation', () => {
     test('should return instance of ResponseType with specifying type', () => {
       // Arrange
-      const params = ResponseTypes.code;
+      const params = 'code';
 
       // Act
       const instance = ResponseType.create(params);
@@ -26,34 +27,24 @@ describe('ResponseType', () => {
   });
 
   describe('getting value', () => {
-    test('should return value according to ResponseTypes if type is specified', () => {
+    test('should return not empty string value if type is specified', () => {
       // Arrange
-      type ResponseTypesKeys = keyof typeof ResponseTypes;
-      const responseTypesKeys: ResponseTypesKeys[] = Object.keys(
-        ResponseTypes
-      ) as ResponseTypesKeys[];
-      const expectedResponseTypesValues = Object.values(ResponseTypes);
-
       // Act
-      const responseTypeValues = responseTypesKeys.map(
-        (key) => ResponseType.create(ResponseTypes[key]).value
+      const responseTypeValues = RESPONSE_TYPE_VARIANTS.map(
+        (variant) => ResponseType.create(variant).value
       );
 
       // Assert
-      expect(responseTypeValues).toStrictEqual(expectedResponseTypesValues);
+      expect(responseTypeValues).toEqual(expect.arrayContaining([...RESPONSE_TYPES]));
     });
 
-    test('should return default value if type is not specified', () => {
+    test('should return default not empty value if type is not specified', () => {
       // Arrange
-      const expectedDefaultResponseTypesValue = ResponseTypes.code;
-
       // Act
       const defaultResponseTypeValue = ResponseType.createAsDefault().value;
 
       // Assert
-      expect(defaultResponseTypeValue).toStrictEqual(
-        expectedDefaultResponseTypesValue
-      );
+      expect(RESPONSE_TYPES).toContain(defaultResponseTypeValue);
     });
   });
 });
