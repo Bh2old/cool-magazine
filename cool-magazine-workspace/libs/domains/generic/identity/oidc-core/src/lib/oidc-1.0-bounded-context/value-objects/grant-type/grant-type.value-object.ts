@@ -1,11 +1,16 @@
 import { ValueObject } from '@bh2old/ddd-expc';
-import { GrantTypes } from './enums';
-import { GrantTypeVariants } from './types';
+import { GrantTypesByVariants, GrantTypeVariants } from './types';
 
 export class GrantType extends ValueObject {
+  private readonly _grantTypesByVariants: GrantTypesByVariants = {
+    authorizationCode: 'authorization_code',
+    implicit: 'implicit',
+    refreshToken: 'refresh_token',
+  };
+
   private _value: GrantTypeVariants;
   public get value(): string {
-    return this._value;
+    return this._grantTypesByVariants[this._value];
   }
 
   private constructor(type: GrantTypeVariants) {
@@ -18,6 +23,6 @@ export class GrantType extends ValueObject {
   }
 
   public static createAsDefault(): GrantType {
-    return new GrantType(GrantTypes.authorizationCode);
+    return new GrantType('authorizationCode');
   }
 }

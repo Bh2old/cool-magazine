@@ -1,11 +1,11 @@
-import { GrantTypes } from '../enums';
+import { GRANT_TYPES, GRANT_TYPE_VARIANTS } from '../constants';
 import { GrantType } from '../grant-type.value-object';
 
 describe('GrantType', () => {
   describe('instance creation', () => {
     test('should return instance of GrantType with specifying type', () => {
       // Arrange
-      const params = GrantTypes.authorizationCode;
+      const params = 'authorizationCode';
 
       // Act
       const instance = GrantType.create(params);
@@ -26,34 +26,24 @@ describe('GrantType', () => {
   });
 
   describe('getting value', () => {
-    test('should return value according to GrantTypes if type is specified', () => {
+    test('should return not empty string value if type is specified', () => {
       // Arrange
-      type GrantTypesKeys = keyof typeof GrantTypes;
-      const grantTypesKeys: GrantTypesKeys[] = Object.keys(
-        GrantTypes
-      ) as GrantTypesKeys[];
-      const expectedGrantTypesValues = Object.values(GrantTypes);
-
       // Act
-      const grantTypeValues = grantTypesKeys.map(
-        (key) => GrantType.create(GrantTypes[key]).value
+      const grantTypeValues = GRANT_TYPE_VARIANTS.map(
+        (variant) => GrantType.create(variant).value
       );
 
       // Assert
-      expect(grantTypeValues).toStrictEqual(expectedGrantTypesValues);
+      expect(grantTypeValues).toEqual(expect.arrayContaining([...GRANT_TYPES]));
     });
 
-    test('should return default value if type is not specified', () => {
+    test('should return default not empty value if type is not specified', () => {
       // Arrange
-      const expectedDefaultGrantTypesValue = GrantTypes.authorizationCode;
-
       // Act
       const defaultGrantTypeValue = GrantType.createAsDefault().value;
 
       // Assert
-      expect(defaultGrantTypeValue).toStrictEqual(
-        expectedDefaultGrantTypesValue
-      );
+      expect(GRANT_TYPES).toContain(defaultGrantTypeValue);
     });
   });
 });

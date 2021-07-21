@@ -1,4 +1,3 @@
-import { GrantTypes } from '../../grant-type/enums/grant-types';
 import { GrantType } from '../../grant-type/grant-type.value-object';
 import { RedirectUri } from '../../redirect-uri/redirect-uri.value-object';
 import { ResponseType } from '../../response-type/response-type.value-object';
@@ -14,7 +13,7 @@ describe('ClientMetadata', () => {
       const responseTypeValue = 'code';
       const responseType: ResponseType = ResponseType.create(responseTypeValue);
 
-      const grantTypeValue = GrantTypes.authorizationCode;
+      const grantTypeValue = "authorizationCode";
       const grantType: GrantType = GrantType.create(grantTypeValue);
 
       const metadata: ClientMetadata = ClientMetadata.create({

@@ -4,9 +4,8 @@ import {
   ClientMetadata,
   GrantType,
   RedirectUri,
-  ResponseType
+  ResponseType,
 } from '../../../value-objects';
-import { GrantTypes } from '../../../value-objects/grant-type/enums/grant-types';
 import { StaticClientsConfigCreateData } from '../models';
 import { StaticClientsConfig } from '../static-clients-config.entity';
 
@@ -23,7 +22,7 @@ describe('StaticClientsConfig', () => {
     const responseTypeValue = 'code';
     const responseType: ResponseType = ResponseType.create(responseTypeValue);
 
-    const grantTypeValue = GrantTypes.authorizationCode;
+    const grantTypeValue = 'authorizationCode';
     const grantType: GrantType = GrantType.create(grantTypeValue);
 
     const metadata: ClientMetadata = ClientMetadata.create({
@@ -87,7 +86,9 @@ describe('StaticClientsConfig', () => {
       clonedClientsForMutation[indexMutatedItem][nameNewProperty] = true;
 
       // Assert
-      expect(staticClientsConfig.clients[indexMutatedItem]).not.toHaveProperty(nameNewProperty);
+      expect(staticClientsConfig.clients[indexMutatedItem]).not.toHaveProperty(
+        nameNewProperty
+      );
     });
   });
 });
