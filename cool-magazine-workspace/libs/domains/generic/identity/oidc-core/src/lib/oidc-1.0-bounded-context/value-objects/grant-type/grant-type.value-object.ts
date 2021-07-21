@@ -1,4 +1,5 @@
 import { ValueObject } from '@bh2old/ddd-expc';
+import { GrantTypes } from './enums';
 import { GrantTypeVariants } from './types';
 
 export class GrantType extends ValueObject {
@@ -14,5 +15,9 @@ export class GrantType extends ValueObject {
 
   public static create(type: GrantTypeVariants): GrantType {
     return new GrantType(type);
+  }
+
+  public static createAsDefault(): GrantType {
+    return new GrantType(GrantTypes.authorizationCode);
   }
 }
