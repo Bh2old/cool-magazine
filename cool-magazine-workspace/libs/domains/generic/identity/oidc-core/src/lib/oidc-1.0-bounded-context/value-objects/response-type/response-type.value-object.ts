@@ -1,20 +1,18 @@
-import { ValueObject } from "@bh2old/ddd-expc";
+import { ValueObject } from '@bh2old/ddd-expc';
+import { ResponseTypeVariants } from './types';
 
 export class ResponseType extends ValueObject {
-  private _value: string;
-  private setValue(value: string) {
-    this._value = value;
-  }
+  private _value: ResponseTypeVariants;
   public get value(): string {
     return this._value;
   }
 
-  private constructor(uri: string) {
+  private constructor(type: ResponseTypeVariants) {
     super();
-    this._value = uri;
+    this._value = type;
   }
 
-  public static create(type: string): ResponseType {
+  public static create(type: ResponseTypeVariants): ResponseType {
     return new ResponseType(type);
   }
 }
