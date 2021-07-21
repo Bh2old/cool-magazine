@@ -13,6 +13,16 @@ describe('ResponseType', () => {
       // Assert
       expect(instance).toBeInstanceOf(ResponseType);
     });
+
+    test('should return instance of ResponseType without specifying type', () => {
+      // Arrange
+
+      // Act
+      const instance = ResponseType.createAsDefault();
+
+      // Assert
+      expect(instance).toBeInstanceOf(ResponseType);
+    });
   });
 
   describe('getting value', () => {
@@ -31,6 +41,19 @@ describe('ResponseType', () => {
 
       // Assert
       expect(responseTypeValues).toStrictEqual(expectedResponseTypesValues);
+    });
+
+    test('should return default value if type is not specified', () => {
+      // Arrange
+      const expectedDefaultResponseTypesValue = ResponseTypes.code;
+
+      // Act
+      const defaultResponseTypeValue = ResponseType.createAsDefault().value;
+
+      // Assert
+      expect(defaultResponseTypeValue).toStrictEqual(
+        expectedDefaultResponseTypesValue
+      );
     });
   });
 });

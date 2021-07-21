@@ -1,4 +1,5 @@
 import { ValueObject } from '@bh2old/ddd-expc';
+import { ResponseTypes } from './enums';
 import { ResponseTypeVariants } from './types';
 
 export class ResponseType extends ValueObject {
@@ -14,5 +15,9 @@ export class ResponseType extends ValueObject {
 
   public static create(type: ResponseTypeVariants): ResponseType {
     return new ResponseType(type);
+  }
+
+  public static createAsDefault(): ResponseType {
+    return new ResponseType(ResponseTypes.code);
   }
 }
