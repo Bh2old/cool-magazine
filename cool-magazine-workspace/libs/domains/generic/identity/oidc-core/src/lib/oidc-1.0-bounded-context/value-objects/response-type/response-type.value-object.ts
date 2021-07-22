@@ -1,23 +1,29 @@
 import { ValueObject } from '@bh2old/ddd-expc';
-import { ResponseTypesByVariants, ResponseTypeVariants } from './types';
+import { ResponseTypeVariants } from './types';
 
 export class ResponseType extends ValueObject {
-  private readonly _responseTypesByVariants: ResponseTypesByVariants = {
-    codeIdToken: 'code id_token',
-    code: 'code',
-    idToken: 'id_token',
-    none: 'none',
-  };
-
   public get value(): string {
-    return this._responseTypesByVariants[this.valueAsVariant];
+    return ResponseType._RESPONSE_TYPES_BY_VARIANTS[this.valueAsVariant];
   }
-
-  public readonly valueAsVariant: ResponseTypeVariants;
 
   private constructor(variant: ResponseTypeVariants) {
     super();
     this.valueAsVariant = variant;
+  }
+
+  public readonly valueAsVariant: ResponseTypeVariants;
+
+  private static readonly _RESPONSE_TYPES_BY_VARIANTS = {
+    codeIdToken: 'code id_token',
+    code: 'code',
+    idToken: 'id_token',
+    none: 'none',
+  } as const;
+
+  public static get RESPONSE_TYPES_BY_VARIANTS() {
+    return {
+      ...this._RESPONSE_TYPES_BY_VARIANTS,
+    } as const;
   }
 
   public static create(type: ResponseTypeVariants): ResponseType {

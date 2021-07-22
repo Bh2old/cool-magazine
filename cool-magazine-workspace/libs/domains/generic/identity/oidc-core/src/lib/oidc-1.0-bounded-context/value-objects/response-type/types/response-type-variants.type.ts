@@ -1,3 +1,4 @@
-import { RESPONSE_TYPE_VARIANTS } from "../constants";
+import { ResponseType } from '../response-type.value-object';
 
-export type ResponseTypeVariants = (typeof RESPONSE_TYPE_VARIANTS)[number];
+export type ResponseTypeVariants =
+  keyof typeof ResponseType.RESPONSE_TYPES_BY_VARIANTS;

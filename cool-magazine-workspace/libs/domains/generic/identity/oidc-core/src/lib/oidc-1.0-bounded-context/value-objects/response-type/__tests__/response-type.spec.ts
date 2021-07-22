@@ -1,6 +1,5 @@
 import { ResponseType } from '../response-type.value-object';
-import { RESPONSE_TYPE_VARIANTS } from '../constants/response-type-variants';
-import { RESPONSE_TYPES } from '../constants/response-types';
+import { ResponseTypeVariants } from '../types/response-type-variants.type';
 
 describe('ResponseType', () => {
   describe('instance creation', () => {
@@ -29,22 +28,33 @@ describe('ResponseType', () => {
   describe('getting value', () => {
     test('should return not empty string value if type is specified', () => {
       // Arrange
+      const responseTypeVariants = Object.keys(
+        ResponseType.RESPONSE_TYPES_BY_VARIANTS
+      ) as ResponseTypeVariants[];
+
+      const responseTypes = Object.values(
+        ResponseType.RESPONSE_TYPES_BY_VARIANTS
+      );
+
       // Act
-      const responseTypeValues = RESPONSE_TYPE_VARIANTS.map(
+      const responseTypeValues = responseTypeVariants.map(
         (variant) => ResponseType.create(variant).value
       );
 
       // Assert
-      expect(responseTypeValues).toEqual(expect.arrayContaining([...RESPONSE_TYPES]));
+      expect(responseTypeValues).toStrictEqual(responseTypes);
     });
 
     test('should return default not empty value if type is not specified', () => {
       // Arrange
+      const responseTypes = Object.values(
+        ResponseType.RESPONSE_TYPES_BY_VARIANTS
+      );
       // Act
       const defaultResponseTypeValue = ResponseType.createAsDefault().value;
 
       // Assert
-      expect(RESPONSE_TYPES).toContain(defaultResponseTypeValue);
+      expect(responseTypes).toContain(defaultResponseTypeValue);
     });
   });
 });
