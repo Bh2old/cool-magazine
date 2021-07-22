@@ -9,14 +9,15 @@ export class ResponseType extends ValueObject {
     none: 'none',
   };
 
-  private _value: ResponseTypeVariants;
   public get value(): string {
-    return this._responseTypesByVariants[this._value];
+    return this._responseTypesByVariants[this.valueAsVariant];
   }
 
-  private constructor(type: ResponseTypeVariants) {
+  public readonly valueAsVariant: ResponseTypeVariants;
+
+  private constructor(variant: ResponseTypeVariants) {
     super();
-    this._value = type;
+    this.valueAsVariant = variant;
   }
 
   public static create(type: ResponseTypeVariants): ResponseType {
