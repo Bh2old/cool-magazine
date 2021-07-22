@@ -1,5 +1,5 @@
-import { GRANT_TYPES, GRANT_TYPE_VARIANTS } from '../constants';
 import { GrantType } from '../grant-type.value-object';
+import { GrantTypeVariants } from '../types/grant-type-variants.type';
 
 describe('GrantType', () => {
   describe('instance creation', () => {
@@ -28,22 +28,30 @@ describe('GrantType', () => {
   describe('getting value', () => {
     test('should return not empty string value if type is specified', () => {
       // Arrange
+      const grantTypeVariants = Object.keys(
+        GrantType.GRANT_TYPES_BY_VARIANTS
+      ) as GrantTypeVariants[];
+
+      const grantTypes = Object.values(GrantType.GRANT_TYPES_BY_VARIANTS);
+
       // Act
-      const grantTypeValues = GRANT_TYPE_VARIANTS.map(
+      const grantTypeValues = grantTypeVariants.map(
         (variant) => GrantType.create(variant).value
       );
 
       // Assert
-      expect(grantTypeValues).toEqual(expect.arrayContaining([...GRANT_TYPES]));
+      expect(grantTypeValues).toStrictEqual(grantTypes);
     });
 
     test('should return default not empty value if type is not specified', () => {
       // Arrange
+      const grantTypes = Object.values(GrantType.GRANT_TYPES_BY_VARIANTS);
+
       // Act
       const defaultGrantTypeValue = GrantType.createAsDefault().value;
 
       // Assert
-      expect(GRANT_TYPES).toContain(defaultGrantTypeValue);
+      expect(grantTypes).toContain(defaultGrantTypeValue);
     });
   });
 });
