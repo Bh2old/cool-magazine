@@ -2,14 +2,15 @@ import { ValueObject } from '@bh2old/ddd-expc';
 import { GrantTypeVariants } from './types';
 
 export class GrantType extends ValueObject {
-  private _value: GrantTypeVariants;
   public get value(): string {
-    return GrantType._GRANT_TYPES_BY_VARIANTS[this._value];
+    return GrantType._GRANT_TYPES_BY_VARIANTS[this.valueAsVariant];
   }
 
-  private constructor(type: GrantTypeVariants) {
+  public readonly valueAsVariant: GrantTypeVariants;
+
+  private constructor(variant: GrantTypeVariants) {
     super();
-    this._value = type;
+    this.valueAsVariant = variant;
   }
 
   private static readonly _GRANT_TYPES_BY_VARIANTS = {
