@@ -34,8 +34,7 @@ export class ResponseTypeDictionary {
     typeVariant: ResponseTypeVariants
   ): Either<NoSuchTypeResponseTypeDictionaryError, ResponseType> {
     if (this.hasType(typeVariant)) {
-      const searchedType = this._dictionary.get(typeVariant)
-        .value as ResponseType;
+      const searchedType = this._dictionary.get(typeVariant) as ResponseType;
       return right(searchedType);
     }
 

@@ -1,8 +1,4 @@
 import { Dictionary } from '../dictionary';
-import {
-  NoItemWithSuchKeyDictionaryError,
-  SuchKeyAlreadyContainsDictionaryError,
-} from '../errors';
 
 describe('Dictionary', () => {
   describe('instance creation', () => {
@@ -18,32 +14,19 @@ describe('Dictionary', () => {
   });
 
   describe('adding item', () => {
-    test('should return "Either.right" with same instance of Dictionary if uniq key', () => {
+    test('should return instance of Dictionary', () => {
       // Arrange
       const dictionary = new Dictionary<number, string>();
       const newItem = { key: 1, value: 'one' };
 
       // Act
-      const result = dictionary.add(newItem.key, newItem.value).value;
+      const result = dictionary.add(newItem.key, newItem.value);
 
       // Assert
       expect(result).toBe(dictionary);
     });
 
-    test('should return "Either.left" with error if not uniq key', () => {
-      // Arrange
-      const dictionary = new Dictionary<number, string>();
-      const newItem = { key: 1, value: 'one' };
-      dictionary.add(newItem.key, newItem.value);
-
-      // Act
-      const result = dictionary.add(newItem.key, newItem.value).value;
-
-      // Assert
-      expect(result).toBeInstanceOf(SuchKeyAlreadyContainsDictionaryError);
-    });
-
-    test('should not mutate already added item if not uniq key', () => {
+    test('should mutate already added item if not uniq key', () => {
       // Arrange
       const dictionary = new Dictionary<number, string>();
       const newItem = { key: 1, value: 'one' };
@@ -54,7 +37,7 @@ describe('Dictionary', () => {
       dictionary.add(itemForMutationTesting.key, itemForMutationTesting.value);
 
       // Assert
-      expect(dictionary.get(newItem.key).value).toBe(newItem.value);
+      expect(dictionary.get(newItem.key)).toBe(itemForMutationTesting.value);
     });
   });
 
@@ -87,29 +70,29 @@ describe('Dictionary', () => {
   });
 
   describe('getting item', () => {
-    test('should return "Either.right" with item if key exist', () => {
+    test('should return item if key exist', () => {
       // Arrange
       const dictionary = new Dictionary<number, string>();
       const newItem = { key: 1, value: 'one' };
       dictionary.add(newItem.key, newItem.value);
 
       // Act
-      const result = dictionary.get(newItem.key).value;
+      const result = dictionary.get(newItem.key);
 
       // Assert
       expect(result).toBe(newItem.value);
     });
 
-    test('should return "Either.left" with error if key not exist', () => {
+    test('should return undefined if key not exist', () => {
       // Arrange
       const dictionary = new Dictionary<number, string>();
       const key = 1;
 
       // Act
-      const result = dictionary.get(key).value;
+      const result = dictionary.get(key);
 
       // Assert
-      expect(result).toBeInstanceOf(NoItemWithSuchKeyDictionaryError);
+      expect(result).toBe(undefined);
     });
   });
 });

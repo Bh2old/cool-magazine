@@ -13,10 +13,7 @@ export class GrantTypeDictionary {
 
   add(
     type: GrantType
-  ): Either<
-    TypeAlreadyContainsGrantTypeDictionaryError,
-    GrantTypeDictionary
-  > {
+  ): Either<TypeAlreadyContainsGrantTypeDictionaryError, GrantTypeDictionary> {
     if (this.hasType(type.valueAsVariant)) {
       return left(new TypeAlreadyContainsGrantTypeDictionaryError(type));
     }
@@ -34,8 +31,7 @@ export class GrantTypeDictionary {
     typeVariant: GrantTypeVariants
   ): Either<NoSuchTypeGrantTypeDictionaryError, GrantType> {
     if (this.hasType(typeVariant)) {
-      const searchedType = this._dictionary.get(typeVariant)
-        .value as GrantType;
+      const searchedType = this._dictionary.get(typeVariant) as GrantType;
       return right(searchedType);
     }
 
