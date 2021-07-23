@@ -26,7 +26,7 @@ describe('Dictionary', () => {
       expect(result).toBe(dictionary);
     });
 
-    test('should mutate already added item if not uniq key', () => {
+    test('should replace the existing item with a new one if not uniq uri', () => {
       // Arrange
       const dictionary = new Dictionary<number, string>();
       const newItem = { key: 1, value: 'one' };
