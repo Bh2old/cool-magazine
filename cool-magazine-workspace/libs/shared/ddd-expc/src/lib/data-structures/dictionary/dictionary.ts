@@ -1,6 +1,10 @@
 export class Dictionary<TKey, TValue> {
   private readonly _map: Map<TKey, TValue>;
 
+  public get count() {
+    return this._map.size;
+  }
+
   constructor() {
     this._map = new Map<TKey, TValue>();
   }

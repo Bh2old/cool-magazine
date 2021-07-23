@@ -95,4 +95,32 @@ describe('Dictionary', () => {
       expect(result).toBe(undefined);
     });
   });
+
+  describe('getting size dictionary', () => {
+    test('should return the number of items equal to zero if the dictionary is empty', () => {
+      // Arrange
+      const dictionary = new Dictionary<number, string>();
+      const ZERO_COUNT_EMPTY_DICTIONARY = 0;
+      // Act
+      const result = dictionary.count;
+
+      // Assert
+      expect(result).toBe(ZERO_COUNT_EMPTY_DICTIONARY);
+    });
+
+    test('should return the size of the dictionary as equal to the number of items added', () => {
+      // Arrange
+      const dictionary = new Dictionary<number, number>();
+      const countNewItem = 2;
+      for (let index = 0; index < countNewItem; index++) {
+        dictionary.add(index, index + 1);
+      }
+
+      // Act
+      const result = dictionary.count;
+
+      // Assert
+      expect(result).toBe(countNewItem);
+    });
+  });
 });
