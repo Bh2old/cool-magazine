@@ -1,10 +1,7 @@
 import { ValueObject } from '@bh2old/ddd-expc';
 
 export class RedirectUri extends ValueObject {
-  private _value: string;
-  private setValue(value: string) {
-    this._value = value;
-  }
+  private readonly _value: string;
   public get value(): string {
     return this._value;
   }
