@@ -1,8 +1,4 @@
 import { ResponseTypeDictionary } from '../data-structures';
-import {
-  NoSuchTypeResponseTypeDictionaryError,
-  TypeAlreadyContainsResponseTypeDictionaryError,
-} from '../errors';
 import { ResponseType } from '../response-type.value-object';
 
 describe('ResponseTypeDictionary', () => {
@@ -19,36 +15,19 @@ describe('ResponseTypeDictionary', () => {
   });
 
   describe('adding item', () => {
-    test('should return "Either.right" with same instance of ResponseTypeDictionary if uniq type', () => {
+    test('should return same instance of ResponseTypeDictionary if uniq type', () => {
       // Arrange
       const dictionary = new ResponseTypeDictionary();
       const newItem = ResponseType.createAsDefault();
 
       // Act
-      const result = dictionary.add(newItem).value;
+      const result = dictionary.add(newItem);
 
       // Assert
       expect(result).toBe(dictionary);
     });
 
-    test('should return "Either.left" with error if not uniq type', () => {
-      // Arrange
-      const dictionary = new ResponseTypeDictionary();
-      const responseTypeVariant = 'code';
-      const newItem = ResponseType.create(responseTypeVariant);
-      const copyNewItem = ResponseType.create(responseTypeVariant);
-      dictionary.add(newItem);
-
-      // Act
-      const result = dictionary.add(copyNewItem).value;
-
-      // Assert
-      expect(result).toBeInstanceOf(
-        TypeAlreadyContainsResponseTypeDictionaryError
-      );
-    });
-
-    test('should not mutate already added item if not uniq type', () => {
+    test('should replace the existing item with a new one if not uniq type', () => {
       // Arrange
       const dictionary = new ResponseTypeDictionary();
       const responseTypeVariant = 'code';
@@ -60,7 +39,7 @@ describe('ResponseTypeDictionary', () => {
       dictionary.add(itemForMutation);
 
       // Assert
-      expect(dictionary.get(responseTypeVariant).value).toBe(newItem);
+      expect(dictionary.get(responseTypeVariant)).toBe(itemForMutation);
     });
   });
 
@@ -96,7 +75,7 @@ describe('ResponseTypeDictionary', () => {
   });
 
   describe('getting item', () => {
-    test('should return "Either.right" with item if key exist', () => {
+    test('should return item if key exist', () => {
       // Arrange
       const dictionary = new ResponseTypeDictionary();
       const responseTypeVariant = 'code';
@@ -104,21 +83,21 @@ describe('ResponseTypeDictionary', () => {
       dictionary.add(newItem);
 
       // Act
-      const result = dictionary.get(responseTypeVariant).value;
+      const result = dictionary.get(responseTypeVariant);
 
       // Assert
       expect(result).toBe(newItem);
     });
 
-    test('should return "Either.left" with error if key not exist', () => {
+    test('should return undefined if key not exist', () => {
       // Arrange
       const dictionary = new ResponseTypeDictionary();
       const responseTypeVariant = 'code';
       // Act
-      const result = dictionary.get(responseTypeVariant).value;
+      const result = dictionary.get(responseTypeVariant);
 
       // Assert
-      expect(result).toBeInstanceOf(NoSuchTypeResponseTypeDictionaryError);
+      expect(result).toBe(undefined);
     });
   });
 });
