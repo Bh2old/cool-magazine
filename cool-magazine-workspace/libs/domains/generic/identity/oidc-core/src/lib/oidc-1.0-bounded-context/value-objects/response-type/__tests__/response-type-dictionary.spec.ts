@@ -1,5 +1,6 @@
 import { ResponseTypeDictionary } from '../data-structures';
 import { ResponseType } from '../response-type.value-object';
+import { ResponseTypeVariants } from '../types';
 
 describe('ResponseTypeDictionary', () => {
   describe('instance creation', () => {
@@ -11,6 +12,71 @@ describe('ResponseTypeDictionary', () => {
 
       // Assert
       expect(instance).toBeInstanceOf(ResponseTypeDictionary);
+    });
+
+    test('should return instance of ResponseTypeDictionary if iterable argument is specified', () => {
+      // Arrange
+      const responseTypeVariant = 'code';
+      const newItem = ResponseType.create(responseTypeVariant);
+      const iterableObject: Iterable<[ResponseTypeVariants, ResponseType]> = [
+        [responseTypeVariant, newItem],
+      ];
+
+      // Act
+      const instance = new ResponseTypeDictionary(iterableObject);
+
+      // Assert
+      expect(instance).toBeInstanceOf(ResponseTypeDictionary);
+    });
+
+    test('should return instance that contains elements from specified iterable object', () => {
+      // Arrange
+      const responseTypeVariant = 'code';
+      const newItem = ResponseType.create(responseTypeVariant);
+      const iterableObject: Iterable<[ResponseTypeVariants, ResponseType]> = [
+        [responseTypeVariant, newItem],
+      ];
+
+      // Act
+      const instance = new ResponseTypeDictionary(iterableObject);
+
+      // Assert
+      expect(instance.get(responseTypeVariant)).toBe(newItem);
+    });
+
+    test('should return immutable instance if specified iterable object', () => {
+      // Arrange
+      const responseTypeVariant = 'code';
+      const newItem = ResponseType.create(responseTypeVariant);
+      const variantForItemForMutation = 'none';
+      const itemForMutation = ResponseType.create(variantForItemForMutation);
+      const iterableObject = [[responseTypeVariant, newItem]];
+
+      // Act
+      const instance = new ResponseTypeDictionary(
+        iterableObject as Iterable<[ResponseTypeVariants, ResponseType]>
+      );
+      iterableObject.push([variantForItemForMutation, itemForMutation]);
+
+      // Assert
+      expect(instance.hasType(variantForItemForMutation)).toBe(false);
+    });
+
+    test('should return instance that contains mutable elements from the specified iterable object', () => {
+      // Arrange
+      const responseTypeVariant = 'code';
+      const newItem = ResponseType.create(responseTypeVariant);
+      const iterableObject: Iterable<[ResponseTypeVariants, ResponseType]> = [
+        [responseTypeVariant, newItem],
+      ];
+
+      // Act
+      const instance = new ResponseTypeDictionary(
+        iterableObject as Iterable<[ResponseTypeVariants, ResponseType]>
+      );
+
+      // Assert
+      expect(newItem).toBe(instance.get(responseTypeVariant));
     });
   });
 
