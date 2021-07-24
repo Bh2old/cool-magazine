@@ -1,4 +1,4 @@
-import { Dictionary } from '@bh2old/ddd-expc';
+import { Dictionary, ICloneable } from '@bh2old/ddd-expc';
 import { GrantType } from '../grant-type.value-object';
 import { GrantTypeVariants } from '../types';
 import { Either, left, right } from '@sweet-monads/either';
@@ -7,7 +7,7 @@ import {
   TypeAlreadyContainsGrantTypeDictionaryError,
 } from '../errors';
 
-export class GrantTypeDictionary {
+export class GrantTypeDictionary implements ICloneable<GrantTypeDictionary> {
   private readonly _dictionary: Dictionary<GrantTypeVariants, GrantType>;
 
   constructor();
@@ -45,5 +45,9 @@ export class GrantTypeDictionary {
     }
 
     return left(new NoSuchTypeGrantTypeDictionaryError(typeVariant));
+  }
+
+  clone(): GrantTypeDictionary {
+    return new GrantTypeDictionary(this._dictionary);
   }
 }

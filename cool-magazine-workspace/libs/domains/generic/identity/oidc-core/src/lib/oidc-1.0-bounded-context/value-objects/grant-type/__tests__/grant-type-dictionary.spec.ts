@@ -187,4 +187,54 @@ describe('GrantTypeDictionary', () => {
       expect(result).toBeInstanceOf(NoSuchTypeGrantTypeDictionaryError);
     });
   });
+
+  describe('clone dictionary', () => {
+    test('should return cloned instance of GrantTypeDictionary', () => {
+      // Arrange
+      const dictionary = new GrantTypeDictionary();
+
+      // Act
+      const clone = dictionary.clone();
+
+      // Assert
+      expect(clone).toBeInstanceOf(GrantTypeDictionary);
+    });
+
+    test('should return immutable instance', () => {
+      // Arrange
+      const responseTypeVariant = 'authorizationCode';
+      const newItem = GrantType.create(responseTypeVariant);
+      const variantForItemForMutation = 'implicit';
+      const itemForMutation = GrantType.create(variantForItemForMutation);
+      const iterableObject = [[responseTypeVariant, newItem]];
+      const dictionary = new GrantTypeDictionary(
+        iterableObject as Iterable<[GrantTypeVariants, GrantType]>
+      );
+
+      // Act
+      const clone = dictionary.clone();
+      clone.add(itemForMutation);
+
+      // Assert
+      expect(dictionary.hasType(variantForItemForMutation)).toBe(false);
+    });
+
+    test('should return instance that contains mutable elements', () => {
+      // Arrange
+      const responseTypeVariant = 'authorizationCode';
+      const newItem = GrantType.create(responseTypeVariant);
+      const iterableObject: Iterable<[GrantTypeVariants, GrantType]> = [
+        [responseTypeVariant, newItem],
+      ];
+      const dictionary = new GrantTypeDictionary(
+        iterableObject as Iterable<[GrantTypeVariants, GrantType]>
+      );
+
+      // Act
+      const clone = dictionary.clone();
+
+      // Assert
+      expect(newItem).toBe(clone.get(responseTypeVariant).value);
+    });
+  });
 });
