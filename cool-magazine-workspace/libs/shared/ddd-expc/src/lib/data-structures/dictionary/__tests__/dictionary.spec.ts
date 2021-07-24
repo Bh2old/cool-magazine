@@ -2,7 +2,7 @@ import { Dictionary } from '../dictionary';
 
 describe('Dictionary', () => {
   describe('instance creation', () => {
-    test('should return instance of Dictionary', () => {
+    test('should return instance of Dictionary if 0 arguments', () => {
       // Arrange
 
       // Act
@@ -10,6 +10,58 @@ describe('Dictionary', () => {
 
       // Assert
       expect(instance).toBeInstanceOf(Dictionary);
+    });
+
+    test('should return instance of Dictionary if iterable argument is specified', () => {
+      // Arrange
+      const iterableObject = [['1', 'one']] as Iterable<[string, string]>;
+
+      // Act
+      const instance = new Dictionary<string, string>(iterableObject);
+
+      // Assert
+      expect(instance).toBeInstanceOf(Dictionary);
+    });
+
+    test('should return instance that contains elements from specified iterable object', () => {
+      // Arrange
+      const iterableObject = [['1', 'one']] as Iterable<[string, string]>;
+
+      // Act
+      const instance = new Dictionary<string, string>(iterableObject);
+
+      // Assert
+      expect([...instance.entries()]).toStrictEqual(iterableObject);
+    });
+
+    test('should return immutable instance if specified iterable object', () => {
+      // Arrange
+      const iterableObject = [['1', 'one']];
+
+      // Act
+      const instance = new Dictionary<string, string>(
+        iterableObject as Iterable<[string, string]>
+      );
+      iterableObject.push(['2', 'two']);
+
+      // Assert
+      expect(instance.count).not.toBe(iterableObject.length);
+    });
+
+    test('should return instance that contains mutable elements from the specified iterable object', () => {
+      // Arrange
+      const keyItem = '1';
+      const valueItem = { one: 'one' };
+      const item = [keyItem, valueItem];
+      const iterableObject = [item];
+
+      // Act
+      const instance = new Dictionary<string, { one: string }>(
+        iterableObject as Iterable<[string, { one: string }]>
+      );
+
+      // Assert
+      expect(valueItem).toBe(instance.get(keyItem));
     });
   });
 

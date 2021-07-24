@@ -9,8 +9,14 @@ export class Dictionary<TKey, TValue> implements Iterable<[TKey, TValue]> {
     return this.entries();
   }
 
-  constructor() {
-    this._map = new Map<TKey, TValue>();
+  constructor();
+  constructor(iterable: Iterable<[TKey, TValue]>);
+  constructor(iterable?: Iterable<[TKey, TValue]>) {
+    if (iterable) {
+      this._map = new Map(iterable);
+    } else {
+      this._map = new Map<TKey, TValue>();
+    }
   }
 
   add(key: TKey, value: TValue): Dictionary<TKey, TValue> {
