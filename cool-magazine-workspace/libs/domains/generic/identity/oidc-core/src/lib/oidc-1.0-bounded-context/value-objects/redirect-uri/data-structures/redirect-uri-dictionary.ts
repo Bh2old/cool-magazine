@@ -1,7 +1,9 @@
-import { Dictionary } from '@bh2old/ddd-expc';
+import { Dictionary, ICloneable } from '@bh2old/ddd-expc';
 import { RedirectUri } from '../redirect-uri.value-object';
 
-export class RedirectUriDictionary {
+export class RedirectUriDictionary
+  implements ICloneable<RedirectUriDictionary>
+{
   private readonly _dictionary: Dictionary<string, RedirectUri> =
     new Dictionary();
 
@@ -27,5 +29,9 @@ export class RedirectUriDictionary {
 
   get(uri: string): RedirectUri | undefined {
     return this._dictionary.get(uri);
+  }
+
+  clone(): RedirectUriDictionary {
+    return new RedirectUriDictionary(this._dictionary);
   }
 }

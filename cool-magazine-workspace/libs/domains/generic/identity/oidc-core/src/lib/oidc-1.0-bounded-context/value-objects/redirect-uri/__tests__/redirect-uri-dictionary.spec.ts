@@ -159,4 +159,51 @@ describe('RedirectUriDictionary', () => {
       expect(result).toBe(undefined);
     });
   });
+
+  describe('clone dictionary', () => {
+    test('should return cloned instance of RedirectUriDictionary', () => {
+      // Arrange
+      const dictionary = new RedirectUriDictionary();
+
+      // Act
+      const clone = dictionary.clone();
+
+      // Assert
+      expect(clone).toBeInstanceOf(RedirectUriDictionary);
+    });
+
+    test('should return immutable instance', () => {
+      // Arrange
+      const uri = 'http://asd.ru';
+      const newItem = RedirectUri.create(uri);
+      const uriForItemForMutation = 'http://gggg.wwww';
+      const itemForMutation = RedirectUri.create(uriForItemForMutation);
+      const iterableObject = [[uri, newItem]];
+      const dictionary = new RedirectUriDictionary(
+        iterableObject as Iterable<[string, RedirectUri]>
+      );
+
+      // Act
+      const clone = dictionary.clone();
+      clone.add(itemForMutation);
+
+      // Assert
+      expect(dictionary.hasUri(uriForItemForMutation)).toBe(false);
+    });
+
+    test('should return instance that contains mutable elements', () => {
+      // Arrange
+      const uri = 'http://asd.ru';
+      const newItem = RedirectUri.create(uri);
+      const iterableObject = [[uri, newItem]];
+      const dictionary = new RedirectUriDictionary(
+        iterableObject as Iterable<[string, RedirectUri]>
+      );
+      // Act
+      const clone = dictionary.clone();
+
+      // Assert
+      expect(newItem).toBe(clone.get(uri));
+    });
+  });
 });
