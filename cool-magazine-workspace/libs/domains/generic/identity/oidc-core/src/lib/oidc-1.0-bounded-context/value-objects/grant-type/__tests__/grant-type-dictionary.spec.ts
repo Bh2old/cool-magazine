@@ -4,6 +4,7 @@ import {
   TypeAlreadyContainsGrantTypeDictionaryError,
 } from '../errors';
 import { GrantType } from '../grant-type.value-object';
+import { GrantTypeVariants } from '../types';
 
 describe('GrantTypeDictionary', () => {
   describe('instance creation', () => {
@@ -15,6 +16,71 @@ describe('GrantTypeDictionary', () => {
 
       // Assert
       expect(instance).toBeInstanceOf(GrantTypeDictionary);
+    });
+
+    test('should return instance of GrantTypeDictionary if iterable argument is specified', () => {
+      // Arrange
+      const grantTypeVariant = 'authorizationCode';
+      const newItem = GrantType.create(grantTypeVariant);
+      const iterableObject: Iterable<[GrantTypeVariants, GrantType]> = [
+        [grantTypeVariant, newItem],
+      ];
+
+      // Act
+      const instance = new GrantTypeDictionary(iterableObject);
+
+      // Assert
+      expect(instance).toBeInstanceOf(GrantTypeDictionary);
+    });
+
+    test('should return instance that contains elements from specified iterable object', () => {
+      // Arrange
+      const grantTypeVariant = 'authorizationCode';
+      const newItem = GrantType.create(grantTypeVariant);
+      const iterableObject: Iterable<[GrantTypeVariants, GrantType]> = [
+        [grantTypeVariant, newItem],
+      ];
+
+      // Act
+      const instance = new GrantTypeDictionary(iterableObject);
+
+      // Assert
+      expect(instance.get(grantTypeVariant).value).toBe(newItem);
+    });
+
+    test('should return immutable instance if specified iterable object', () => {
+      // Arrange
+      const grantTypeVariant = 'authorizationCode';
+      const newItem = GrantType.create(grantTypeVariant);
+      const variantForItemForMutation = 'implicit';
+      const itemForMutation = GrantType.create(variantForItemForMutation);
+      const iterableObject = [[grantTypeVariant, newItem]];
+
+      // Act
+      const instance = new GrantTypeDictionary(
+        iterableObject as Iterable<[GrantTypeVariants, GrantType]>
+      );
+      iterableObject.push([variantForItemForMutation, itemForMutation]);
+
+      // Assert
+      expect(instance.hasType(variantForItemForMutation)).toBe(false);
+    });
+
+    test('should return instance that contains mutable elements from the specified iterable object', () => {
+      // Arrange
+      const grantTypeVariant = 'authorizationCode';
+      const newItem = GrantType.create(grantTypeVariant);
+      const iterableObject: Iterable<[GrantTypeVariants, GrantType]> = [
+        [grantTypeVariant, newItem],
+      ];
+
+      // Act
+      const instance = new GrantTypeDictionary(
+        iterableObject as Iterable<[GrantTypeVariants, GrantType]>
+      );
+
+      // Assert
+      expect(newItem).toBe(instance.get(grantTypeVariant).value);
     });
   });
 

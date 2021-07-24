@@ -8,8 +8,17 @@ import {
 } from '../errors';
 
 export class GrantTypeDictionary {
-  private readonly _dictionary: Dictionary<GrantTypeVariants, GrantType> =
-    new Dictionary();
+  private readonly _dictionary: Dictionary<GrantTypeVariants, GrantType>;
+
+  constructor();
+  constructor(iterable: Iterable<[GrantTypeVariants, GrantType]>);
+  constructor(iterable?: Iterable<[GrantTypeVariants, GrantType]>) {
+    if (iterable) {
+      this._dictionary = new Dictionary(iterable);
+    } else {
+      this._dictionary = new Dictionary();
+    }
+  }
 
   add(
     type: GrantType
