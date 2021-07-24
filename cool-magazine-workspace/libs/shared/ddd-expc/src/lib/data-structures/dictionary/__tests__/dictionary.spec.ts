@@ -123,4 +123,35 @@ describe('Dictionary', () => {
       expect(result).toBe(countNewItem);
     });
   });
+
+  describe('getting entries', () => {
+    test('should implement an iterable protocol for collection of dictionary items', () => {
+      // Arrange
+      const dictionary = new Dictionary<number, string>();
+      const newItem = { key: 1, value: 'one' };
+      const expected = [newItem.key, newItem.value];
+      dictionary.add(newItem.key, newItem.value);
+
+      // Act
+      const [entries] = dictionary.entries();
+
+      // Assert
+      expect(entries).toStrictEqual(expected);
+    });
+
+    test('should implement an iterator protocol for collection of dictionary items', () => {
+      // Arrange
+      const dictionary = new Dictionary<number, string>();
+      const newItem = { key: 1, value: 'one' };
+      const expected = { value: [newItem.key, newItem.value], done: false };
+      dictionary.add(newItem.key, newItem.value);
+      const iterator = dictionary.entries();
+
+      // Act
+      const firstIterationResult = iterator.next();
+
+      // Assert
+      expect(firstIterationResult).toStrictEqual(expected);
+    });
+  });
 });

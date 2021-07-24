@@ -4,7 +4,7 @@ export class Dictionary<TKey, TValue> {
   public get count() {
     return this._map.size;
   }
-
+  
   constructor() {
     this._map = new Map<TKey, TValue>();
   }
@@ -21,5 +21,9 @@ export class Dictionary<TKey, TValue> {
 
   get(key: TKey): TValue | undefined {
     return this._map.get(key);
+  }
+
+  entries(): IterableIterator<[TKey, TValue]> {
+    return this._map.entries();
   }
 }
