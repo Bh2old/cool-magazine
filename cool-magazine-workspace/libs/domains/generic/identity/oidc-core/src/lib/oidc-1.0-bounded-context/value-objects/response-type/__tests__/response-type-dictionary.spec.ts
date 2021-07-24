@@ -166,4 +166,54 @@ describe('ResponseTypeDictionary', () => {
       expect(result).toBe(undefined);
     });
   });
+
+  describe('clone dictionary', () => {
+    test('should return cloned instance of ResponseTypeDictionary', () => {
+      // Arrange
+      const dictionary = new ResponseTypeDictionary();
+
+      // Act
+      const clone = dictionary.clone();
+
+      // Assert
+      expect(clone).toBeInstanceOf(ResponseTypeDictionary);
+    });
+
+    test('should return immutable instance', () => {
+      // Arrange
+      const responseTypeVariant = 'code';
+      const newItem = ResponseType.create(responseTypeVariant);
+      const variantForItemForMutation = 'none';
+      const itemForMutation = ResponseType.create(variantForItemForMutation);
+      const iterableObject = [[responseTypeVariant, newItem]];
+      const dictionary = new ResponseTypeDictionary(
+        iterableObject as Iterable<[ResponseTypeVariants, ResponseType]>
+      );
+
+      // Act
+      const clone = dictionary.clone();
+      clone.add(itemForMutation);
+
+      // Assert
+      expect(dictionary.hasType(variantForItemForMutation)).toBe(false);
+    });
+
+    test('should return instance that contains mutable elements', () => {
+      // Arrange
+      const responseTypeVariant = 'code';
+      const newItem = ResponseType.create(responseTypeVariant);
+      const iterableObject: Iterable<[ResponseTypeVariants, ResponseType]> = [
+        [responseTypeVariant, newItem],
+      ];
+      const dictionary = new ResponseTypeDictionary(
+        iterableObject as Iterable<[ResponseTypeVariants, ResponseType]>
+      );
+
+      // Act
+      const clone = dictionary.clone();
+
+      // Assert
+      expect(newItem).toBe(clone.get(responseTypeVariant));
+    });
+  });
 });

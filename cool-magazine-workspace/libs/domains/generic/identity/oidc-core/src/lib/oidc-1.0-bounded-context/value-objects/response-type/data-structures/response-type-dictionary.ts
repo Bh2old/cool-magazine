@@ -1,7 +1,9 @@
-import { Dictionary } from '@bh2old/ddd-expc';
+import { Dictionary, ICloneable } from '@bh2old/ddd-expc';
 import { ResponseType } from '../response-type.value-object';
 import { ResponseTypeVariants } from '../types';
-export class ResponseTypeDictionary {
+export class ResponseTypeDictionary
+  implements ICloneable<ResponseTypeDictionary>
+{
   private readonly _dictionary: Dictionary<ResponseTypeVariants, ResponseType>;
 
   constructor();
@@ -26,5 +28,9 @@ export class ResponseTypeDictionary {
 
   get(typeVariant: ResponseTypeVariants): ResponseType | undefined {
     return this._dictionary.get(typeVariant);
+  }
+
+  clone(): ResponseTypeDictionary {
+    return new ResponseTypeDictionary(this._dictionary);
   }
 }
