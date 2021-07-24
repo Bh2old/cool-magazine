@@ -1,10 +1,14 @@
-export class Dictionary<TKey, TValue> {
+export class Dictionary<TKey, TValue> implements Iterable<[TKey, TValue]> {
   private readonly _map: Map<TKey, TValue>;
 
   public get count() {
     return this._map.size;
   }
-  
+
+  [Symbol.iterator](): Iterator<[TKey, TValue]> {
+    return this.entries();
+  }
+
   constructor() {
     this._map = new Map<TKey, TValue>();
   }

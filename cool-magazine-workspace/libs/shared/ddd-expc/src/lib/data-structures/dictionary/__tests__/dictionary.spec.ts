@@ -154,4 +154,20 @@ describe('Dictionary', () => {
       expect(firstIterationResult).toStrictEqual(expected);
     });
   });
+
+  describe('iterable dictionary', () => {
+    test('should implement an iterable protocol for collection of dictionary items', () => {
+      // Arrange
+      const dictionary = new Dictionary<number, string>();
+      const newItem = { key: 1, value: 'one' };
+      const expected = [newItem.key, newItem.value];
+      dictionary.add(newItem.key, newItem.value);
+
+      // Act
+      const [entries] = dictionary;
+
+      // Assert
+      expect(entries).toStrictEqual(expected);
+    });
+  });
 });
