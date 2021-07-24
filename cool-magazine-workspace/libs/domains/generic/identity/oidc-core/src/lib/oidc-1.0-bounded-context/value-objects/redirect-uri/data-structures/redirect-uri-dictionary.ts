@@ -5,6 +5,16 @@ export class RedirectUriDictionary {
   private readonly _dictionary: Dictionary<string, RedirectUri> =
     new Dictionary();
 
+  constructor();
+  constructor(iterable: Iterable<[string, RedirectUri]>);
+  constructor(iterable?: Iterable<[string, RedirectUri]>) {
+    if (iterable) {
+      this._dictionary = new Dictionary(iterable);
+    } else {
+      this._dictionary = new Dictionary();
+    }
+  }
+
   add(uri: RedirectUri): RedirectUriDictionary {
     this._dictionary.add(uri.value, uri);
 
