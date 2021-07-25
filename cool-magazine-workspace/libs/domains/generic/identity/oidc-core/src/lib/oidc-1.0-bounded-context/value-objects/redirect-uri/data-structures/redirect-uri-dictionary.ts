@@ -31,6 +31,10 @@ export class RedirectUriDictionary
     return this._dictionary.get(uri);
   }
 
+  values(): IterableIterator<RedirectUri> {
+    return this._dictionary.values();
+  }
+
   clone(): RedirectUriDictionary {
     return new RedirectUriDictionary(this._dictionary);
   }
