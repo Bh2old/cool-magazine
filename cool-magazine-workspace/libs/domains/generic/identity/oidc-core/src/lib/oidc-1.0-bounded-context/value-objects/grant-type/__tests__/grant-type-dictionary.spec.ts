@@ -167,6 +167,38 @@ describe('GrantTypeDictionary', () => {
     });
   });
 
+  describe('getting values', () => {
+    test('should implement an iterable protocol for collection of dictionary items values', () => {
+      // Arrange
+      const dictionary = new GrantTypeDictionary();
+      const grantTypeVariant = 'authorizationCode';
+      const newItem = GrantType.create(grantTypeVariant);
+      dictionary.add(newItem);
+
+      // Act
+      const [value] = dictionary.values();
+
+      // Assert
+      expect(value).toBe(newItem);
+    });
+
+    test('should implement an iterator protocol for collection of dictionary items values', () => {
+      // Arrange
+      const dictionary = new GrantTypeDictionary();
+      const grantTypeVariant = 'authorizationCode';
+      const newItem = GrantType.create(grantTypeVariant);
+      const expected = { value: newItem, done: false };
+      dictionary.add(newItem);
+      const iterator = dictionary.values();
+
+      // Act
+      const firstIterationResult = iterator.next();
+
+      // Assert
+      expect(firstIterationResult).toStrictEqual(expected);
+    });
+  });
+
   describe('clone dictionary', () => {
     test('should return cloned instance of GrantTypeDictionary', () => {
       // Arrange

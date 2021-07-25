@@ -28,6 +28,10 @@ export class GrantTypeDictionary implements ICloneable<GrantTypeDictionary> {
     return this._dictionary.get(typeVariant);
   }
 
+  values(): IterableIterator<GrantType> {
+    return this._dictionary.values();
+  }
+
   clone(): GrantTypeDictionary {
     return new GrantTypeDictionary(this._dictionary);
   }
