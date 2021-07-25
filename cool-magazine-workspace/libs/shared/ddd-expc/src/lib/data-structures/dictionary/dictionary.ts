@@ -36,4 +36,8 @@ export class Dictionary<TKey, TValue> implements Iterable<[TKey, TValue]> {
   entries(): IterableIterator<[TKey, TValue]> {
     return this._map.entries();
   }
+
+  values(): IterableIterator<TValue> {
+    return this._map.values();
+  }
 }

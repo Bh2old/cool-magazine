@@ -222,4 +222,34 @@ describe('Dictionary', () => {
       expect(entries).toStrictEqual(expected);
     });
   });
+
+  describe('getting values', () => {
+    test('should implement an iterable protocol for collection of dictionary items values', () => {
+      // Arrange
+      const dictionary = new Dictionary<number, string>();
+      const newItem = { key: 1, value: 'one' };
+      dictionary.add(newItem.key, newItem.value);
+
+      // Act
+      const [value] = dictionary.values();
+
+      // Assert
+      expect(value).toStrictEqual(newItem.value);
+    });
+
+    test('should implement an iterator protocol for collection of dictionary items values', () => {
+      // Arrange
+      const dictionary = new Dictionary<number, string>();
+      const newItem = { key: 1, value: 'one' };
+      const expected = { value: newItem.value, done: false };
+      dictionary.add(newItem.key, newItem.value);
+      const iterator = dictionary.values();
+
+      // Act
+      const firstIterationResult = iterator.next();
+
+      // Assert
+      expect(firstIterationResult).toStrictEqual(expected);
+    });
+  });
 });
