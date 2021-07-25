@@ -1,8 +1,4 @@
 import { GrantTypeDictionary } from '../data-structures';
-import {
-  NoSuchTypeGrantTypeDictionaryError,
-  TypeAlreadyContainsGrantTypeDictionaryError,
-} from '../errors';
 import { GrantType } from '../grant-type.value-object';
 import { GrantTypeVariants } from '../types';
 
@@ -45,7 +41,7 @@ describe('GrantTypeDictionary', () => {
       const instance = new GrantTypeDictionary(iterableObject);
 
       // Assert
-      expect(instance.get(grantTypeVariant).value).toBe(newItem);
+      expect(instance.get(grantTypeVariant)).toBe(newItem);
     });
 
     test('should return immutable instance if specified iterable object', () => {
@@ -80,41 +76,24 @@ describe('GrantTypeDictionary', () => {
       );
 
       // Assert
-      expect(newItem).toBe(instance.get(grantTypeVariant).value);
+      expect(newItem).toBe(instance.get(grantTypeVariant));
     });
   });
 
   describe('adding item', () => {
-    test('should return "Either.right" with same instance of GrantTypeDictionary if uniq type', () => {
+    test('should return same instance of GrantTypeDictionary if uniq type', () => {
       // Arrange
       const dictionary = new GrantTypeDictionary();
       const newItem = GrantType.createAsDefault();
 
       // Act
-      const result = dictionary.add(newItem).value;
+      const result = dictionary.add(newItem);
 
       // Assert
       expect(result).toBe(dictionary);
     });
 
-    test('should return "Either.left" with error if not uniq type', () => {
-      // Arrange
-      const dictionary = new GrantTypeDictionary();
-      const grantTypeVariant = 'authorizationCode';
-      const newItem = GrantType.create(grantTypeVariant);
-      const copyNewItem = GrantType.create(grantTypeVariant);
-      dictionary.add(newItem);
-
-      // Act
-      const result = dictionary.add(copyNewItem).value;
-
-      // Assert
-      expect(result).toBeInstanceOf(
-        TypeAlreadyContainsGrantTypeDictionaryError
-      );
-    });
-
-    test('should not mutate already added item if not uniq type', () => {
+    test('should replace the existing item with a new one if not uniq type', () => {
       // Arrange
       const dictionary = new GrantTypeDictionary();
       const grantTypeVariant = 'authorizationCode';
@@ -126,7 +105,7 @@ describe('GrantTypeDictionary', () => {
       dictionary.add(itemForMutation);
 
       // Assert
-      expect(dictionary.get(grantTypeVariant).value).toBe(newItem);
+      expect(dictionary.get(grantTypeVariant)).toBe(itemForMutation);
     });
   });
 
@@ -162,7 +141,7 @@ describe('GrantTypeDictionary', () => {
   });
 
   describe('getting item', () => {
-    test('should return "Either.right" with item if key exist', () => {
+    test('should return item if key exist', () => {
       // Arrange
       const dictionary = new GrantTypeDictionary();
       const grantTypeVariant = 'authorizationCode';
@@ -170,21 +149,21 @@ describe('GrantTypeDictionary', () => {
       dictionary.add(newItem);
 
       // Act
-      const result = dictionary.get(grantTypeVariant).value;
+      const result = dictionary.get(grantTypeVariant);
 
       // Assert
       expect(result).toBe(newItem);
     });
 
-    test('should return "Either.left" with error if key not exist', () => {
+    test('should return undefined if key not exist', () => {
       // Arrange
       const dictionary = new GrantTypeDictionary();
       const grantTypeVariant = 'authorizationCode';
       // Act
-      const result = dictionary.get(grantTypeVariant).value;
+      const result = dictionary.get(grantTypeVariant);
 
       // Assert
-      expect(result).toBeInstanceOf(NoSuchTypeGrantTypeDictionaryError);
+      expect(result).toBe(undefined);
     });
   });
 
@@ -234,7 +213,7 @@ describe('GrantTypeDictionary', () => {
       const clone = dictionary.clone();
 
       // Assert
-      expect(newItem).toBe(clone.get(responseTypeVariant).value);
+      expect(newItem).toBe(clone.get(responseTypeVariant));
     });
   });
 });

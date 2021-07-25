@@ -1,12 +1,6 @@
 import { Dictionary, ICloneable } from '@bh2old/ddd-expc';
 import { GrantType } from '../grant-type.value-object';
 import { GrantTypeVariants } from '../types';
-import { Either, left, right } from '@sweet-monads/either';
-import {
-  NoSuchTypeGrantTypeDictionaryError,
-  TypeAlreadyContainsGrantTypeDictionaryError,
-} from '../errors';
-
 export class GrantTypeDictionary implements ICloneable<GrantTypeDictionary> {
   private readonly _dictionary: Dictionary<GrantTypeVariants, GrantType>;
 
@@ -20,31 +14,18 @@ export class GrantTypeDictionary implements ICloneable<GrantTypeDictionary> {
     }
   }
 
-  add(
-    type: GrantType
-  ): Either<TypeAlreadyContainsGrantTypeDictionaryError, GrantTypeDictionary> {
-    if (this.hasType(type.valueAsVariant)) {
-      return left(new TypeAlreadyContainsGrantTypeDictionaryError(type));
-    }
-
+  add(type: GrantType): GrantTypeDictionary {
     this._dictionary.add(type.valueAsVariant, type);
 
-    return right(this);
+    return this;
   }
 
   hasType(typeVariant: GrantTypeVariants): boolean {
     return this._dictionary.hasKey(typeVariant);
   }
 
-  get(
-    typeVariant: GrantTypeVariants
-  ): Either<NoSuchTypeGrantTypeDictionaryError, GrantType> {
-    if (this.hasType(typeVariant)) {
-      const searchedType = this._dictionary.get(typeVariant) as GrantType;
-      return right(searchedType);
-    }
-
-    return left(new NoSuchTypeGrantTypeDictionaryError(typeVariant));
+  get(typeVariant: GrantTypeVariants): GrantType | undefined {
+    return this._dictionary.get(typeVariant);
   }
 
   clone(): GrantTypeDictionary {
