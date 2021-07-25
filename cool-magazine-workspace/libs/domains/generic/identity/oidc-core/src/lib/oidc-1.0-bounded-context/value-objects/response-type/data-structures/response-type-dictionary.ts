@@ -30,6 +30,10 @@ export class ResponseTypeDictionary
     return this._dictionary.get(typeVariant);
   }
 
+  values(): IterableIterator<ResponseType> {
+    return this._dictionary.values();
+  }
+
   clone(): ResponseTypeDictionary {
     return new ResponseTypeDictionary(this._dictionary);
   }
