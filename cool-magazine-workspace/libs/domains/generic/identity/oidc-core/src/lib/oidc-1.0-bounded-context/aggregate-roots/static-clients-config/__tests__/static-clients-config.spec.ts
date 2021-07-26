@@ -3,8 +3,12 @@ import {
   ClientId,
   ClientMetadata,
   GrantType,
+  GrantTypeDictionary,
+  IClientMetadataCreateValues,
   RedirectUri,
+  RedirectUriDictionary,
   ResponseType,
+  ResponseTypeDictionary,
 } from '../../../value-objects';
 import { StaticClientsConfigCreateData } from '../models';
 import { StaticClientsConfig } from '../static-clients-config.entity';
@@ -25,11 +29,12 @@ describe('StaticClientsConfig', () => {
     const grantTypeValue = 'authorizationCode';
     const grantType: GrantType = GrantType.create(grantTypeValue);
 
-    const metadata: ClientMetadata = ClientMetadata.create({
-      redirectUris: [redirectUri],
-      responseTypes: [responseType],
-      grantTypes: [grantType],
-    });
+    const clientMetadataCreateValues: IClientMetadataCreateValues = {
+      redirectUris: new RedirectUriDictionary().add(redirectUri),
+      responseTypes: new ResponseTypeDictionary().add(responseType),
+      grantTypes: new GrantTypeDictionary().add(grantType),
+    };
+    const metadata = ClientMetadata.create(clientMetadataCreateValues);
 
     const clientRegistrationData: IClientRegistrationData = {
       id,

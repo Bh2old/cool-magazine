@@ -1,72 +1,36 @@
-import { GrantType } from '../grant-type';
-import { ResponseType } from '../response-type';
-import { RedirectUri } from '../redirect-uri';
+import { GrantType, GrantTypeDictionary } from '../grant-type';
+import { ResponseType, ResponseTypeDictionary } from '../response-type';
+import { RedirectUri, RedirectUriDictionary } from '../redirect-uri';
 import { IClientMetadataCreateValues } from './models';
-import { GrantTypesIndexTable, RedirectUris, ResponseTypesIndexTable } from './types';
 import { ValueObject } from '@bh2old/ddd-expc';
 
 export class ClientMetadata extends ValueObject {
-  private readonly _redirectUris: RedirectUris = {};
-  private _addRedirectUris(newRedirectUris: RedirectUri[]) {
-    newRedirectUris.forEach((newRedirectUri) => {
-      const isUniqRedirectUri: boolean =
-        Object.prototype.hasOwnProperty.call(
-          this._redirectUris,
-          newRedirectUri.value
-        ) === false;
-
-      if (isUniqRedirectUri) {
-        this._redirectUris[newRedirectUri.value] = newRedirectUri;
-      }
-    });
-  }
+  private readonly _redirectUris: RedirectUriDictionary;
   public get redirectUris(): RedirectUri[] {
-    return Object.values(this._redirectUris);
+    return [...this._redirectUris.values()];
   }
 
-  private readonly _responseTypes: ResponseTypesIndexTable = {};
-  private _addResponseTypes(newResponseTypes: ResponseType[]) {
-    newResponseTypes.forEach((newResponseType) => {
-      const isUniqResponseType: boolean = Object.prototype.hasOwnProperty.call(
-        this._responseTypes,
-        newResponseType.value
-      );
+  private readonly _responseTypes: ResponseTypeDictionary;
 
-      if (isUniqResponseType) {
-        this._responseTypes[newResponseType.value] = newResponseType;
-      }
-    });
-  }
   public get responseTypes(): ResponseType[] {
-    return Object.values(this._responseTypes);
+    return [...this._responseTypes.values()];
   }
 
-  private readonly _grantTypes: GrantTypesIndexTable = {};
-  private _addGrantTypes(newGrantTypes: GrantType[]) {
-    newGrantTypes.forEach((newGrantType) => {
-      const isUniqGrantType: boolean = Object.prototype.hasOwnProperty.call(
-        this._grantTypes,
-        newGrantType.value
-      );
+  private readonly _grantTypes: GrantTypeDictionary;
 
-      if (isUniqGrantType) {
-        this._grantTypes[newGrantType.value] = newGrantType;
-      }
-    });
-  }
   public get grantTypes(): GrantType[] {
-    return Object.values(this._grantTypes);
+    return [...this._grantTypes.values()];
   }
 
   private constructor(
-    redirectUris: RedirectUri[],
-    responseTypes: ResponseType[],
-    grantTypes: GrantType[]
+    redirectUris: RedirectUriDictionary,
+    responseTypes: ResponseTypeDictionary,
+    grantTypes: GrantTypeDictionary
   ) {
     super();
-    this._addRedirectUris(redirectUris);
-    this._addResponseTypes(responseTypes);
-    this._addGrantTypes(grantTypes);
+    this._redirectUris = redirectUris.clone();
+    this._responseTypes = responseTypes.clone();
+    this._grantTypes = grantTypes.clone();
   }
 
   static create(
