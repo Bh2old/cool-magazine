@@ -33,6 +33,18 @@ export class ResponseType extends ValueObject {
     return new ResponseType(type);
   }
 
+  public static createMany(
+    variants: Set<ResponseTypeVariants>
+  ): ResponseType[] {
+    const responseTypes: ResponseType[] = [];
+
+    variants.forEach((variant) => {
+      responseTypes.push(new ResponseType(variant));
+    });
+
+    return responseTypes;
+  }
+
   public static createAsDefault(): ResponseType {
     return new ResponseType('code');
   }

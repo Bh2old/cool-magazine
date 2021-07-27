@@ -3,25 +3,41 @@ import { ResponseTypeVariants } from '../types/response-type-variants.type';
 
 describe('ResponseType', () => {
   describe('instance creation', () => {
-    test('should return instance of ResponseType with specifying type', () => {
-      // Arrange
-      const params = 'code';
+    describe('single instance', () => {
+      test('should return instance of ResponseType with specifying type', () => {
+        // Arrange
+        const params = 'code';
 
-      // Act
-      const instance = ResponseType.create(params);
+        // Act
+        const instance = ResponseType.create(params);
 
-      // Assert
-      expect(instance).toBeInstanceOf(ResponseType);
+        // Assert
+        expect(instance).toBeInstanceOf(ResponseType);
+      });
+
+      test('should return instance of ResponseType without specifying type', () => {
+        // Arrange
+
+        // Act
+        const instance = ResponseType.createAsDefault();
+
+        // Assert
+        expect(instance).toBeInstanceOf(ResponseType);
+      });
     });
 
-    test('should return instance of ResponseType without specifying type', () => {
-      // Arrange
+    describe('many different instances', () => {
+      test('should return collection of ResponseTypes from collection of variants', () => {
+        // Arrange
+        const variant = 'code';
+        const variants = new Set<ResponseTypeVariants>().add(variant);
+        const expected = [ResponseType.create(variant)];
+        // Act
+        const instances = ResponseType.createMany(variants);
 
-      // Act
-      const instance = ResponseType.createAsDefault();
-
-      // Assert
-      expect(instance).toBeInstanceOf(ResponseType);
+        // Assert
+        expect(instances).toStrictEqual(expected);
+      });
     });
   });
 
