@@ -3,73 +3,121 @@ import { RedirectUri } from '../redirect-uri.value-object';
 
 describe('RedirectUriDictionary', () => {
   describe('instance creation', () => {
-    test('should return instance of RedirectUriDictionary', () => {
-      // Arrange
+    describe('constructor overload with zero params', () => {
+      test('should return instance of RedirectUriDictionary', () => {
+        // Arrange
 
-      // Act
-      const instance = new RedirectUriDictionary();
+        // Act
+        const instance = new RedirectUriDictionary();
 
-      // Assert
-      expect(instance).toBeInstanceOf(RedirectUriDictionary);
+        // Assert
+        expect(instance).toBeInstanceOf(RedirectUriDictionary);
+      });
     });
 
-    test('should return instance of RedirectUriDictionary if iterable argument is specified', () => {
-      // Arrange
-      const uri = 'http://asd.ru';
-      const newItem = RedirectUri.create(uri);
-      const iterableObject: Iterable<[string, RedirectUri]> = [['1', newItem]];
+    describe('constructor overload with Iterable<[Uri, RedirectUri]> param', () => {
+      test('should return instance of RedirectUriDictionary if iterable argument is specified', () => {
+        // Arrange
+        const uri = 'http://asd.ru';
+        const newItem = RedirectUri.create(uri);
+        const iterableObject: Iterable<[string, RedirectUri]> = [
+          ['1', newItem],
+        ];
 
-      // Act
-      const instance = new RedirectUriDictionary(iterableObject);
+        // Act
+        const instance = new RedirectUriDictionary(iterableObject);
 
-      // Assert
-      expect(instance).toBeInstanceOf(RedirectUriDictionary);
+        // Assert
+        expect(instance).toBeInstanceOf(RedirectUriDictionary);
+      });
+
+      test('should return instance that contains elements from specified iterable object', () => {
+        // Arrange
+        const uri = 'http://asd.ru';
+        const newItem = RedirectUri.create(uri);
+        const iterableObject: Iterable<[string, RedirectUri]> = [
+          [uri, newItem],
+        ];
+
+        // Act
+        const instance = new RedirectUriDictionary(iterableObject);
+
+        // Assert
+        expect(instance.get(uri)).toBe(newItem);
+      });
+
+      test('should return immutable instance if specified iterable object', () => {
+        // Arrange
+        const uri = 'http://asd.ru';
+        const newItem = RedirectUri.create(uri);
+        const uriForItemForMutation = 'http://gggg.wwww';
+        const itemForMutation = RedirectUri.create(uriForItemForMutation);
+        const iterableObject = [[uri, newItem]];
+
+        // Act
+        const instance = new RedirectUriDictionary(
+          iterableObject as Iterable<[string, RedirectUri]>
+        );
+        iterableObject.push([uriForItemForMutation, itemForMutation]);
+
+        // Assert
+        expect(instance.hasUri(uriForItemForMutation)).toBe(false);
+      });
+
+      test('should return instance that contains mutable elements from the specified iterable object', () => {
+        // Arrange
+        const uri = 'http://asd.ru';
+        const newItem = RedirectUri.create(uri);
+        const iterableObject = [[uri, newItem]];
+
+        // Act
+        const instance = new RedirectUriDictionary(
+          iterableObject as Iterable<[string, RedirectUri]>
+        );
+
+        // Assert
+        expect(newItem).toBe(instance.get(uri));
+      });
     });
 
-    test('should return instance that contains elements from specified iterable object', () => {
-      // Arrange
-      const uri = 'http://asd.ru';
-      const newItem = RedirectUri.create(uri);
-      const iterableObject: Iterable<[string, RedirectUri]> = [[uri, newItem]];
+    describe('constructor overload with Iterable<UriForRedirectUriCreation> param', () => {
+      test('should return instance of RedirectUriDictionary if iterable argument is specified', () => {
+        // Arrange
+        const uri = 'http://asd.ru';
+        const iterableObject: Iterable<string> = [uri];
 
-      // Act
-      const instance = new RedirectUriDictionary(iterableObject);
+        // Act
+        const instance = new RedirectUriDictionary(iterableObject);
 
-      // Assert
-      expect(instance.get(uri)).toBe(newItem);
-    });
+        // Assert
+        expect(instance).toBeInstanceOf(RedirectUriDictionary);
+      });
 
-    test('should return immutable instance if specified iterable object', () => {
-      // Arrange
-      const uri = 'http://asd.ru';
-      const newItem = RedirectUri.create(uri);
-      const uriForItemForMutation = 'http://gggg.wwww';
-      const itemForMutation = RedirectUri.create(uriForItemForMutation);
-      const iterableObject = [[uri, newItem]];
+      test('should return instance that contains elements from specified iterable object', () => {
+        // Arrange
+        const uri = 'http://asd.ru';
+        const iterableObject: Iterable<string> = [uri];
 
-      // Act
-      const instance = new RedirectUriDictionary(
-        iterableObject as Iterable<[string, RedirectUri]>
-      );
-      iterableObject.push([uriForItemForMutation, itemForMutation]);
+        // Act
+        const instance = new RedirectUriDictionary(iterableObject);
 
-      // Assert
-      expect(instance.hasUri(uriForItemForMutation)).toBe(false);
-    });
+        // Assert
+        expect(instance.get(uri).value).toBe(uri);
+      });
 
-    test('should return instance that contains mutable elements from the specified iterable object', () => {
-      // Arrange
-      const uri = 'http://asd.ru';
-      const newItem = RedirectUri.create(uri);
-      const iterableObject = [[uri, newItem]];
+      test('should return immutable instance if specified iterable object', () => {
+        // Arrange
+        const uri = 'http://asd.ru';
+        const uriForItemForMutation = 'http://gggg.wwww';
+        const iterableObject = [uri];
 
-      // Act
-      const instance = new RedirectUriDictionary(
-        iterableObject as Iterable<[string, RedirectUri]>
-      );
+        // Act
+        const instance = new RedirectUriDictionary(iterableObject);
+        iterableObject.push(uriForItemForMutation);
 
-      // Assert
-      expect(newItem).toBe(instance.get(uri));
+        // Assert
+        expect(instance.hasUri(uriForItemForMutation)).toBe(false);
+      });
     });
   });
 
