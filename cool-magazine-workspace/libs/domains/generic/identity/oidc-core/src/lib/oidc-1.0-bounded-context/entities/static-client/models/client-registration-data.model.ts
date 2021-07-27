@@ -1,7 +1,14 @@
-import { ClientId, ClientMetadata, ClientSecret } from "../../../value-objects";
+import {
+  GrantTypeVariants,
+  ResponseTypeVariants,
+} from '../../../value-objects';
 
 export interface IClientRegistrationData {
-  id: ClientId;
-  secret?: ClientSecret;
-  metadata: ClientMetadata;
+  id: string;
+  secret?: string;
+  metadata: {
+    redirectUris: Set<string>;
+    responseTypeVariants?: Set<ResponseTypeVariants>;
+    grantTypeVariants?: Set<GrantTypeVariants>;
+  };
 }

@@ -28,18 +28,16 @@ export class StaticClient extends Entity implements ICloneable<StaticClient> {
   }
 
   clone(): StaticClient {
-    return new StaticClient(
-      this.id,
-      this.secret,
-      this.metadata
-    );
+    return new StaticClient(this.id, this.secret, this.metadata);
   }
 
   static create(clientRegistrationData: IClientRegistrationData): StaticClient {
     return new StaticClient(
-      clientRegistrationData.id,
-      clientRegistrationData.secret || ClientSecret.createAsNotSpecified(),
-      clientRegistrationData.metadata
+      ClientId.create(clientRegistrationData.id),
+      clientRegistrationData.secret
+        ? ClientSecret.create(clientRegistrationData.secret)
+        : ClientSecret.createAsNotSpecified(),
+      ClientMetadata.create(clientRegistrationData.metadata)
     );
   }
 }

@@ -13,26 +13,21 @@ describe('StaticClientsConfig', () => {
   let staticClientsConfigCreateData: StaticClientsConfigCreateData;
 
   beforeEach(() => {
-    const idValue = '123';
-    const id: ClientId = ClientId.create(idValue);
+    const id = '123';
 
     const redirectUriValue = 'http://qwerty.mn/';
     const responseTypeValue = 'code';
     const grantTypeValue = 'authorizationCode';
 
-    const clientMetadataCreateValues: IClientMetadataCreateValues = {
-      redirectUris: new Set<string>().add(redirectUriValue),
-      responseTypeVariants: new Set<ResponseTypeVariants>().add(
-        responseTypeValue
-      ),
-      grantTypeVariants: new Set<GrantTypeVariants>().add(grantTypeValue),
-    };
-
-    const metadata = ClientMetadata.create(clientMetadataCreateValues);
-
-    const clientRegistrationData: IClientRegistrationData = {
+    const clientRegistrationData = {
       id,
-      metadata,
+      metadata: {
+        redirectUris: new Set<string>().add(redirectUriValue),
+        responseTypeVariants: new Set<ResponseTypeVariants>().add(
+          responseTypeValue
+        ),
+        grantTypeVariants: new Set<GrantTypeVariants>().add(grantTypeValue),
+      },
     };
 
     staticClientsConfigCreateData = {
