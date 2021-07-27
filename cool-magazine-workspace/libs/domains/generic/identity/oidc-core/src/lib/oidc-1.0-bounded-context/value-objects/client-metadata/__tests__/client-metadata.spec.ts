@@ -1,7 +1,4 @@
-import { GrantType } from '../../grant-type/grant-type.value-object';
 import { GrantTypeVariants } from '../../grant-type/types/grant-type-variants.type';
-import { RedirectUri } from '../../redirect-uri/redirect-uri.value-object';
-import { ResponseType } from '../../response-type/response-type.value-object';
 import { ResponseTypeVariants } from '../../response-type/types/response-type-variants.type';
 import { ClientMetadata } from '../client-metadata.value-object';
 import { IClientMetadataCreateValues } from '../models';
@@ -44,14 +41,13 @@ describe('ClientMetadata', () => {
         BEFORE_EACH_clientMetadataCreateValues
       );
       const redirectUriValue = 'http://aboba.mn/';
-      const redirectUri: RedirectUri = RedirectUri.create(redirectUriValue);
 
       // Act
-      const redirectUris = instance.redirectUris;
-      redirectUris.push(redirectUri);
+      const redirectUris = instance.redirectUrisValues;
+      (redirectUris as string[]).push(redirectUriValue);
 
       //Assert
-      expect(redirectUris.length).not.toBe(instance.redirectUris.length);
+      expect(redirectUris.length).not.toBe(instance.redirectUrisValues.length);
     });
   });
 
@@ -62,14 +58,13 @@ describe('ClientMetadata', () => {
         BEFORE_EACH_clientMetadataCreateValues
       );
       const responseTypeValue = 'code';
-      const responseType: ResponseType = ResponseType.create(responseTypeValue);
 
       // Act
-      const redirectUris = instance.responseTypes;
-      redirectUris.push(responseType);
+      const redirectUris = instance.responseTypesValues;
+      (redirectUris as string[]).push(responseTypeValue);
 
       //Assert
-      expect(redirectUris.length).not.toBe(instance.responseTypes.length);
+      expect(redirectUris.length).not.toBe(instance.responseTypesValues.length);
     });
   });
 
@@ -80,14 +75,13 @@ describe('ClientMetadata', () => {
         BEFORE_EACH_clientMetadataCreateValues
       );
       const grantTypeValue = 'authorizationCode';
-      const grantType: GrantType = GrantType.create(grantTypeValue);
 
       // Act
-      const redirectUris = instance.grantTypes;
-      redirectUris.push(grantType);
+      const redirectUris = instance.grantTypesValues;
+      (redirectUris as string[]).push(grantTypeValue);
 
       //Assert
-      expect(redirectUris.length).not.toBe(instance.grantTypes.length);
+      expect(redirectUris.length).not.toBe(instance.grantTypesValues.length);
     });
   });
 });

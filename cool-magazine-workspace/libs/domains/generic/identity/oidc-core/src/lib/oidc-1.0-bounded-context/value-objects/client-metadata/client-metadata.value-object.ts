@@ -6,20 +6,18 @@ import { IClientMetadataCreateValues } from './models';
 
 export class ClientMetadata extends ValueObject {
   private readonly _redirectUris: RedirectUri[];
-  public get redirectUris(): RedirectUri[] {
-    return [...this._redirectUris];
+  public get redirectUrisValues(): Readonly<string[]> {
+    return this._redirectUris.map((redirectUri) => redirectUri.value);
   }
 
   private readonly _responseTypes: ResponseType[];
-
-  public get responseTypes(): ResponseType[] {
-    return [...this._responseTypes];
+  public get responseTypesValues(): Readonly<string[]> {
+    return this._responseTypes.map((responseType) => responseType.value);
   }
 
   private readonly _grantTypes: GrantType[];
-
-  public get grantTypes(): GrantType[] {
-    return [...this._grantTypes];
+  public get grantTypesValues(): Readonly<string[]> {
+    return this._grantTypes.map((grantType) => grantType.value);
   }
 
   private constructor(
