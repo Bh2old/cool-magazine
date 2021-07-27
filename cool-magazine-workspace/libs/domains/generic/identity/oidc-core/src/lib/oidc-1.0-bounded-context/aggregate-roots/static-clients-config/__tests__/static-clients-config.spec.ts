@@ -1,9 +1,5 @@
-import { IClientRegistrationData } from '../../../entities/static-client';
 import {
-  ClientId,
-  ClientMetadata,
   GrantTypeVariants,
-  IClientMetadataCreateValues,
   ResponseTypeVariants,
 } from '../../../value-objects';
 import { IStaticClientsConfigCreateData } from '../models';

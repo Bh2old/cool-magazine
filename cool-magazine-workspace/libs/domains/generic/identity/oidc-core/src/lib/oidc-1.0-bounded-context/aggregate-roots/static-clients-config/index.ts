@@ -1,3 +1,2 @@
-export * from "./models";
-export * from "./static-clients-config.entity";
-export * from "./types";
+export * from './models';
+export * from './static-clients-config.entity';
