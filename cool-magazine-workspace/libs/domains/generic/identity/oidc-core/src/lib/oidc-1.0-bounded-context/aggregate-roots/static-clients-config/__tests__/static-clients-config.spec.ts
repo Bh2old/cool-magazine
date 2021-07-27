@@ -6,11 +6,11 @@ import {
   IClientMetadataCreateValues,
   ResponseTypeVariants,
 } from '../../../value-objects';
-import { StaticClientsConfigCreateData } from '../models';
+import { IStaticClientsConfigCreateData } from '../models';
 import { StaticClientsConfig } from '../static-clients-config.entity';
 
 describe('StaticClientsConfig', () => {
-  let staticClientsConfigCreateData: StaticClientsConfigCreateData;
+  let staticClientsConfigCreateData: IStaticClientsConfigCreateData;
 
   beforeEach(() => {
     const id = '123';
@@ -31,7 +31,7 @@ describe('StaticClientsConfig', () => {
     };
 
     staticClientsConfigCreateData = {
-      clients: [clientRegistrationData],
+      clients: new Map().set(clientRegistrationData.id, clientRegistrationData),
     };
   });
 

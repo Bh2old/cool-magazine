@@ -1,7 +1,7 @@
 import { AggregateRoot, getCollectionClonedItems } from '@bh2old/ddd-expc';
 import { ClientId, ClientSecret } from '../../value-objects';
 import { StaticClient } from '../../entities/static-client';
-import { StaticClientsConfigCreateData } from './models';
+import { IStaticClientsConfigCreateData } from './models';
 import {
   IndexedStaticClients,
   StaticClientsIndexById,
@@ -79,11 +79,12 @@ export class StaticClientsConfig extends AggregateRoot {
   }
 
   static create(
-    staticClientsConfigCreateData: StaticClientsConfigCreateData
+    staticClientsConfigCreateData: IStaticClientsConfigCreateData
   ): StaticClientsConfig {
-    const clients: StaticClient[] = staticClientsConfigCreateData.clients.map(
-      (clientCreteData) => StaticClient.create(clientCreteData)
-    );
+    const clients: StaticClient[] = [];
+    for (const client of staticClientsConfigCreateData.clients.values()) {
+      clients.push(StaticClient.create(client));
+    }
 
     return new StaticClientsConfig(clients);
   }
