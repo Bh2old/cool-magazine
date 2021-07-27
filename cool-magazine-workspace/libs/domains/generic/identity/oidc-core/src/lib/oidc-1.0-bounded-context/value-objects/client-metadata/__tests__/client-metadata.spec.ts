@@ -35,7 +35,7 @@ describe('ClientMetadata', () => {
   });
 
   describe('get redirectUris', () => {
-    test('should return immutable redirectUri[]', () => {
+    test('should return immutable redirectUrisValues', () => {
       // Arrange
       const instance = ClientMetadata.create(
         BEFORE_EACH_clientMetadataCreateValues
@@ -52,7 +52,7 @@ describe('ClientMetadata', () => {
   });
 
   describe('get responseTypes', () => {
-    test('should return immutable responseType[]', () => {
+    test('should return immutable responseTypesValues', () => {
       // Arrange
       const instance = ClientMetadata.create(
         BEFORE_EACH_clientMetadataCreateValues
@@ -69,7 +69,7 @@ describe('ClientMetadata', () => {
   });
 
   describe('get grantTypes', () => {
-    test('should return immutable grantType[]', () => {
+    test('should return immutable grantTypesValues', () => {
       // Arrange
       const instance = ClientMetadata.create(
         BEFORE_EACH_clientMetadataCreateValues
