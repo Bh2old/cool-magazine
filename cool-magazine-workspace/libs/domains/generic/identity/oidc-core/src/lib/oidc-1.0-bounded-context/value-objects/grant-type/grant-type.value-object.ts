@@ -28,8 +28,18 @@ export class GrantType extends ValueObject {
     } as const;
   }
 
-  public static create(type: GrantTypeVariants): GrantType {
-    return new GrantType(type);
+  public static create(variant: GrantTypeVariants): GrantType {
+    return new GrantType(variant);
+  }
+
+  public static createMany(variants: Set<GrantTypeVariants>): GrantType[] {
+    const grantTypes: GrantType[] = [];
+
+    variants.forEach((variant) => {
+      grantTypes.push(new GrantType(variant));
+    });
+    
+    return grantTypes;
   }
 
   public static createAsDefault(): GrantType {

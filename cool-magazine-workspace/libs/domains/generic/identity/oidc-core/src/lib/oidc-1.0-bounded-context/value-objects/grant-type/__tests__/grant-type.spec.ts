@@ -3,25 +3,40 @@ import { GrantTypeVariants } from '../types/grant-type-variants.type';
 
 describe('GrantType', () => {
   describe('instance creation', () => {
-    test('should return instance of GrantType with specifying type', () => {
-      // Arrange
-      const params = 'authorizationCode';
+    describe('single instance', () => {
+      test('should return instance of GrantType with specifying type', () => {
+        // Arrange
+        const params = 'authorizationCode';
 
-      // Act
-      const instance = GrantType.create(params);
+        // Act
+        const instance = GrantType.create(params);
 
-      // Assert
-      expect(instance).toBeInstanceOf(GrantType);
+        // Assert
+        expect(instance).toBeInstanceOf(GrantType);
+      });
+
+      test('should return instance of GrantType without specifying type', () => {
+        // Arrange
+
+        // Act
+        const instance = GrantType.createAsDefault();
+
+        // Assert
+        expect(instance).toBeInstanceOf(GrantType);
+      });
     });
+    describe('many different instances', () => {
+      test('should return collection of GrantTypes from collection of variants', () => {
+        // Arrange
+        const variant = 'authorizationCode';
+        const variants = new Set<GrantTypeVariants>().add(variant);
+        const expected = [GrantType.create(variant)];
+        // Act
+        const instances = GrantType.createMany(variants);
 
-    test('should return instance of GrantType without specifying type', () => {
-      // Arrange
-
-      // Act
-      const instance = GrantType.createAsDefault();
-
-      // Assert
-      expect(instance).toBeInstanceOf(GrantType);
+        // Assert
+        expect(instances).toStrictEqual(expected);
+      });
     });
   });
 
