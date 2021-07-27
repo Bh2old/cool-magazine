@@ -4,79 +4,129 @@ import { ResponseTypeVariants } from '../types';
 
 describe('ResponseTypeDictionary', () => {
   describe('instance creation', () => {
-    test('should return instance of ResponseTypeDictionary', () => {
-      // Arrange
+    describe('constructor overload with zero params', () => {
+      test('should return instance of ResponseTypeDictionary', () => {
+        // Arrange
 
-      // Act
-      const instance = new ResponseTypeDictionary();
+        // Act
+        const instance = new ResponseTypeDictionary();
 
-      // Assert
-      expect(instance).toBeInstanceOf(ResponseTypeDictionary);
+        // Assert
+        expect(instance).toBeInstanceOf(ResponseTypeDictionary);
+      });
     });
 
-    test('should return instance of ResponseTypeDictionary if iterable argument is specified', () => {
-      // Arrange
-      const responseTypeVariant = 'code';
-      const newItem = ResponseType.create(responseTypeVariant);
-      const iterableObject: Iterable<[ResponseTypeVariants, ResponseType]> = [
-        [responseTypeVariant, newItem],
-      ];
+    describe('constructor overload with Iterable<[ResponseTypeVariants, ResponseType]> param', () => {
+      test('should return instance of ResponseTypeDictionary if iterable argument is specified', () => {
+        // Arrange
+        const responseTypeVariant = 'code';
+        const newItem = ResponseType.create(responseTypeVariant);
+        const iterableObject: Iterable<[ResponseTypeVariants, ResponseType]> = [
+          [responseTypeVariant, newItem],
+        ];
 
-      // Act
-      const instance = new ResponseTypeDictionary(iterableObject);
+        // Act
+        const instance = new ResponseTypeDictionary(iterableObject);
 
-      // Assert
-      expect(instance).toBeInstanceOf(ResponseTypeDictionary);
+        // Assert
+        expect(instance).toBeInstanceOf(ResponseTypeDictionary);
+      });
+
+      test('should return instance that contains elements from specified iterable object', () => {
+        // Arrange
+        const responseTypeVariant = 'code';
+        const newItem = ResponseType.create(responseTypeVariant);
+        const iterableObject: Iterable<[ResponseTypeVariants, ResponseType]> = [
+          [responseTypeVariant, newItem],
+        ];
+
+        // Act
+        const instance = new ResponseTypeDictionary(iterableObject);
+
+        // Assert
+        expect(instance.get(responseTypeVariant)).toBe(newItem);
+      });
+
+      test('should return immutable instance if specified iterable object', () => {
+        // Arrange
+        const responseTypeVariant = 'code';
+        const newItem = ResponseType.create(responseTypeVariant);
+        const variantForItemForMutation = 'none';
+        const itemForMutation = ResponseType.create(variantForItemForMutation);
+        const iterableObject = [[responseTypeVariant, newItem]];
+
+        // Act
+        const instance = new ResponseTypeDictionary(
+          iterableObject as Iterable<[ResponseTypeVariants, ResponseType]>
+        );
+        iterableObject.push([variantForItemForMutation, itemForMutation]);
+
+        // Assert
+        expect(instance.hasType(variantForItemForMutation)).toBe(false);
+      });
+
+      test('should return instance that contains mutable elements from the specified iterable object', () => {
+        // Arrange
+        const responseTypeVariant = 'code';
+        const newItem = ResponseType.create(responseTypeVariant);
+        const iterableObject: Iterable<[ResponseTypeVariants, ResponseType]> = [
+          [responseTypeVariant, newItem],
+        ];
+
+        // Act
+        const instance = new ResponseTypeDictionary(
+          iterableObject as Iterable<[ResponseTypeVariants, ResponseType]>
+        );
+
+        // Assert
+        expect(newItem).toBe(instance.get(responseTypeVariant));
+      });
     });
 
-    test('should return instance that contains elements from specified iterable object', () => {
-      // Arrange
-      const responseTypeVariant = 'code';
-      const newItem = ResponseType.create(responseTypeVariant);
-      const iterableObject: Iterable<[ResponseTypeVariants, ResponseType]> = [
-        [responseTypeVariant, newItem],
-      ];
+    describe('constructor overload with Iterable<ResponseTypeVariants> param', () => {
+      test('should return instance of ResponseTypeDictionary if iterable argument is specified', () => {
+        // Arrange
+        const responseTypeVariant = 'code';
+        const iterableObject: Iterable<ResponseTypeVariants> = [
+          responseTypeVariant,
+        ];
 
-      // Act
-      const instance = new ResponseTypeDictionary(iterableObject);
+        // Act
+        const instance = new ResponseTypeDictionary(iterableObject);
 
-      // Assert
-      expect(instance.get(responseTypeVariant)).toBe(newItem);
-    });
+        // Assert
+        expect(instance).toBeInstanceOf(ResponseTypeDictionary);
+      });
 
-    test('should return immutable instance if specified iterable object', () => {
-      // Arrange
-      const responseTypeVariant = 'code';
-      const newItem = ResponseType.create(responseTypeVariant);
-      const variantForItemForMutation = 'none';
-      const itemForMutation = ResponseType.create(variantForItemForMutation);
-      const iterableObject = [[responseTypeVariant, newItem]];
+      test('should return instance that contains elements from specified iterable object', () => {
+        // Arrange
+        const responseTypeVariant = 'code';
+        const iterableObject: Iterable<ResponseTypeVariants> = [
+          responseTypeVariant,
+        ];
 
-      // Act
-      const instance = new ResponseTypeDictionary(
-        iterableObject as Iterable<[ResponseTypeVariants, ResponseType]>
-      );
-      iterableObject.push([variantForItemForMutation, itemForMutation]);
+        // Act
+        const instance = new ResponseTypeDictionary(iterableObject);
 
-      // Assert
-      expect(instance.hasType(variantForItemForMutation)).toBe(false);
-    });
+        // Assert
+        expect(instance.get(responseTypeVariant).valueAsVariant).toBe(
+          responseTypeVariant
+        );
+      });
 
-    test('should return instance that contains mutable elements from the specified iterable object', () => {
-      // Arrange
-      const responseTypeVariant = 'code';
-      const newItem = ResponseType.create(responseTypeVariant);
-      const iterableObject: Iterable<[ResponseTypeVariants, ResponseType]> = [
-        [responseTypeVariant, newItem],
-      ];
+      test('should return immutable instance if specified iterable object', () => {
+        // Arrange
+        const responseTypeVariant = 'code';
+        const variantForItemForMutation = 'none';
+        const iterableObject: ResponseTypeVariants[] = [responseTypeVariant];
 
-      // Act
-      const instance = new ResponseTypeDictionary(
-        iterableObject as Iterable<[ResponseTypeVariants, ResponseType]>
-      );
+        // Act
+        const instance = new ResponseTypeDictionary(iterableObject);
+        iterableObject.push(variantForItemForMutation);
 
-      // Assert
-      expect(newItem).toBe(instance.get(responseTypeVariant));
+        // Assert
+        expect(instance.hasType(variantForItemForMutation)).toBe(false);
+      });
     });
   });
 
