@@ -40,28 +40,23 @@ describe('StaticClientsConfig', () => {
   });
 
   describe('getting clients', () => {
-    test('should return collection which do not mutate internal collection when push', () => {
+    test('should return collection which does not mutate internal collection if changed', () => {
       // Arrange
       const staticClientsConfig = StaticClientsConfig.create(
         staticClientsConfigCreateData
       );
 
-      const clonedClientsForMutation: unknown[] =
-        staticClientsConfig.clients as unknown[];
-
       // Act
-      const countNewItemForPush = 3;
-      for (let index = 0; index < countNewItemForPush; index++) {
-        clonedClientsForMutation.push({});
-      }
+      const clientsForMutation = staticClientsConfig.clients as unknown[];
+      clientsForMutation.push({});
 
       // Assert
-      expect(clonedClientsForMutation.length).toBe(
-        staticClientsConfig.clients.length + countNewItemForPush
+      expect(clientsForMutation.length).not.toBe(
+        staticClientsConfig.clients.length
       );
     });
 
-    test('should return collection which do not mutate internal collection when item mutated', () => {
+    test('should return collection which does not mutate item of internal collection if received item changed', () => {
       // Arrange
       const staticClientsConfig = StaticClientsConfig.create(
         staticClientsConfigCreateData
@@ -77,7 +72,8 @@ describe('StaticClientsConfig', () => {
 
       // Assert
       expect(staticClientsConfig.clients[indexMutatedItem]).not.toHaveProperty(
-        nameNewProperty
+        nameNewProperty,
+        true
       );
     });
   });
