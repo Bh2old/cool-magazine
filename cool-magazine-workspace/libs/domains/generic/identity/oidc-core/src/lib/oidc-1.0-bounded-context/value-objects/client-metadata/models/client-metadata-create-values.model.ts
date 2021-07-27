@@ -1,9 +1,8 @@
-import { RedirectUriDictionary } from './../../redirect-uri';
-import { ResponseTypeDictionary } from '../../response-type';
-import { GrantTypeDictionary } from '../../grant-type';
+import { GrantTypeVariants } from '../../grant-type';
+import { ResponseTypeVariants } from '../../response-type';
 
 export interface IClientMetadataCreateValues {
-  redirectUris: RedirectUriDictionary;
-  responseTypes: ResponseTypeDictionary;
-  grantTypes: GrantTypeDictionary;
+  redirectUris: Set<string>;
+  responseTypeVariants?: Set<ResponseTypeVariants>;
+  grantTypeVariants?: Set<GrantTypeVariants>;
 }

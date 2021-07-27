@@ -2,13 +2,9 @@ import { IClientRegistrationData } from '../../../entities/static-client';
 import {
   ClientId,
   ClientMetadata,
-  GrantType,
-  GrantTypeDictionary,
+  GrantTypeVariants,
   IClientMetadataCreateValues,
-  RedirectUri,
-  RedirectUriDictionary,
-  ResponseType,
-  ResponseTypeDictionary,
+  ResponseTypeVariants,
 } from '../../../value-objects';
 import { StaticClientsConfigCreateData } from '../models';
 import { StaticClientsConfig } from '../static-clients-config.entity';
@@ -21,19 +17,17 @@ describe('StaticClientsConfig', () => {
     const id: ClientId = ClientId.create(idValue);
 
     const redirectUriValue = 'http://qwerty.mn/';
-    const redirectUri: RedirectUri = RedirectUri.create(redirectUriValue);
-
     const responseTypeValue = 'code';
-    const responseType: ResponseType = ResponseType.create(responseTypeValue);
-
     const grantTypeValue = 'authorizationCode';
-    const grantType: GrantType = GrantType.create(grantTypeValue);
 
     const clientMetadataCreateValues: IClientMetadataCreateValues = {
-      redirectUris: new RedirectUriDictionary().add(redirectUri),
-      responseTypes: new ResponseTypeDictionary().add(responseType),
-      grantTypes: new GrantTypeDictionary().add(grantType),
+      redirectUris: new Set<string>().add(redirectUriValue),
+      responseTypeVariants: new Set<ResponseTypeVariants>().add(
+        responseTypeValue
+      ),
+      grantTypeVariants: new Set<GrantTypeVariants>().add(grantTypeValue),
     };
+
     const metadata = ClientMetadata.create(clientMetadataCreateValues);
 
     const clientRegistrationData: IClientRegistrationData = {
