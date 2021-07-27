@@ -14,4 +14,14 @@ export class RedirectUri extends ValueObject {
   public static create(uri: string): RedirectUri {
     return new RedirectUri(uri);
   }
+
+  public static createMany(uris: Set<string>): RedirectUri[] {
+    const redirectUris: RedirectUri[] = [];
+
+    uris.forEach((uri) => {
+      redirectUris.push(new RedirectUri(uri));
+    });
+
+    return redirectUris;
+  }
 }
