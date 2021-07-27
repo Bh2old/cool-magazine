@@ -35,6 +35,24 @@ describe('StaticClient', () => {
     });
   });
 
+  describe('get metadata', () => {
+    test('should return immutable metadata', () => {
+      // Arrange
+      const staticClient = StaticClient.create(clientRegistrationData);
+      const mutationPropertyKey = 'mutation';
+      const mutationPropertyValue = 'i mutated';
+      // Act
+      const metadata = staticClient.metadata;
+      (metadata as unknown)[mutationPropertyKey] = mutationPropertyValue;
+
+      //Assert
+      expect(staticClient.metadata).not.toHaveProperty(
+        mutationPropertyKey,
+        mutationPropertyValue
+      );
+    });
+  });
+
   describe('getting immutable clone of yourself ', () => {
     test('should return cloned instance of StaticClient', () => {
       // Arrange
