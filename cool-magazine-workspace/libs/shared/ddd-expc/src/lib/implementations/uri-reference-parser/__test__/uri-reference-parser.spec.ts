@@ -1,14 +1,19 @@
-import { IUriReferenceParser, IUriReferenceParsingResult } from '../../../abstractions';
+import {
+  IUriReferenceParser,
+  IUriReferenceParsingResult,
+} from '../../../abstractions';
 import { UriReferenceParser } from '../uri-reference-parser';
 
 describe('UriReferenceParser', () => {
   describe('instance creation', () => {
-    // Arrange
-    // Act
-    const instance = new UriReferenceParser();
+    test('should return instance', () => {
+      // Arrange
+      // Act
+      const instance = new UriReferenceParser();
 
-    // Assert
-    expect(instance).toBeInstanceOf(UriReferenceParser);
+      // Assert
+      expect(instance).toBeInstanceOf(UriReferenceParser);
+    });
   });
 
   describe('parsing', () => {
@@ -40,7 +45,7 @@ describe('UriReferenceParser', () => {
       // Assert
       expect(result).toStrictEqual(expected);
     });
-    
+
     describe('when optional parts are not specified', () => {
       test('should return everything except schema if uri does not contain schema', () => {
         // Arrange
