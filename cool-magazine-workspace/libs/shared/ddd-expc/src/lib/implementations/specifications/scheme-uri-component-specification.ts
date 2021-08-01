@@ -3,9 +3,9 @@ import {
   ISchemeUriComponent,
 } from '../../abstractions';
 
-export class SchemeUriComponentSpecification extends CompositeSpecification<
-  string | ISchemeUriComponent
-> {
+type SchemeUriComponentCandidate = ISchemeUriComponent | string;
+
+export class SchemeUriComponentSpecification extends CompositeSpecification<SchemeUriComponentCandidate> {
   private readonly _scheme: string;
   private readonly _isCaseSensitive: boolean;
 
@@ -15,7 +15,7 @@ export class SchemeUriComponentSpecification extends CompositeSpecification<
     this._isCaseSensitive = isCaseSensitive;
   }
 
-  isSatisfiedBy(candidate: string | ISchemeUriComponent): boolean {
+  isSatisfiedBy(candidate: SchemeUriComponentCandidate): boolean {
     const isObjectTypeCandidate = typeof candidate === 'object';
 
     if (
