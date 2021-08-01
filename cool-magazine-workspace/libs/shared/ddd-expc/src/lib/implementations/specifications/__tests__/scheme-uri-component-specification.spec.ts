@@ -31,7 +31,7 @@ describe('SchemeUriComponentSpecification', () => {
   });
 
   describe('check requirements', () => {
-    describe('when required scheme is specified as string type', () => {
+    describe('when candidate scheme is specified as string type', () => {
       test('should return true if the candidate is equal to the required case-sensitive scheme', () => {
         // Arrange
         const requiredScheme = 'https';
@@ -62,6 +62,23 @@ describe('SchemeUriComponentSpecification', () => {
         expect(result).toBe(true);
       });
 
+      test('should return false if the candidate is not equal to the required case-sensitive scheme', () => {
+        // Arrange
+        const requiredScheme = 'http';
+        const candidateScheme = requiredScheme;
+        const isCaseSensitive = true;
+        const instance = new SchemeUriComponentSpecification(
+          requiredScheme,
+          isCaseSensitive
+        );
+
+        // Act
+        const result = instance.isSatisfiedBy(candidateScheme);
+
+        // Assert
+        expect(result).toBe(true);
+      });
+
       test('should return false if the candidate is not equal to the required scheme', () => {
         // Arrange
         const requiredScheme = 'http';
@@ -76,7 +93,7 @@ describe('SchemeUriComponentSpecification', () => {
       });
     });
 
-    describe('when required scheme is specified as object type', () => {
+    describe('when candidate scheme is specified as object type', () => {
       test('should return true if the candidate is equal to the required case-sensitive scheme', () => {
         // Arrange
         const requiredScheme = 'https';
@@ -107,6 +124,25 @@ describe('SchemeUriComponentSpecification', () => {
 
         // Assert
         expect(result).toBe(true);
+      });
+
+      test('should return false if the candidate is not equal to the required case-sensitive scheme', () => {
+        // Arrange
+        const requiredScheme = 'http';
+        const candidateScheme: ISchemeUriComponent = {
+          scheme: requiredScheme.toUpperCase(),
+        };
+        const isCaseSensitive = true;
+        const instance = new SchemeUriComponentSpecification(
+          requiredScheme,
+          isCaseSensitive
+        );
+
+        // Act
+        const result = instance.isSatisfiedBy(candidateScheme);
+
+        // Assert
+        expect(result).toBe(false);
       });
 
       test('should return false if the candidate is not equal to the required scheme', () => {
