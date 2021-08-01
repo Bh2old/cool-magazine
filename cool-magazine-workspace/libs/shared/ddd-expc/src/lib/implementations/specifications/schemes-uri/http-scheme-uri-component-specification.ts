@@ -1,12 +1,12 @@
 import {
   CompositeSpecification,
   ISchemeUriComponent,
-} from '../../abstractions';
+} from '../../../abstractions';
 import { SchemeUriComponentSpecification } from './scheme-uri-component-specification';
 
-type HttpsSchemeCandidate = ISchemeUriComponent | string;
+type HttpSchemeCandidate = ISchemeUriComponent | string;
 
-export class HttpsSchemeUriComponentSpecification extends CompositeSpecification<HttpsSchemeCandidate> {
+export class HttpSchemeUriComponentSpecification extends CompositeSpecification<HttpSchemeCandidate> {
   private readonly _isCaseSensitive: boolean;
   private readonly _schemeUriComponentSpecification: SchemeUriComponentSpecification;
 
@@ -14,12 +14,12 @@ export class HttpsSchemeUriComponentSpecification extends CompositeSpecification
     super();
     this._isCaseSensitive = isCaseSensitive;
     this._schemeUriComponentSpecification = new SchemeUriComponentSpecification(
-      'https',
+      'http',
       this._isCaseSensitive
     );
   }
-  
-  isSatisfiedBy(candidate: HttpsSchemeCandidate): boolean {
+
+  isSatisfiedBy(candidate: HttpSchemeCandidate): boolean {
     return this._schemeUriComponentSpecification.isSatisfiedBy(candidate);
   }
 }

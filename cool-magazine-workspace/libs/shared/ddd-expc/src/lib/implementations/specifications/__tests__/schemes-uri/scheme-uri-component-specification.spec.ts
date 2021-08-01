@@ -1,5 +1,5 @@
-import { ISchemeUriComponent } from '../../../abstractions';
-import { SchemeUriComponentSpecification } from './../scheme-uri-component-specification';
+import { ISchemeUriComponent } from '../../../../abstractions';
+import { SchemeUriComponentSpecification } from '../../schemes-uri';
 
 describe('SchemeUriComponentSpecification', () => {
   describe('instance creation', () => {

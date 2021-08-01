@@ -1,4 +1,4 @@
-import { HttpSchemeUriComponentSpecification } from '../http-scheme-uri-component-specification';
+import { HttpSchemeUriComponentSpecification } from '../../schemes-uri';
 
 describe('HttpSchemeUriComponentSpecification', () => {
   describe('instance creation', () => {

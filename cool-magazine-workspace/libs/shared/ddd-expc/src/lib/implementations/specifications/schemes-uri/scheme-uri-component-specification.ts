@@ -1,7 +1,7 @@
 import {
   CompositeSpecification,
   ISchemeUriComponent,
-} from '../../abstractions';
+} from '../../../abstractions';
 
 type SchemeUriComponentCandidate = ISchemeUriComponent | string;
 
