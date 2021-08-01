@@ -1,4 +1,4 @@
-import { LocalhostIPv4HostUriAuthoritySpecification } from '../localhost-ipv4-host-uri-authority-specification';
+import { LocalhostIPv4HostUriAuthoritySpecification } from '../../hosts-uri';
 
 describe('LocalhostIPv4HostUriAuthoritySpecification', () => {
   describe('instance creation', () => {

@@ -1,4 +1,4 @@
-import { LocalhostRegNameHostUriAuthoritySpecification } from '../localhost-reg-name-host-uri-authority-specification';
+import { LocalhostRegNameHostUriAuthoritySpecification } from '../../hosts-uri';
 
 describe('LocalhostRegNameHostUriAuthoritySpecification', () => {
   describe('instance creation', () => {

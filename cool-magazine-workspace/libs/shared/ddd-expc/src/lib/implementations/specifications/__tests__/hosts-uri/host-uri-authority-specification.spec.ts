@@ -1,4 +1,4 @@
-import { HostUriAuthoritySpecification } from '../host-uri-authority-specification';
+import { HostUriAuthoritySpecification } from '../../hosts-uri';
 
 describe('HostUriAuthoritySpecification', () => {
   describe('instance creation', () => {
