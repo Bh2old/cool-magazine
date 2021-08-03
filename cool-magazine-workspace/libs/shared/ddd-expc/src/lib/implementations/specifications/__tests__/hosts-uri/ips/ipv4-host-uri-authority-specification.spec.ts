@@ -12,7 +12,7 @@ describe('IPV4HostUriAuthoritySpecification', () => {
     });
   });
   describe('check requirements', () => {
-    test('should return true if the candidate is equal to the required host', () => {
+    test('should return true if candidate matches ipv4', () => {
       // Arrange
       const candidateHost = '127.0.0.1';
       const instance = new IPV4HostUriAuthoritySpecification();
@@ -24,9 +24,9 @@ describe('IPV4HostUriAuthoritySpecification', () => {
       expect(result).toBe(true);
     });
 
-    test('should return false if the candidate is not equal to the required host', () => {
+    test('should return false if candidate does not match ipv4', () => {
       // Arrange
-      const candidateHost = 'dom.dom.dom.ain';
+      const candidateHost = '1.2.3.ain';
       const instance = new IPV4HostUriAuthoritySpecification();
 
       // Act
