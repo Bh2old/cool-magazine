@@ -16,18 +16,11 @@ export class SchemeUriComponentSpecification extends CompositeSpecification<Sche
   }
 
   isSatisfiedBy(candidate: SchemeUriComponentCandidate): boolean {
-    const isObjectTypeCandidate = typeof candidate === 'object';
+    const scheme = typeof candidate === 'object' ? candidate.scheme : candidate;
 
-    if (
-      isObjectTypeCandidate &&
-      (candidate as ISchemeUriComponent).scheme === undefined
-    ) {
+    if (scheme === undefined) {
       return false;
     }
-
-    const scheme = isObjectTypeCandidate
-      ? ((candidate as ISchemeUriComponent).scheme as string)
-      : (candidate as string);
 
     return this._isCaseSensitive
       ? scheme === this._scheme
