@@ -14,7 +14,7 @@ export class UriAuthorityParser implements IUriAuthorityParser {
   private readonly _uriAuthorityRegExpPattern =
     `^${this._regExpPatternsAuthorityParts.userInfo}` +
     `${this._regExpPatternsAuthorityParts.host}` +
-    `${this._regExpPatternsAuthorityParts.port}`;
+    `${this._regExpPatternsAuthorityParts.port}$`;
 
   private readonly _uriAuthorityRegExp = new RegExp(
     this._uriAuthorityRegExpPattern
