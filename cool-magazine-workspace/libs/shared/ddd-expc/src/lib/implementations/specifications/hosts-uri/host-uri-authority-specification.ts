@@ -16,18 +16,7 @@ export class HostUriAuthoritySpecification extends CompositeSpecification<Localh
   }
 
   isSatisfiedBy(candidate: LocalhostRegNameHostCandidate): boolean {
-    const isObjectTypeCandidate = typeof candidate === 'object';
-
-    if (
-      isObjectTypeCandidate &&
-      (candidate as IHostUriAuthorityPart).host === undefined
-    ) {
-      return false;
-    }
-
-    const host = isObjectTypeCandidate
-      ? ((candidate as IHostUriAuthorityPart).host as string)
-      : (candidate as string);
+    const host = typeof candidate === 'object' ? candidate.host : candidate;
 
     return this._isCaseSensitive
       ? host === this._host
