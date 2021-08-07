@@ -1,7 +1,7 @@
 import {
   CompositeSpecification,
   ISchemeUriComponent,
-} from '../../../../abstractions';
+} from '@bh2old/ddd-expc/abstractions';
 import { SchemeUriComponentSpecification } from './scheme-uri-component-specification';
 
 type HttpSchemeCandidate = ISchemeUriComponent | string;

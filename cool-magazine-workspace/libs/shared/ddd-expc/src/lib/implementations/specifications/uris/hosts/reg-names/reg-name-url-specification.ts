@@ -1,7 +1,7 @@
 import {
   CompositeSpecification,
   IHostAuthorityUriComponentPart,
-} from '../../../../../abstractions';
+} from '@bh2old/ddd-expc/abstractions';
 
 type RegNameUrlCandidate = IHostAuthorityUriComponentPart | string;
 

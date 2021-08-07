@@ -1,7 +1,7 @@
 import {
   IUriReferenceUriUsageParser,
   IUriReferenceUriUsageParsingResult,
-} from '../../../../../abstractions';
+} from '@bh2old/ddd-expc/abstractions';
 
 export class UriReferenceUriUsageParser implements IUriReferenceUriUsageParser {
   private readonly _regExpPatternsUriComponents = {

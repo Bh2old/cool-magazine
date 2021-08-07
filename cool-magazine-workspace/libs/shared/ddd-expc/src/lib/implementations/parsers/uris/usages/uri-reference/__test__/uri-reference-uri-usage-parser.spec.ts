@@ -1,7 +1,7 @@
 import {
   IUriReferenceUriUsageParser,
   IUriReferenceUriUsageParsingResult,
-} from '../../../../../../abstractions';
+} from '@bh2old/ddd-expc/abstractions';
 import { UriReferenceUriUsageParser } from '../uri-reference-uri-usage-parser';
 
 describe('UriReferenceUriUsageParser', () => {

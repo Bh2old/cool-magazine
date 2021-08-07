@@ -1,4 +1,4 @@
-import { CompositeSpecification } from '../../../abstractions';
+import { CompositeSpecification } from '@bh2old/ddd-expc/abstractions';
 
 export class LengthStringSpecification extends CompositeSpecification<string> {
   private readonly _min?: number;

@@ -16,10 +16,15 @@
     "baseUrl": ".",
     "paths": {
       "@bh2old/ddd-expc": ["libs/shared/ddd-expc/src/index.ts"],
+      "@bh2old/ddd-expc/abstractions": [
+        "libs/shared/ddd-expc/src/lib/abstractions/index.ts"
+      ],
       "@cool-magazine/adapter-identity-node-oidc-provider": [
         "libs/adapters/identity/node-oidc-provider/src/index.ts"
       ],
-      "@cool-magazine/generic-subdomain-oidc-core": ["libs/domains/generic/identity/oidc-core/src/index.ts"]
+      "@cool-magazine/generic-subdomain-oidc-core": [
+        "libs/domains/generic/identity/oidc-core/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

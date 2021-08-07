@@ -2,7 +2,7 @@ import {
   IAuthorityUriComponent,
   IAuthorityUriComponentParser,
   IAuthorityUriComponentParsingResult,
-} from '../../../../../../abstractions';
+} from '@bh2old/ddd-expc/abstractions';
 import { AuthorityUriComponentParser } from '../authority-uri-component-parser';
 
 describe('AuthorityUriComponentParser', () => {

@@ -1,4 +1,4 @@
-import { ISchemeUriComponent } from '../../../../../abstractions';
+import { ISchemeUriComponent } from '@bh2old/ddd-expc/abstractions';
 import { SchemeUriComponentSpecification } from '../scheme-uri-component-specification';
 
 describe('SchemeUriComponentSpecification', () => {

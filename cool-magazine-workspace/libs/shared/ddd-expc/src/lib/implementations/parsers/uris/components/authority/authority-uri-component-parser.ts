@@ -2,9 +2,11 @@ import {
   IAuthorityUriComponent,
   IAuthorityUriComponentParser,
   IAuthorityUriComponentParsingResult,
-} from '../../../../../abstractions';
+} from '@bh2old/ddd-expc/abstractions';
 
-export class AuthorityUriComponentParser implements IAuthorityUriComponentParser {
+export class AuthorityUriComponentParser
+  implements IAuthorityUriComponentParser
+{
   private readonly _regExpPatternsAuthorityParts = {
     userInfo: '((?<userInfo>[^/?#]+)\\@)?',
     host: '(?<host>(\\[[^/?#]+\\])|((\\d{1,3}\\.){3}\\d{1,3})|([^/?#:]+))',

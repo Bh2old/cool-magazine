@@ -1,7 +1,7 @@
 import {
   CompositeSpecification,
   IHostAuthorityUriComponentPart,
-} from '../../../../../abstractions';
+} from '@bh2old/ddd-expc/abstractions';
 import { HostUriAuthoritySpecification } from '../host-uri-authority-specification';
 
 type LocalhostIPv4HostCandidate = IHostAuthorityUriComponentPart | string;
