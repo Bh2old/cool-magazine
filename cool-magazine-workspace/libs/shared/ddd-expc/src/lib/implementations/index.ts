@@ -1,2 +1,2 @@
-export * from './uri-reference-parser';
+export * from './parsers';
 export * from './specifications';

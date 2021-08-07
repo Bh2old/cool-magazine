@@ -1,4 +1,4 @@
-import { UriReferenceParser } from '../../../uri-reference-parser/uri-reference-parser';
+import { UriReferenceUriUsageParser } from '../../../parsers';
 import { AbsoluteUrlSpecification } from '../absolute-url-specification';
 
 describe('AbsoluteUrlSpecification', () => {
@@ -25,7 +25,7 @@ describe('AbsoluteUrlSpecification', () => {
 
       const uri = `${scheme}://${authority}`;
 
-      const parser = new UriReferenceParser();
+      const parser = new UriReferenceUriUsageParser();
       const parsingResult = parser.parse(uri);
 
       const instance = new AbsoluteUrlSpecification();
@@ -48,7 +48,7 @@ describe('AbsoluteUrlSpecification', () => {
 
       const uri = `${scheme}://${authority}${path}`;
 
-      const parser = new UriReferenceParser();
+      const parser = new UriReferenceUriUsageParser();
       const parsingResult = parser.parse(uri);
 
       const instance = new AbsoluteUrlSpecification();
@@ -72,7 +72,7 @@ describe('AbsoluteUrlSpecification', () => {
 
       const uri = `${scheme}://${authority}${path}?${query}`;
 
-      const parser = new UriReferenceParser();
+      const parser = new UriReferenceUriUsageParser();
       const parsingResult = parser.parse(uri);
 
       const instance = new AbsoluteUrlSpecification();
@@ -97,7 +97,7 @@ describe('AbsoluteUrlSpecification', () => {
 
       const uri = `${scheme}://${authority}${path}?${query}#${fragment}`;
 
-      const parser = new UriReferenceParser();
+      const parser = new UriReferenceUriUsageParser();
       const parsingResult = parser.parse(uri);
 
       const instance = new AbsoluteUrlSpecification();
@@ -120,7 +120,7 @@ describe('AbsoluteUrlSpecification', () => {
 
       const uri = `//${authority}${path}?${query}`;
 
-      const parser = new UriReferenceParser();
+      const parser = new UriReferenceUriUsageParser();
       const parsingResult = parser.parse(uri);
 
       const instance = new AbsoluteUrlSpecification();
@@ -141,7 +141,7 @@ describe('AbsoluteUrlSpecification', () => {
 
       const uri = `${scheme}:${path}?${query}#${fragment}`;
 
-      const parser = new UriReferenceParser();
+      const parser = new UriReferenceUriUsageParser();
       const parsingResult = parser.parse(uri);
 
       const instance = new AbsoluteUrlSpecification();
@@ -161,7 +161,7 @@ describe('AbsoluteUrlSpecification', () => {
 
       const uri = `${path}?${query}#${fragment}`;
 
-      const parser = new UriReferenceParser();
+      const parser = new UriReferenceUriUsageParser();
       const parsingResult = parser.parse(uri);
 
       const instance = new AbsoluteUrlSpecification();

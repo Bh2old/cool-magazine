@@ -1,10 +1,10 @@
 import {
   CompositeSpecification,
-  IUriReferenceParsingResult,
+  IUriReferenceUriUsageParsingResult,
 } from '../../../abstractions';
 
-export class AbsoluteUrlSpecification extends CompositeSpecification<IUriReferenceParsingResult> {
-  isSatisfiedBy(candidate: IUriReferenceParsingResult): boolean {
+export class AbsoluteUrlSpecification extends CompositeSpecification<IUriReferenceUriUsageParsingResult> {
+  isSatisfiedBy(candidate: IUriReferenceUriUsageParsingResult): boolean {
     const { scheme, authority, fragment } = candidate;
 
     if (!scheme || !authority || fragment) {

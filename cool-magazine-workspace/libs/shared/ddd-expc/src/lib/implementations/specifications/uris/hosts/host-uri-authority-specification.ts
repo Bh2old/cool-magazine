@@ -1,9 +1,9 @@
 import {
   CompositeSpecification,
-  IHostUriAuthorityPart,
+  IHostAuthorityUriComponentPart,
 } from '../../../../abstractions';
 
-type LocalhostRegNameHostCandidate = IHostUriAuthorityPart | string;
+type LocalhostRegNameHostCandidate = IHostAuthorityUriComponentPart | string;
 
 export class HostUriAuthoritySpecification extends CompositeSpecification<LocalhostRegNameHostCandidate> {
   private readonly _host: string;

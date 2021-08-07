@@ -1,9 +1,9 @@
 import {
   CompositeSpecification,
-  IHostUriAuthorityPart,
+  IHostAuthorityUriComponentPart,
 } from '../../../../../abstractions';
 
-type IPV6HostUriAuthorityCandidate = IHostUriAuthorityPart | string;
+type IPV6HostUriAuthorityCandidate = IHostAuthorityUriComponentPart | string;
 
 export class IPV6HostUriAuthoritySpecification extends CompositeSpecification<IPV6HostUriAuthorityCandidate> {
   //rfc3986

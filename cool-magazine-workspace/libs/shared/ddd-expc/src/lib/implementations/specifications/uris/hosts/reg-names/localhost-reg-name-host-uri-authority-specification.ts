@@ -1,10 +1,10 @@
 import {
   CompositeSpecification,
-  IHostUriAuthorityPart,
+  IHostAuthorityUriComponentPart,
 } from '../../../../../abstractions';
 import { HostUriAuthoritySpecification } from '../host-uri-authority-specification';
 
-type LocalhostRegNameHostCandidate = IHostUriAuthorityPart | string;
+type LocalhostRegNameHostCandidate = IHostAuthorityUriComponentPart | string;
 
 export class LocalhostRegNameHostUriAuthoritySpecification extends CompositeSpecification<LocalhostRegNameHostCandidate> {
   private readonly _isCaseSensitive: boolean;

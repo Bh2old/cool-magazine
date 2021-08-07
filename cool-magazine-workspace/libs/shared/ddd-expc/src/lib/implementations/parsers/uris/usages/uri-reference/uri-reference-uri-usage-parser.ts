@@ -1,9 +1,9 @@
 import {
-  IUriReferenceParser,
-  IUriReferenceParsingResult,
-} from '../../abstractions';
+  IUriReferenceUriUsageParser,
+  IUriReferenceUriUsageParsingResult,
+} from '../../../../../abstractions';
 
-export class UriReferenceParser implements IUriReferenceParser {
+export class UriReferenceUriUsageParser implements IUriReferenceUriUsageParser {
   private readonly _regExpPatternsUriComponents = {
     scheme: '(?<scheme>[^:/?#]+)',
     authority: '(?<authority>[^/?#]*)',
@@ -30,7 +30,7 @@ export class UriReferenceParser implements IUriReferenceParser {
       return null;
     }
 
-    const result: IUriReferenceParsingResult = {
+    const result: IUriReferenceUriUsageParsingResult = {
       scheme: match.groups.scheme,
       authority: match.groups.authority,
       path: match.groups.path,

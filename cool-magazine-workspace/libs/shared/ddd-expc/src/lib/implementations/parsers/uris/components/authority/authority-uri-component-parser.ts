@@ -1,10 +1,10 @@
 import {
   IAuthorityUriComponent,
-  IUriAuthorityParser,
-  IUriAuthorityParsingResult,
-} from '../../abstractions';
+  IAuthorityUriComponentParser,
+  IAuthorityUriComponentParsingResult,
+} from '../../../../../abstractions';
 
-export class UriAuthorityParser implements IUriAuthorityParser {
+export class AuthorityUriComponentParser implements IAuthorityUriComponentParser {
   private readonly _regExpPatternsAuthorityParts = {
     userInfo: '((?<userInfo>[^/?#]+)\\@)?',
     host: '(?<host>(\\[[^/?#]+\\])|((\\d{1,3}\\.){3}\\d{1,3})|([^/?#:]+))',
@@ -22,7 +22,7 @@ export class UriAuthorityParser implements IUriAuthorityParser {
 
   parse(
     authorityUriComponent: string | IAuthorityUriComponent
-  ): IUriAuthorityParsingResult | null {
+  ): IAuthorityUriComponentParsingResult | null {
     const authority =
       typeof authorityUriComponent === 'string'
         ? authorityUriComponent
@@ -38,7 +38,7 @@ export class UriAuthorityParser implements IUriAuthorityParser {
       return null;
     }
 
-    const result: IUriAuthorityParsingResult = {
+    const result: IAuthorityUriComponentParsingResult = {
       userInfo: match.groups.userInfo,
       host: match.groups.host,
       port: match.groups.port

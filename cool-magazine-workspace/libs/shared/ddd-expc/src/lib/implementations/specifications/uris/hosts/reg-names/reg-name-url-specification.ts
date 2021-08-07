@@ -1,9 +1,9 @@
 import {
   CompositeSpecification,
-  IHostUriAuthorityPart,
+  IHostAuthorityUriComponentPart,
 } from '../../../../../abstractions';
 
-type RegNameUrlCandidate = IHostUriAuthorityPart | string;
+type RegNameUrlCandidate = IHostAuthorityUriComponentPart | string;
 
 export class RegNameUrlSpecification extends CompositeSpecification<RegNameUrlCandidate> {
   private readonly _regNameUrlRegExpPattern =

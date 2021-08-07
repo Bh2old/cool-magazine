@@ -1,10 +1,10 @@
 import {
   CompositeSpecification,
-  IHostUriAuthorityPart,
+  IHostAuthorityUriComponentPart,
 } from '../../../../../abstractions';
 import { HostUriAuthoritySpecification } from '../host-uri-authority-specification';
 
-type LocalhostIPv4HostCandidate = IHostUriAuthorityPart | string;
+type LocalhostIPv4HostCandidate = IHostAuthorityUriComponentPart | string;
 
 export class LocalhostIPv4HostUriAuthoritySpecification extends CompositeSpecification<LocalhostIPv4HostCandidate> {
   private readonly _hostUriAuthoritySpecification =

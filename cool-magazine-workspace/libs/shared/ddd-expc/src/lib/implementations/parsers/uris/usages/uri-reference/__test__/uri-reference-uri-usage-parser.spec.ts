@@ -1,18 +1,18 @@
 import {
-  IUriReferenceParser,
-  IUriReferenceParsingResult,
-} from '../../../abstractions';
-import { UriReferenceParser } from '../uri-reference-parser';
+  IUriReferenceUriUsageParser,
+  IUriReferenceUriUsageParsingResult,
+} from '../../../../../../abstractions';
+import { UriReferenceUriUsageParser } from '../uri-reference-uri-usage-parser';
 
-describe('UriReferenceParser', () => {
+describe('UriReferenceUriUsageParser', () => {
   describe('instance creation', () => {
     test('should return instance', () => {
       // Arrange
       // Act
-      const instance = new UriReferenceParser();
+      const instance = new UriReferenceUriUsageParser();
 
       // Assert
-      expect(instance).toBeInstanceOf(UriReferenceParser);
+      expect(instance).toBeInstanceOf(UriReferenceUriUsageParser);
     });
   });
 
@@ -30,8 +30,9 @@ describe('UriReferenceParser', () => {
 
       const uri = `${scheme}://${authority}${path}?${query}#${fragment}`;
 
-      const parser: IUriReferenceParser = new UriReferenceParser();
-      const expected: IUriReferenceParsingResult = {
+      const parser: IUriReferenceUriUsageParser =
+        new UriReferenceUriUsageParser();
+      const expected: IUriReferenceUriUsageParsingResult = {
         scheme,
         authority,
         path,
@@ -59,8 +60,9 @@ describe('UriReferenceParser', () => {
 
         const uri = `//${authority}${path}?${query}#${fragment}`;
 
-        const parser: IUriReferenceParser = new UriReferenceParser();
-        const expected: IUriReferenceParsingResult = {
+        const parser: IUriReferenceUriUsageParser =
+          new UriReferenceUriUsageParser();
+        const expected: IUriReferenceUriUsageParsingResult = {
           scheme: undefined,
           authority,
           path,
@@ -87,8 +89,9 @@ describe('UriReferenceParser', () => {
 
         const uri = `${scheme}://${authority}${path}#${fragment}`;
 
-        const parser: IUriReferenceParser = new UriReferenceParser();
-        const expected: IUriReferenceParsingResult = {
+        const parser: IUriReferenceUriUsageParser =
+          new UriReferenceUriUsageParser();
+        const expected: IUriReferenceUriUsageParsingResult = {
           scheme,
           authority,
           path,
@@ -115,8 +118,9 @@ describe('UriReferenceParser', () => {
 
         const uri = `${scheme}://${authority}${path}?${query}`;
 
-        const parser: IUriReferenceParser = new UriReferenceParser();
-        const expected: IUriReferenceParsingResult = {
+        const parser: IUriReferenceUriUsageParser =
+          new UriReferenceUriUsageParser();
+        const expected: IUriReferenceUriUsageParsingResult = {
           scheme,
           authority,
           path,

@@ -1,9 +1,9 @@
 import {
   CompositeSpecification,
-  IHostUriAuthorityPart,
+  IHostAuthorityUriComponentPart,
 } from '../../../../../abstractions';
 
-type IPV4HostUriAuthorityCandidate = IHostUriAuthorityPart | string;
+type IPV4HostUriAuthorityCandidate = IHostAuthorityUriComponentPart | string;
 
 export class IPV4HostUriAuthoritySpecification extends CompositeSpecification<IPV4HostUriAuthorityCandidate> {
   private readonly _ipv4RegExpPattern = '^(?<ipv4>(\\d{1,3}\\.){3}\\d{1,3})$';

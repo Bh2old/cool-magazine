@@ -1,19 +1,19 @@
 import {
   IAuthorityUriComponent,
-  IUriAuthorityParser,
-  IUriAuthorityParsingResult,
-} from '../../../abstractions';
-import { UriAuthorityParser } from '../uri-authority-parser';
+  IAuthorityUriComponentParser,
+  IAuthorityUriComponentParsingResult,
+} from '../../../../../../abstractions';
+import { AuthorityUriComponentParser } from '../authority-uri-component-parser';
 
-describe('UriAuthorityParser', () => {
+describe('AuthorityUriComponentParser', () => {
   describe('instance creation', () => {
     test('should return instance', () => {
       // Arrange
       // Act
-      const instance = new UriAuthorityParser();
+      const instance = new AuthorityUriComponentParser();
 
       // Assert
-      expect(instance).toBeInstanceOf(UriAuthorityParser);
+      expect(instance).toBeInstanceOf(AuthorityUriComponentParser);
     });
   });
 
@@ -35,9 +35,10 @@ describe('UriAuthorityParser', () => {
         authority,
       };
 
-      const parser: IUriAuthorityParser = new UriAuthorityParser();
+      const parser: IAuthorityUriComponentParser =
+        new AuthorityUriComponentParser();
 
-      const expected: IUriAuthorityParsingResult = {
+      const expected: IAuthorityUriComponentParsingResult = {
         userInfo,
         host,
         port,
@@ -66,9 +67,10 @@ describe('UriAuthorityParser', () => {
           authority,
         };
 
-        const parser: IUriAuthorityParser = new UriAuthorityParser();
+        const parser: IAuthorityUriComponentParser =
+          new AuthorityUriComponentParser();
 
-        const expected: IUriAuthorityParsingResult = {
+        const expected: IAuthorityUriComponentParsingResult = {
           userInfo: undefined,
           host,
           port,
@@ -96,9 +98,10 @@ describe('UriAuthorityParser', () => {
           authority,
         };
 
-        const parser: IUriAuthorityParser = new UriAuthorityParser();
+        const parser: IAuthorityUriComponentParser =
+          new AuthorityUriComponentParser();
 
-        const expected: IUriAuthorityParsingResult = {
+        const expected: IAuthorityUriComponentParsingResult = {
           userInfo,
           host,
           port: undefined,
@@ -124,9 +127,10 @@ describe('UriAuthorityParser', () => {
           authority,
         };
 
-        const parser: IUriAuthorityParser = new UriAuthorityParser();
+        const parser: IAuthorityUriComponentParser =
+          new AuthorityUriComponentParser();
 
-        const expected: IUriAuthorityParsingResult = {
+        const expected: IAuthorityUriComponentParsingResult = {
           userInfo: undefined,
           host,
           port: undefined,
@@ -159,9 +163,10 @@ describe('UriAuthorityParser', () => {
             authority,
           };
 
-          const parser: IUriAuthorityParser = new UriAuthorityParser();
+          const parser: IAuthorityUriComponentParser =
+            new AuthorityUriComponentParser();
 
-          const expected: IUriAuthorityParsingResult = {
+          const expected: IAuthorityUriComponentParsingResult = {
             userInfo,
             host,
             port,
@@ -190,9 +195,10 @@ describe('UriAuthorityParser', () => {
               authority,
             };
 
-            const parser: IUriAuthorityParser = new UriAuthorityParser();
+            const parser: IAuthorityUriComponentParser =
+              new AuthorityUriComponentParser();
 
-            const expected: IUriAuthorityParsingResult = {
+            const expected: IAuthorityUriComponentParsingResult = {
               userInfo: undefined,
               host,
               port,
@@ -220,9 +226,10 @@ describe('UriAuthorityParser', () => {
               authority,
             };
 
-            const parser: IUriAuthorityParser = new UriAuthorityParser();
+            const parser: IAuthorityUriComponentParser =
+              new AuthorityUriComponentParser();
 
-            const expected: IUriAuthorityParsingResult = {
+            const expected: IAuthorityUriComponentParsingResult = {
               userInfo,
               host,
               port: undefined,
@@ -249,9 +256,10 @@ describe('UriAuthorityParser', () => {
               authority,
             };
 
-            const parser: IUriAuthorityParser = new UriAuthorityParser();
+            const parser: IAuthorityUriComponentParser =
+              new AuthorityUriComponentParser();
 
-            const expected: IUriAuthorityParsingResult = {
+            const expected: IAuthorityUriComponentParsingResult = {
               userInfo: undefined,
               host,
               port: undefined,
@@ -281,9 +289,10 @@ describe('UriAuthorityParser', () => {
             authority,
           };
 
-          const parser: IUriAuthorityParser = new UriAuthorityParser();
+          const parser: IAuthorityUriComponentParser =
+            new AuthorityUriComponentParser();
 
-          const expected: IUriAuthorityParsingResult = {
+          const expected: IAuthorityUriComponentParsingResult = {
             userInfo,
             host,
             port,
@@ -309,9 +318,10 @@ describe('UriAuthorityParser', () => {
               authority,
             };
 
-            const parser: IUriAuthorityParser = new UriAuthorityParser();
+            const parser: IAuthorityUriComponentParser =
+              new AuthorityUriComponentParser();
 
-            const expected: IUriAuthorityParsingResult = {
+            const expected: IAuthorityUriComponentParsingResult = {
               userInfo: undefined,
               host,
               port,
@@ -336,9 +346,10 @@ describe('UriAuthorityParser', () => {
               authority,
             };
 
-            const parser: IUriAuthorityParser = new UriAuthorityParser();
+            const parser: IAuthorityUriComponentParser =
+              new AuthorityUriComponentParser();
 
-            const expected: IUriAuthorityParsingResult = {
+            const expected: IAuthorityUriComponentParsingResult = {
               userInfo,
               host,
               port: undefined,
@@ -361,9 +372,10 @@ describe('UriAuthorityParser', () => {
               authority,
             };
 
-            const parser: IUriAuthorityParser = new UriAuthorityParser();
+            const parser: IAuthorityUriComponentParser =
+              new AuthorityUriComponentParser();
 
-            const expected: IUriAuthorityParsingResult = {
+            const expected: IAuthorityUriComponentParsingResult = {
               userInfo: undefined,
               host,
               port: undefined,
@@ -393,9 +405,10 @@ describe('UriAuthorityParser', () => {
             authority,
           };
 
-          const parser: IUriAuthorityParser = new UriAuthorityParser();
+          const parser: IAuthorityUriComponentParser =
+            new AuthorityUriComponentParser();
 
-          const expected: IUriAuthorityParsingResult = {
+          const expected: IAuthorityUriComponentParsingResult = {
             userInfo,
             host,
             port,
@@ -421,9 +434,10 @@ describe('UriAuthorityParser', () => {
               authority,
             };
 
-            const parser: IUriAuthorityParser = new UriAuthorityParser();
+            const parser: IAuthorityUriComponentParser =
+              new AuthorityUriComponentParser();
 
-            const expected: IUriAuthorityParsingResult = {
+            const expected: IAuthorityUriComponentParsingResult = {
               userInfo: undefined,
               host,
               port,
@@ -448,9 +462,10 @@ describe('UriAuthorityParser', () => {
               authority,
             };
 
-            const parser: IUriAuthorityParser = new UriAuthorityParser();
+            const parser: IAuthorityUriComponentParser =
+              new AuthorityUriComponentParser();
 
-            const expected: IUriAuthorityParsingResult = {
+            const expected: IAuthorityUriComponentParsingResult = {
               userInfo,
               host,
               port: undefined,
@@ -473,9 +488,10 @@ describe('UriAuthorityParser', () => {
               authority,
             };
 
-            const parser: IUriAuthorityParser = new UriAuthorityParser();
+            const parser: IAuthorityUriComponentParser =
+              new AuthorityUriComponentParser();
 
-            const expected: IUriAuthorityParsingResult = {
+            const expected: IAuthorityUriComponentParsingResult = {
               userInfo: undefined,
               host,
               port: undefined,

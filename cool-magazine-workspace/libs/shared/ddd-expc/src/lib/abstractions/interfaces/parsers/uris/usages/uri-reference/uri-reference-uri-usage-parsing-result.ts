@@ -4,9 +4,9 @@ import {
   IPathUriComponent,
   IQueryUriComponent,
   ISchemeUriComponent,
-} from './uri-components';
+} from '../../components';
 
-export interface IUriReferenceParsingResult
+export interface IUriReferenceUriUsageParsingResult
   extends ISchemeUriComponent,
     IAuthorityUriComponent,
     IPathUriComponent,
