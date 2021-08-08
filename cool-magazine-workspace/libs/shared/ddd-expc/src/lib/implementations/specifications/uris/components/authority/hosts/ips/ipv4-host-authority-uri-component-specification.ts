@@ -3,13 +3,15 @@ import {
   IHostAuthorityUriComponentPart,
 } from '@bh2old/ddd-expc/abstractions';
 
-type IPV4HostUriAuthorityCandidate = IHostAuthorityUriComponentPart | string;
+type IPv4HostAuthorityUriComponentCandidate =
+  | IHostAuthorityUriComponentPart
+  | string;
 
-export class IPV4HostUriAuthoritySpecification extends CompositeSpecification<IPV4HostUriAuthorityCandidate> {
+export class IPv4HostAuthorityUriComponentSpecification extends CompositeSpecification<IPv4HostAuthorityUriComponentCandidate> {
   private readonly _ipv4RegExpPattern = '^(?<ipv4>(\\d{1,3}\\.){3}\\d{1,3})$';
   private readonly _ipv4RegExp = new RegExp(this._ipv4RegExpPattern);
 
-  isSatisfiedBy(candidate: IPV4HostUriAuthorityCandidate): boolean {
+  isSatisfiedBy(candidate: IPv4HostAuthorityUriComponentCandidate): boolean {
     const host = typeof candidate === 'object' ? candidate.host : candidate;
 
     return this._ipv4RegExp.test(host);

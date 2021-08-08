@@ -1,21 +1,23 @@
-import { RegNameUrlSpecification } from '../reg-name-url-specification';
+import { DNSRegNameHostAuthorityUriComponentSpecification } from '../dns-reg-name-host-authority-uri-component-specification';
 
-describe('RegNameUrlSpecification', () => {
+describe('DNSRegNameHostAuthorityUriComponentSpecification', () => {
   describe('instance creation', () => {
     test('should return instance', () => {
       // Arrange
       // Act
-      const instance = new RegNameUrlSpecification();
+      const instance = new DNSRegNameHostAuthorityUriComponentSpecification();
 
       // Assert
-      expect(instance).toBeInstanceOf(RegNameUrlSpecification);
+      expect(instance).toBeInstanceOf(
+        DNSRegNameHostAuthorityUriComponentSpecification
+      );
     });
   });
   describe('check requirements', () => {
     test('should return true if reg-name is valid and no punycode', () => {
       // Arrange
       const domain = '123.4-four.domain.dom';
-      const instance = new RegNameUrlSpecification();
+      const instance = new DNSRegNameHostAuthorityUriComponentSpecification();
 
       // Act
       const result = instance.isSatisfiedBy(domain);
@@ -27,7 +29,7 @@ describe('RegNameUrlSpecification', () => {
     test('should return true if reg-name is valid and contains punycode', () => {
       // Arrange
       const domain = 'xn--90aga7a7b.xn--b1aew.xn--p1ai';
-      const instance = new RegNameUrlSpecification();
+      const instance = new DNSRegNameHostAuthorityUriComponentSpecification();
 
       // Act
       const result = instance.isSatisfiedBy(domain);
@@ -46,7 +48,7 @@ describe('RegNameUrlSpecification', () => {
         subdomain += index;
       }
       const domain = subdomain + '.dom';
-      const instance = new RegNameUrlSpecification();
+      const instance = new DNSRegNameHostAuthorityUriComponentSpecification();
 
       // Act
       const result = instance.isSatisfiedBy(domain);
@@ -58,7 +60,7 @@ describe('RegNameUrlSpecification', () => {
     test('should return false if domain or subdomains do not contain characters', () => {
       // Arrange
       const domain = '.dom';
-      const instance = new RegNameUrlSpecification();
+      const instance = new DNSRegNameHostAuthorityUriComponentSpecification();
 
       // Act
       const result = instance.isSatisfiedBy(domain);
@@ -77,7 +79,7 @@ describe('RegNameUrlSpecification', () => {
         topDomain += index;
       }
       const domain = 'subdom.' + topDomain;
-      const instance = new RegNameUrlSpecification();
+      const instance = new DNSRegNameHostAuthorityUriComponentSpecification();
 
       // Act
       const result = instance.isSatisfiedBy(domain);
@@ -89,7 +91,7 @@ describe('RegNameUrlSpecification', () => {
     test('should return false if top domain contains less then 2 characters', () => {
       // Arrange
       const domain = 'subdom.d';
-      const instance = new RegNameUrlSpecification();
+      const instance = new DNSRegNameHostAuthorityUriComponentSpecification();
 
       // Act
       const result = instance.isSatisfiedBy(domain);
@@ -101,7 +103,7 @@ describe('RegNameUrlSpecification', () => {
     test('should return false if domain or subdomains contain "-" at the beginning of the segment', () => {
       // Arrange
       const subDomain = '-subdom.dom';
-      const instance = new RegNameUrlSpecification();
+      const instance = new DNSRegNameHostAuthorityUriComponentSpecification();
 
       // Act
       const result = instance.isSatisfiedBy(subDomain);
@@ -113,7 +115,7 @@ describe('RegNameUrlSpecification', () => {
     test('should return false if domain or subdomains contain "-" at end of the segment', () => {
       // Arrange
       const subDomain = 'subdom.domain-.dom';
-      const instance = new RegNameUrlSpecification();
+      const instance = new DNSRegNameHostAuthorityUriComponentSpecification();
 
       // Act
       const result = instance.isSatisfiedBy(subDomain);
@@ -125,7 +127,7 @@ describe('RegNameUrlSpecification', () => {
     test('should return false if top domain contain "-" at the beginning of the segment', () => {
       // Arrange
       const subDomain = 'subdom.-dom';
-      const instance = new RegNameUrlSpecification();
+      const instance = new DNSRegNameHostAuthorityUriComponentSpecification();
 
       // Act
       const result = instance.isSatisfiedBy(subDomain);
@@ -137,7 +139,7 @@ describe('RegNameUrlSpecification', () => {
     test('should return false if top domain contain "-" at end of the segment', () => {
       // Arrange
       const subDomain = 'subdom.dom-';
-      const instance = new RegNameUrlSpecification();
+      const instance = new DNSRegNameHostAuthorityUriComponentSpecification();
 
       // Act
       const result = instance.isSatisfiedBy(subDomain);

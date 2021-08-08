@@ -1,6 +1,6 @@
-import { IPV6HostUriAuthoritySpecification } from '../ipv6-host-uri-authority-specification';
+import { IPv6HostAuthorityUriComponentSpecification } from '../ipv6-host-authority-uri-component-specification';
 
-describe('IPV6HostUriAuthoritySpecification', () => {
+describe('IPv6HostAuthorityUriComponentSpecification', () => {
   function generateCases(h16: string, ls32DoubleH16: string, ls32Ipv4: string) {
     return {
       ...generateCaseVariants(h16, ls32DoubleH16, ls32Ipv4, false, 6),
@@ -183,10 +183,12 @@ describe('IPV6HostUriAuthoritySpecification', () => {
     test('should return instance', () => {
       // Arrange
       // Act
-      const instance = new IPV6HostUriAuthoritySpecification();
+      const instance = new IPv6HostAuthorityUriComponentSpecification();
 
       // Assert
-      expect(instance).toBeInstanceOf(IPV6HostUriAuthoritySpecification);
+      expect(instance).toBeInstanceOf(
+        IPv6HostAuthorityUriComponentSpecification
+      );
     });
   });
 
@@ -199,7 +201,7 @@ describe('IPV6HostUriAuthoritySpecification', () => {
         const ls32DoubleH16 = `${h16}:${h16}`;
         const ls32Ipv4 = ipv4;
         const cases = generateCases(h16, ls32DoubleH16, ls32Ipv4);
-        const instance = new IPV6HostUriAuthoritySpecification();
+        const instance = new IPv6HostAuthorityUriComponentSpecification();
         type Results = { [key: string]: { ipv6: string; result: boolean } };
         const results: Results = {};
 
@@ -231,7 +233,7 @@ describe('IPV6HostUriAuthoritySpecification', () => {
         const ls32DoubleH16 = `${h16}:${h16}`;
         const ls32Ipv4 = ipv4;
         const cases = generateCases(h16, ls32DoubleH16, ls32Ipv4);
-        const instance = new IPV6HostUriAuthoritySpecification();
+        const instance = new IPv6HostAuthorityUriComponentSpecification();
         type Results = { [key: string]: { ipv6: string; result: boolean } };
         const results: Results = {};
 
@@ -266,7 +268,7 @@ describe('IPV6HostUriAuthoritySpecification', () => {
         const ls32DoubleH16 = `${h16}:${h16}`;
         const ls32Ipv4 = ipv4;
         const cases = generateCases(h16, ls32DoubleH16, ls32Ipv4);
-        const instance = new IPV6HostUriAuthoritySpecification();
+        const instance = new IPv6HostAuthorityUriComponentSpecification();
         type Results = { [key: string]: { ipv6: string; result: boolean } };
         const results: Results = {};
 
@@ -302,7 +304,7 @@ describe('IPV6HostUriAuthoritySpecification', () => {
         const ls32DoubleH16 = `${h16}:${h16}`;
         const ls32Ipv4 = ipv4;
         const cases = generateCases(h16, ls32DoubleH16, ls32Ipv4);
-        const instance = new IPV6HostUriAuthoritySpecification();
+        const instance = new IPv6HostAuthorityUriComponentSpecification();
         type Results = { [key: string]: { ipv6: string; result: boolean } };
         const results: Results = {};
 

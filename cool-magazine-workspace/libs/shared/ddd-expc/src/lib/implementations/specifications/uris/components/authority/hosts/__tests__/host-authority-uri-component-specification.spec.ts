@@ -1,4 +1,4 @@
-import { HostUriAuthoritySpecification } from '../host-uri-authority-specification';
+import { HostAuthorityUriComponentSpecification } from '../host-authority-uri-component-specification';
 
 describe('HostUriAuthoritySpecification', () => {
   describe('instance creation', () => {
@@ -8,10 +8,10 @@ describe('HostUriAuthoritySpecification', () => {
       const isCaseSensitive = true;
 
       // Act
-      const instance = new HostUriAuthoritySpecification(host, isCaseSensitive);
+      const instance = new HostAuthorityUriComponentSpecification(host, isCaseSensitive);
 
       // Assert
-      expect(instance).toBeInstanceOf(HostUriAuthoritySpecification);
+      expect(instance).toBeInstanceOf(HostAuthorityUriComponentSpecification);
     });
 
     test('should return instance if only host argument is specified', () => {
@@ -19,10 +19,10 @@ describe('HostUriAuthoritySpecification', () => {
       const host = 'domain.com';
 
       // Act
-      const instance = new HostUriAuthoritySpecification(host);
+      const instance = new HostAuthorityUriComponentSpecification(host);
 
       // Assert
-      expect(instance).toBeInstanceOf(HostUriAuthoritySpecification);
+      expect(instance).toBeInstanceOf(HostAuthorityUriComponentSpecification);
     });
   });
 
@@ -33,7 +33,7 @@ describe('HostUriAuthoritySpecification', () => {
         const requiredHost = 'domain.COM';
         const candidateHost = requiredHost;
         const isCaseSensitive = true;
-        const instance = new HostUriAuthoritySpecification(
+        const instance = new HostAuthorityUriComponentSpecification(
           requiredHost,
           isCaseSensitive
         );
@@ -49,7 +49,7 @@ describe('HostUriAuthoritySpecification', () => {
         // Arrange
         const requiredHost = 'domain.com';
         const candidateHost = requiredHost.toUpperCase();
-        const instance = new HostUriAuthoritySpecification(requiredHost);
+        const instance = new HostAuthorityUriComponentSpecification(requiredHost);
 
         // Act
         const result = instance.isSatisfiedBy(candidateHost);
@@ -62,7 +62,7 @@ describe('HostUriAuthoritySpecification', () => {
         // Arrange
         const requiredHost = '192.168.0.1';
         const candidateHost = '127.0.0.1';
-        const instance = new HostUriAuthoritySpecification(requiredHost);
+        const instance = new HostAuthorityUriComponentSpecification(requiredHost);
 
         // Act
         const result = instance.isSatisfiedBy(candidateHost);
@@ -76,7 +76,7 @@ describe('HostUriAuthoritySpecification', () => {
         const requiredHost = 'domain.com';
         const candidateHost = requiredHost.toUpperCase();
         const isCaseSensitive = true;
-        const instance = new HostUriAuthoritySpecification(
+        const instance = new HostAuthorityUriComponentSpecification(
           requiredHost,
           isCaseSensitive
         );
@@ -95,7 +95,7 @@ describe('HostUriAuthoritySpecification', () => {
         const requiredHost = 'domain.COM';
         const candidateHost = { host: requiredHost };
         const isCaseSensitive = true;
-        const instance = new HostUriAuthoritySpecification(
+        const instance = new HostAuthorityUriComponentSpecification(
           requiredHost,
           isCaseSensitive
         );
@@ -112,7 +112,7 @@ describe('HostUriAuthoritySpecification', () => {
         const requiredHost = 'domain.com';
         const candidateHost = { host: requiredHost.toUpperCase() };
 
-        const instance = new HostUriAuthoritySpecification(requiredHost);
+        const instance = new HostAuthorityUriComponentSpecification(requiredHost);
 
         // Act
         const result = instance.isSatisfiedBy(candidateHost);
@@ -125,7 +125,7 @@ describe('HostUriAuthoritySpecification', () => {
         // Arrange
         const requiredHost = 'domain.com';
         const candidateHost = { host: '192.168.0.1' };
-        const instance = new HostUriAuthoritySpecification(requiredHost);
+        const instance = new HostAuthorityUriComponentSpecification(requiredHost);
 
         // Act
         const result = instance.isSatisfiedBy(candidateHost);
@@ -139,7 +139,7 @@ describe('HostUriAuthoritySpecification', () => {
         const requiredHost = 'domain.com';
         const candidateHost = { host: requiredHost.toUpperCase() };
         const isCaseSensitive = true;
-        const instance = new HostUriAuthoritySpecification(
+        const instance = new HostAuthorityUriComponentSpecification(
           requiredHost,
           isCaseSensitive
         );

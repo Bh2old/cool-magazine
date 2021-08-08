@@ -1,15 +1,16 @@
-import { LocalhostIPv4HostUriAuthoritySpecification } from '../localhost-ipv4-host-uri-authority-specification';
+import { LocalhostIPv4HostAuthorityUriComponentSpecification } from '../localhost-ipv4-host-authority-uri-component-specification';
 
-describe('LocalhostIPv4HostUriAuthoritySpecification', () => {
+describe('LocalhostIPv4HostAuthorityUriComponentSpecification', () => {
   describe('instance creation', () => {
     test('should return instance', () => {
       // Arrange
       // Act
-      const instance = new LocalhostIPv4HostUriAuthoritySpecification();
+      const instance =
+        new LocalhostIPv4HostAuthorityUriComponentSpecification();
 
       // Assert
       expect(instance).toBeInstanceOf(
-        LocalhostIPv4HostUriAuthoritySpecification
+        LocalhostIPv4HostAuthorityUriComponentSpecification
       );
     });
   });
@@ -19,7 +20,8 @@ describe('LocalhostIPv4HostUriAuthoritySpecification', () => {
       test('should return true if the candidate is equal to the required host', () => {
         // Arrange
         const candidateHost = '127.0.0.1';
-        const instance = new LocalhostIPv4HostUriAuthoritySpecification();
+        const instance =
+          new LocalhostIPv4HostAuthorityUriComponentSpecification();
 
         // Act
         const result = instance.isSatisfiedBy(candidateHost);
@@ -31,7 +33,8 @@ describe('LocalhostIPv4HostUriAuthoritySpecification', () => {
       test('should return false if the candidate is not equal to the required host', () => {
         // Arrange
         const candidateHost = '192.168.0.1';
-        const instance = new LocalhostIPv4HostUriAuthoritySpecification();
+        const instance =
+          new LocalhostIPv4HostAuthorityUriComponentSpecification();
 
         // Act
         const result = instance.isSatisfiedBy(candidateHost);
@@ -45,7 +48,8 @@ describe('LocalhostIPv4HostUriAuthoritySpecification', () => {
       test('should return true if the candidate is equal to the required host', () => {
         // Arrange
         const candidateHost = { host: '127.0.0.1' };
-        const instance = new LocalhostIPv4HostUriAuthoritySpecification();
+        const instance =
+          new LocalhostIPv4HostAuthorityUriComponentSpecification();
 
         // Act
         const result = instance.isSatisfiedBy(candidateHost);
@@ -57,7 +61,8 @@ describe('LocalhostIPv4HostUriAuthoritySpecification', () => {
       test('should return false if the candidate is not equal to the required host', () => {
         // Arrange
         const candidateHost = { host: '192.168.0.1' };
-        const instance = new LocalhostIPv4HostUriAuthoritySpecification();
+        const instance =
+          new LocalhostIPv4HostAuthorityUriComponentSpecification();
 
         // Act
         const result = instance.isSatisfiedBy(candidateHost);

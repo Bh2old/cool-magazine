@@ -1,21 +1,23 @@
-import { IPV4HostUriAuthoritySpecification } from '../ipv4-host-uri-authority-specification';
+import { IPv4HostAuthorityUriComponentSpecification } from '../ipv4-host-authority-uri-component-specification';
 
-describe('IPV4HostUriAuthoritySpecification', () => {
+describe('IPv4HostAuthorityUriComponentSpecification', () => {
   describe('instance creation', () => {
     test('should return instance', () => {
       // Arrange
       // Act
-      const instance = new IPV4HostUriAuthoritySpecification();
+      const instance = new IPv4HostAuthorityUriComponentSpecification();
 
       // Assert
-      expect(instance).toBeInstanceOf(IPV4HostUriAuthoritySpecification);
+      expect(instance).toBeInstanceOf(
+        IPv4HostAuthorityUriComponentSpecification
+      );
     });
   });
   describe('check requirements', () => {
     test('should return true if candidate matches ipv4', () => {
       // Arrange
       const candidateHost = '127.0.0.1';
-      const instance = new IPV4HostUriAuthoritySpecification();
+      const instance = new IPv4HostAuthorityUriComponentSpecification();
 
       // Act
       const result = instance.isSatisfiedBy(candidateHost);
@@ -27,7 +29,7 @@ describe('IPV4HostUriAuthoritySpecification', () => {
     test('should return false if candidate does not match ipv4', () => {
       // Arrange
       const candidateHost = '1.2.3.ain';
-      const instance = new IPV4HostUriAuthoritySpecification();
+      const instance = new IPv4HostAuthorityUriComponentSpecification();
 
       // Act
       const result = instance.isSatisfiedBy(candidateHost);

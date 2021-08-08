@@ -3,9 +3,11 @@ import {
   IHostAuthorityUriComponentPart,
 } from '@bh2old/ddd-expc/abstractions';
 
-type LocalhostRegNameHostCandidate = IHostAuthorityUriComponentPart | string;
+type HostAuthorityUriComponentCandidate =
+  | IHostAuthorityUriComponentPart
+  | string;
 
-export class HostUriAuthoritySpecification extends CompositeSpecification<LocalhostRegNameHostCandidate> {
+export class HostAuthorityUriComponentSpecification extends CompositeSpecification<HostAuthorityUriComponentCandidate> {
   private readonly _host: string;
   private readonly _isCaseSensitive: boolean;
 
@@ -15,7 +17,7 @@ export class HostUriAuthoritySpecification extends CompositeSpecification<Localh
     this._isCaseSensitive = isCaseSensitive;
   }
 
-  isSatisfiedBy(candidate: LocalhostRegNameHostCandidate): boolean {
+  isSatisfiedBy(candidate: HostAuthorityUriComponentCandidate): boolean {
     const host = typeof candidate === 'object' ? candidate.host : candidate;
 
     return this._isCaseSensitive

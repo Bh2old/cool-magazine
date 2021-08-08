@@ -1,15 +1,16 @@
-import { LocalhostRegNameHostUriAuthoritySpecification } from "../localhost-reg-name-host-uri-authority-specification";
+import { LocalhostRegNameHostAuthorityUriComponentSpecification } from '../localhost-reg-name-host-authority-uri-component-specification';
 
-describe('LocalhostRegNameHostUriAuthoritySpecification', () => {
+describe('LocalhostRegNameHostAuthorityUriComponentSpecification', () => {
   describe('instance creation', () => {
     test('should return instance', () => {
       // Arrange
       // Act
-      const instance = new LocalhostRegNameHostUriAuthoritySpecification();
+      const instance =
+        new LocalhostRegNameHostAuthorityUriComponentSpecification();
 
       // Assert
       expect(instance).toBeInstanceOf(
-        LocalhostRegNameHostUriAuthoritySpecification
+        LocalhostRegNameHostAuthorityUriComponentSpecification
       );
     });
 
@@ -18,13 +19,14 @@ describe('LocalhostRegNameHostUriAuthoritySpecification', () => {
       const isCaseSensitive = true;
 
       // Act
-      const instance = new LocalhostRegNameHostUriAuthoritySpecification(
-        isCaseSensitive
-      );
+      const instance =
+        new LocalhostRegNameHostAuthorityUriComponentSpecification(
+          isCaseSensitive
+        );
 
       // Assert
       expect(instance).toBeInstanceOf(
-        LocalhostRegNameHostUriAuthoritySpecification
+        LocalhostRegNameHostAuthorityUriComponentSpecification
       );
     });
   });
@@ -35,9 +37,10 @@ describe('LocalhostRegNameHostUriAuthoritySpecification', () => {
         // Arrange
         const candidateHost = 'localhost';
         const isCaseSensitive = true;
-        const instance = new LocalhostRegNameHostUriAuthoritySpecification(
-          isCaseSensitive
-        );
+        const instance =
+          new LocalhostRegNameHostAuthorityUriComponentSpecification(
+            isCaseSensitive
+          );
 
         // Act
         const result = instance.isSatisfiedBy(candidateHost);
@@ -49,7 +52,8 @@ describe('LocalhostRegNameHostUriAuthoritySpecification', () => {
       test('should return true if the candidate is equal to the required case-insensitive host', () => {
         // Arrange
         const candidateHost = 'LOCALHOST';
-        const instance = new LocalhostRegNameHostUriAuthoritySpecification();
+        const instance =
+          new LocalhostRegNameHostAuthorityUriComponentSpecification();
 
         // Act
         const result = instance.isSatisfiedBy(candidateHost);
@@ -62,9 +66,10 @@ describe('LocalhostRegNameHostUriAuthoritySpecification', () => {
         // Arrange
         const candidateHost = 'LOCALHOST';
         const isCaseSensitive = true;
-        const instance = new LocalhostRegNameHostUriAuthoritySpecification(
-          isCaseSensitive
-        );
+        const instance =
+          new LocalhostRegNameHostAuthorityUriComponentSpecification(
+            isCaseSensitive
+          );
 
         // Act
         const result = instance.isSatisfiedBy(candidateHost);
@@ -76,7 +81,8 @@ describe('LocalhostRegNameHostUriAuthoritySpecification', () => {
       test('should return false if the candidate is not equal to the required host', () => {
         // Arrange
         const candidateHost = '127.0.0.1';
-        const instance = new LocalhostRegNameHostUriAuthoritySpecification();
+        const instance =
+          new LocalhostRegNameHostAuthorityUriComponentSpecification();
 
         // Act
         const result = instance.isSatisfiedBy(candidateHost);
@@ -91,9 +97,10 @@ describe('LocalhostRegNameHostUriAuthoritySpecification', () => {
         // Arrange
         const candidateHost = { host: 'localhost' };
         const isCaseSensitive = true;
-        const instance = new LocalhostRegNameHostUriAuthoritySpecification(
-          isCaseSensitive
-        );
+        const instance =
+          new LocalhostRegNameHostAuthorityUriComponentSpecification(
+            isCaseSensitive
+          );
 
         // Act
         const result = instance.isSatisfiedBy(candidateHost);
@@ -105,7 +112,8 @@ describe('LocalhostRegNameHostUriAuthoritySpecification', () => {
       test('should return true if the candidate is equal to the required case-insensitive host', () => {
         // Arrange
         const candidateHost = { host: 'LOCALHOST' };
-        const instance = new LocalhostRegNameHostUriAuthoritySpecification();
+        const instance =
+          new LocalhostRegNameHostAuthorityUriComponentSpecification();
 
         // Act
         const result = instance.isSatisfiedBy(candidateHost);
@@ -118,9 +126,10 @@ describe('LocalhostRegNameHostUriAuthoritySpecification', () => {
         // Arrange
         const candidateHost = { host: 'LOCALHOST' };
         const isCaseSensitive = true;
-        const instance = new LocalhostRegNameHostUriAuthoritySpecification(
-          isCaseSensitive
-        );
+        const instance =
+          new LocalhostRegNameHostAuthorityUriComponentSpecification(
+            isCaseSensitive
+          );
 
         // Act
         const result = instance.isSatisfiedBy(candidateHost);
@@ -132,7 +141,8 @@ describe('LocalhostRegNameHostUriAuthoritySpecification', () => {
       test('should return false if the candidate is not equal to the required host', () => {
         // Arrange
         const candidateHost = '127.0.0.1';
-        const instance = new LocalhostRegNameHostUriAuthoritySpecification();
+        const instance =
+          new LocalhostRegNameHostAuthorityUriComponentSpecification();
 
         // Act
         const result = instance.isSatisfiedBy(candidateHost);

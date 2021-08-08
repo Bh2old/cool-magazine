@@ -3,9 +3,11 @@ import {
   IHostAuthorityUriComponentPart,
 } from '@bh2old/ddd-expc/abstractions';
 
-type IPV6HostUriAuthorityCandidate = IHostAuthorityUriComponentPart | string;
+type IPv6HostAuthorityUriComponentCandidate =
+  | IHostAuthorityUriComponentPart
+  | string;
 
-export class IPV6HostUriAuthoritySpecification extends CompositeSpecification<IPV6HostUriAuthorityCandidate> {
+export class IPv6HostAuthorityUriComponentSpecification extends CompositeSpecification<IPv6HostAuthorityUriComponentCandidate> {
   //rfc3986
   private readonly _doubleColon = '\\:\\:';
 
@@ -119,7 +121,7 @@ export class IPV6HostUriAuthoritySpecification extends CompositeSpecification<IP
     this._ipv6HostUriAuthorityRegExpPattern
   );
 
-  isSatisfiedBy(candidate: IPV6HostUriAuthorityCandidate): boolean {
+  isSatisfiedBy(candidate: IPv6HostAuthorityUriComponentCandidate): boolean {
     const host = typeof candidate === 'object' ? candidate.host : candidate;
 
     return this._ipv6HostUriAuthorityRegExp.test(host);
