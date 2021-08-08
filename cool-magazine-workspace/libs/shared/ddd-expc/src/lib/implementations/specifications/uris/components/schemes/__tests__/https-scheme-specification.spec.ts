@@ -26,7 +26,7 @@ describe('HttpsSchemeUriComponentSpecification', () => {
   });
 
   describe('check requirements', () => {
-    describe('when required scheme is specified as string type', () => {
+    describe('when candidate scheme is specified as string type', () => {
       test('should return true if the candidate is equal to the required case-sensitive scheme', () => {
         // Arrange
         const candidateScheme = 'https';
@@ -82,7 +82,7 @@ describe('HttpsSchemeUriComponentSpecification', () => {
       });
     });
 
-    describe('when required scheme is specified as object type', () => {
+    describe('when candidate scheme is specified as object type', () => {
       test('should return true if the candidate is equal to the required case-sensitive scheme', () => {
         // Arrange
         const candidateScheme = { scheme: 'https' };

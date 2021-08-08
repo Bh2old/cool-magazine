@@ -44,7 +44,7 @@ describe('LocalhostIPv4HostAuthorityUriComponentSpecification', () => {
       });
     });
 
-    describe('when required host is specified as object type', () => {
+    describe('when candidate host is specified as object type', () => {
       test('should return true if the candidate is equal to the required host', () => {
         // Arrange
         const candidateHost = { host: '127.0.0.1' };
