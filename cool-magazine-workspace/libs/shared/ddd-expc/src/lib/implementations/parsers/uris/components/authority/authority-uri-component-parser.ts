@@ -9,7 +9,7 @@ export class AuthorityUriComponentParser
 {
   private readonly _regExpPatternsAuthorityParts = {
     userInfo: '((?<userInfo>[^/?#]+)\\@)?',
-    host: '(?<host>(\\[[^/?#]+\\])|((\\d{1,3}\\.){3}\\d{1,3})|([^/?#:]+))',
+    host: '(?<host>(\\[[^@/?#]+\\])|((\\d{1,3}\\.){3}\\d{1,3})|([^@/?#:]+))',
     port: '(\\:(?<port>\\d+))?',
   } as const;
 
