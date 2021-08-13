@@ -18,14 +18,23 @@ import {
   UriReferenceUriUsageParser,
 } from '@bh2old/ddd-expc';
 
+type CheckResultCache = { readonly [candidate: string]: boolean };
 export class CreateUriRedirectUriSpecification extends CompositeSpecification<string> {
+  private readonly _checkResultCache: CheckResultCache = {};
   private readonly _uriReferenceUriUsageParser: IUriReferenceUriUsageParser =
     new UriReferenceUriUsageParser();
   private readonly _authorityUriComponentParser: IAuthorityUriComponentParser =
     new AuthorityUriComponentParser();
 
   isSatisfiedBy(candidate: string): boolean {
+    const cachedCheckResult = this._getCachedCheckResult(candidate);
+
+    if (cachedCheckResult !== null) {
+      return cachedCheckResult;
+    }
+
     const uriComponents = this._getUriComponents(candidate);
+
     if (uriComponents === null || !uriComponents.authority) {
       return false;
     }
@@ -68,6 +77,15 @@ export class CreateUriRedirectUriSpecification extends CompositeSpecification<st
         .isSatisfiedBy(finalUriComponents);
 
     return isSatisfied;
+  }
+
+  private _getCachedCheckResult(candidate: string) {
+    return Object.prototype.hasOwnProperty.call(
+      this._checkResultCache,
+      candidate
+    )
+      ? this._checkResultCache[candidate]
+      : null;
   }
 
   private _getUriComponents(uri: string) {
