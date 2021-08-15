@@ -29,8 +29,8 @@ export class ResponseType extends ValueObject {
     } as const;
   }
 
-  public static create(type: ResponseTypeVariants): ResponseType {
-    return new ResponseType(type);
+  public static create(variant: ResponseTypeVariants): ResponseType {
+    return new ResponseType(variant);
   }
 
   public static createMany(
