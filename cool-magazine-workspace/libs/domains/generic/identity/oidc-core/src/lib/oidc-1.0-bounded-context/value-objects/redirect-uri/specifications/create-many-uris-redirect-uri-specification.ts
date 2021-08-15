@@ -8,6 +8,10 @@ export class CreateManyUrisRedirectUriSpecification extends CompositeSpecificati
     new CreateUriRedirectUriSpecification();
 
   isSatisfiedBy(candidate: Set<string>): boolean {
+    if (candidate.size === 0) {
+      return false;
+    }
+
     for (const uri of candidate) {
       const isSatisfied =
         this._createUriRedirectUriSpecification.isSatisfiedBy(uri);

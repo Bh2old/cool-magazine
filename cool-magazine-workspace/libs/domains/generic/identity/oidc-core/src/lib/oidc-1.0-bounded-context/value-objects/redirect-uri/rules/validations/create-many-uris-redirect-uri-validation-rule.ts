@@ -7,6 +7,7 @@ export class CreateManyUrisRedirectUriValidationRule extends ValidationRule<
   constructor() {
     const specification = new CreateManyUrisRedirectUriSpecification();
     const rules = {
+      collection: 'at least one uri must be specified',
       scheme:
         'URIs must use the HTTPS scheme, not plain HTTP. Localhost URIs (including localhost IP address URIs) are exempt from this rule.',
       host: 'Hosts cannot be raw IP addresses. Localhost IP addresses are exempted from this rule.',

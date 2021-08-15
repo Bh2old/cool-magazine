@@ -34,6 +34,21 @@ describe('RedirectUrisPropertyClientMetadataCreateValuesSpecification', () => {
       expect(result).toBe(true);
     });
 
+    test('should return false if uris are not specified', () => {
+      // Arrange
+      const uris = {
+        redirectUris: new Set<string>(),
+      };
+      const instance =
+        new RedirectUrisPropertyClientMetadataCreateValuesSpecification();
+
+      // Act
+      const result = instance.isSatisfiedBy(uris);
+
+      // Assert
+      expect(result).toBe(false);
+    });
+
     test('should return false if at least one not localhost uri does not contain https scheme', () => {
       // Arrange
       const uris = {
