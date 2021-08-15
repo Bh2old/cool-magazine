@@ -26,6 +26,20 @@ export class CreateUriRedirectUriSpecification extends CompositeSpecification<st
   private readonly _authorityUriComponentParser: IAuthorityUriComponentParser =
     new AuthorityUriComponentParser();
 
+  private readonly _absoluteUrlSpecification = new AbsoluteUrlSpecification();
+  private readonly _dNSRegNameHostAuthorityUriComponentSpecification =
+    new DNSRegNameHostAuthorityUriComponentSpecification();
+  private readonly _httpsSchemeUriComponentSpecification =
+    new HttpsSchemeUriComponentSpecification();
+  private readonly _localhostIPv4HostAuthorityUriComponentSpecification =
+    new LocalhostIPv4HostAuthorityUriComponentSpecification();
+  private readonly _localhostRegNameHostAuthorityUriComponentSpecification =
+    new LocalhostRegNameHostAuthorityUriComponentSpecification();
+  private readonly _noTraversalPathUriComponentSpecification =
+    new NoTraversalPathUriComponentSpecification();
+  private readonly _noUserInfoAuthorityUriComponentSpecification =
+    new NoUserInfoAuthorityUriComponentSpecification();
+
   isSatisfiedBy(candidate: string): boolean {
     const cachedCheckResult = this._getCachedCheckResult(candidate);
 
@@ -99,22 +113,22 @@ export class CreateUriRedirectUriSpecification extends CompositeSpecification<st
   private _isSatisfiedCommonRequirementsForUriComponents(
     uri: IUriReferenceUriUsageParsingResult
   ) {
-    return new AbsoluteUrlSpecification()
-      .and(new NoTraversalPathUriComponentSpecification())
+    return this._absoluteUrlSpecification
+      .and(this._noTraversalPathUriComponentSpecification)
       .isSatisfiedBy(uri);
   }
 
   private _isSatisfiedCommonRequirementsForUriComponentAthority(
     host: IUserInfoAuthorityUriComponentPart
   ) {
-    return new NoUserInfoAuthorityUriComponentSpecification().isSatisfiedBy(
+    return this._noUserInfoAuthorityUriComponentSpecification.isSatisfiedBy(
       host
     );
   }
 
   private _getLocalhostSpecifications() {
-    return new LocalhostIPv4HostAuthorityUriComponentSpecification().or(
-      new LocalhostRegNameHostAuthorityUriComponentSpecification()
+    return this._localhostIPv4HostAuthorityUriComponentSpecification.or(
+      this._localhostRegNameHostAuthorityUriComponentSpecification
     );
   }
 
@@ -122,7 +136,7 @@ export class CreateUriRedirectUriSpecification extends CompositeSpecification<st
     return new DownCastSpecificationChainHelper<
       ISchemeUriComponent & IHostAuthorityUriComponentPart
     >()
-      .and(new HttpsSchemeUriComponentSpecification())
-      .and(new DNSRegNameHostAuthorityUriComponentSpecification());
+      .and(this._httpsSchemeUriComponentSpecification)
+      .and(this._dNSRegNameHostAuthorityUriComponentSpecification);
   }
 }
