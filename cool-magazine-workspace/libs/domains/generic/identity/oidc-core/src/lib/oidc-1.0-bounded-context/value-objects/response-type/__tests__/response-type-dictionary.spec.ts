@@ -51,7 +51,7 @@ describe('ResponseTypeDictionary', () => {
         // Arrange
         const responseTypeVariant = 'code';
         const newItem = ResponseType.create(responseTypeVariant);
-        const variantForItemForMutation = 'none';
+        const variantForItemForMutation = 'codeTokenIdToken';
         const itemForMutation = ResponseType.create(variantForItemForMutation);
         const iterableObject = [[responseTypeVariant, newItem]];
 
@@ -117,7 +117,7 @@ describe('ResponseTypeDictionary', () => {
       test('should return immutable instance if specified iterable object', () => {
         // Arrange
         const responseTypeVariant = 'code';
-        const variantForItemForMutation = 'none';
+        const variantForItemForMutation = 'codeTokenIdToken';
         const iterableObject: ResponseTypeVariants[] = [responseTypeVariant];
 
         // Act
@@ -177,7 +177,7 @@ describe('ResponseTypeDictionary', () => {
     test('should return false if key not exists', () => {
       // Arrange
       const dictionary = new ResponseTypeDictionary();
-      const notAddedResponseTypeVariant = 'none';
+      const notAddedResponseTypeVariant = 'codeTokenIdToken';
       const addedResponseTypeVariant = 'code';
       const newItem = ResponseType.create(addedResponseTypeVariant);
       dictionary.add(newItem);
@@ -265,7 +265,7 @@ describe('ResponseTypeDictionary', () => {
       // Arrange
       const responseTypeVariant = 'code';
       const newItem = ResponseType.create(responseTypeVariant);
-      const variantForItemForMutation = 'none';
+      const variantForItemForMutation = 'codeTokenIdToken';
       const itemForMutation = ResponseType.create(variantForItemForMutation);
       const iterableObject = [[responseTypeVariant, newItem]];
       const dictionary = new ResponseTypeDictionary(

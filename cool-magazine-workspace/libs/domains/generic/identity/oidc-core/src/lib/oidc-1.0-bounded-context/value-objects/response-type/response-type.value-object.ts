@@ -17,10 +17,12 @@ export class ResponseType extends ValueObject {
   }
 
   private static readonly _RESPONSE_TYPES_BY_VARIANTS = {
-    codeIdToken: 'code id_token',
     code: 'code',
     idToken: 'id_token',
-    none: 'none',
+    tokenIdToken: 'token id_token',
+    codeIdToken: 'code id_token',
+    codeToken: 'code token',
+    codeTokenIdToken: 'code token id_token',
   } as const;
 
   public static get RESPONSE_TYPES_BY_VARIANTS() {
