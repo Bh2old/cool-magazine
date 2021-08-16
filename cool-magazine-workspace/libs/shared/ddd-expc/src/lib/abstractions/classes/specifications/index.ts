@@ -5,4 +5,5 @@ export * from './not-specification';
 export * from './or-not-specification';
 export * from './or-specification';
 export * from './down-cast-specification-chain-helper';
+export * from './quick-specification';
 export * from './specification-rule';
