@@ -3,7 +3,7 @@ import { GrantType } from '../grant-type';
 import { RedirectUri } from '../redirect-uri';
 import { ResponseType } from '../response-type';
 import { IClientMetadataCreateValues } from './models';
-
+import { ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification } from './specifications';
 export class ClientMetadata extends ValueObject {
   private readonly _redirectUris: RedirectUri[];
   public get redirectUrisValues(): Readonly<string[]> {
@@ -34,17 +34,15 @@ export class ClientMetadata extends ValueObject {
   static create(
     clientMetadataCreateValues: IClientMetadataCreateValues
   ): ClientMetadata {
-    const { redirectUris, responseTypeVariants, grantTypeVariants } =
-      clientMetadataCreateValues;
-
+    const {
+      redirectUris,
+      responseTypeVariants = ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification.DEFAULT_RESPONSE_TYPE_VARIANTS,
+      grantTypeVariants = ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification.DEFAULT_GRANT_TYPE_VARIANTS,
+    } = clientMetadataCreateValues;
     return new ClientMetadata(
       RedirectUri.createMany(redirectUris),
-      responseTypeVariants
-        ? ResponseType.createMany(responseTypeVariants)
-        : [ResponseType.createAsDefault()],
-      grantTypeVariants
-        ? GrantType.createMany(grantTypeVariants)
-        : [GrantType.createAsDefault()]
+      ResponseType.createMany(responseTypeVariants),
+      GrantType.createMany(grantTypeVariants)
     );
   }
 }
