@@ -121,6 +121,46 @@ describe('Dictionary', () => {
     });
   });
 
+  describe('check for the existence of a keys', () => {
+    test('should return true if keys exists', () => {
+      // Arrange
+      const items: Iterable<[number, string]> = [
+        [1, 'one'],
+        [2, 'two'],
+      ];
+      const dictionary = new Dictionary<number, string>(items);
+      const keys = (items as [number, string][]).map((item) => {
+        const [key] = item;
+        return key;
+      });
+
+      // Act
+      const result = dictionary.hasKeys(keys);
+
+      // Assert
+      expect(result).toBe(true);
+    });
+
+    test('should return false if keys not exists', () => {
+      // Arrange
+      const items: Iterable<[number, string]> = [
+        [1, 'one'],
+        [2, 'two'],
+      ];
+      const dictionary = new Dictionary<number, string>(items);
+      const keys = (items as [number, string][]).map((item) => {
+        const [key] = item;
+        return key + 1;
+      });
+
+      // Act
+      const result = dictionary.hasKeys(keys);
+
+      // Assert
+      expect(result).toBe(false);
+    });
+  });
+
   describe('getting item', () => {
     test('should return item if key exist', () => {
       // Arrange

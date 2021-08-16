@@ -29,6 +29,15 @@ export class Dictionary<TKey, TValue> implements Iterable<[TKey, TValue]> {
     return this._map.has(key);
   }
 
+  hasKeys(keys: Iterable<TKey>): boolean {
+    for (const key of keys) {
+      if (!this._map.has(key)) {
+        return false;
+      }
+    }
+    return true;
+  }
+  
   get(key: TKey): TValue | undefined {
     return this._map.get(key);
   }
