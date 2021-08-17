@@ -7,18 +7,9 @@ export class CreateManyVariantsResponseTypeValidationRule extends ValidationRule
 > {
   constructor() {
     const specification = new CreateManyVariantsResponseTypeSpecification();
-    const rules = {
-      collection: 'at least one variant must be specified',
-    };
-
-    const message = Object.entries(rules)
-      .reduce((rulesText, rule, index) => {
-        const [ruleName, ruleDescription] = rule;
-        return (rulesText += `${index + 1}) ${ruleName}: ${ruleDescription} `);
-      }, '')
-      .trim();
-
+    const message = `collection: 'at least one variant must be specified'`;
     const property = 'variants';
+
     super(specification, message, property);
   }
 }
