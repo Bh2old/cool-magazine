@@ -7,6 +7,8 @@ export class GrantTypeVariantsPropertyClientMetadataCreateValuesValidationRule e
     const rules = {
       property: 'must be either collection or undefined',
       collection: 'at least one uri must be specified',
+      variants:
+        'must satisfy ResponseTypeVariants to GrantTypeVariants correspondence',
     };
 
     const message = Object.entries(rules)
