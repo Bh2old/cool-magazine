@@ -46,8 +46,4 @@ export class ResponseType extends ValueObject {
 
     return responseTypes;
   }
-
-  public static createAsDefault(): ResponseType {
-    return new ResponseType('code');
-  }
 }

@@ -134,7 +134,7 @@ describe('ResponseTypeDictionary', () => {
     test('should return same instance of ResponseTypeDictionary if uniq type', () => {
       // Arrange
       const dictionary = new ResponseTypeDictionary();
-      const newItem = ResponseType.createAsDefault();
+      const newItem = ResponseType.create('code');
 
       // Act
       const result = dictionary.add(newItem);
