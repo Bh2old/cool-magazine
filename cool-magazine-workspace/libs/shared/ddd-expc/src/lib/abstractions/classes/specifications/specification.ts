@@ -2,7 +2,7 @@ import { CompositeSpecification } from './composite-specification';
 
 type IsSatisfiedByExpression<TSpecified> = (candidate: TSpecified) => boolean;
 
-export class QuickSpecification<
+export class Specification<
   TSpecified
 > extends CompositeSpecification<TSpecified> {
   private readonly _isSatisfiedByExpression: IsSatisfiedByExpression<TSpecified>;

@@ -1,4 +1,4 @@
-import { CompositeSpecification, QuickSpecification } from '@bh2old/ddd-expc';
+import { CompositeSpecification, Specification } from '@bh2old/ddd-expc';
 import {
   CreateManyVariantsGrantTypeSpecification,
   GrantTypeVariants,
@@ -8,7 +8,7 @@ import { ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification } fr
 
 export class GrantTypeVariantsPropertyClientMetadataCreateValuesSpecification extends CompositeSpecification<IClientMetadataCreateValues> {
   private readonly _createManyVariantsGrantType =
-    new QuickSpecification<IClientMetadataCreateValues>(
+    new Specification<IClientMetadataCreateValues>(
       (candidate: IClientMetadataCreateValues) => {
         return new CreateManyVariantsGrantTypeSpecification().isSatisfiedBy(
           candidate.grantTypeVariants as Set<GrantTypeVariants>
@@ -17,7 +17,7 @@ export class GrantTypeVariantsPropertyClientMetadataCreateValuesSpecification ex
     );
 
   private readonly _undefinedGrantTypeVariants =
-    new QuickSpecification<IClientMetadataCreateValues>(
+    new Specification<IClientMetadataCreateValues>(
       (candidate: IClientMetadataCreateValues) => {
         return candidate.grantTypeVariants === undefined;
       }
