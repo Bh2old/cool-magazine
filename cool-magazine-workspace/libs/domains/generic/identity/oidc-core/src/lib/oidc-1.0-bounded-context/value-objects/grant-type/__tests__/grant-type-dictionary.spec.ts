@@ -129,7 +129,7 @@ describe('GrantTypeDictionary', () => {
     test('should return same instance of GrantTypeDictionary if uniq type', () => {
       // Arrange
       const dictionary = new GrantTypeDictionary();
-      const newItem = GrantType.createAsDefault();
+      const newItem = GrantType.create('authorizationCode');
 
       // Act
       const result = dictionary.add(newItem);

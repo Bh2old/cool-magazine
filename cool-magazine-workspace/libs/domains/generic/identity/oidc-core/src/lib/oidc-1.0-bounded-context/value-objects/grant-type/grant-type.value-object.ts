@@ -38,11 +38,7 @@ export class GrantType extends ValueObject {
     variants.forEach((variant) => {
       grantTypes.push(new GrantType(variant));
     });
-    
-    return grantTypes;
-  }
 
-  public static createAsDefault(): GrantType {
-    return new GrantType('authorizationCode');
+    return grantTypes;
   }
 }

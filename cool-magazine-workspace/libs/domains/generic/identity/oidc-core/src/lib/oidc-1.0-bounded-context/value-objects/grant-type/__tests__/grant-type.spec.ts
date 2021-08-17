@@ -14,16 +14,6 @@ describe('GrantType', () => {
         // Assert
         expect(instance).toBeInstanceOf(GrantType);
       });
-
-      test('should return instance of GrantType without specifying type', () => {
-        // Arrange
-
-        // Act
-        const instance = GrantType.createAsDefault();
-
-        // Assert
-        expect(instance).toBeInstanceOf(GrantType);
-      });
     });
     describe('many different instances', () => {
       test('should return collection of GrantTypes from collection of variants', () => {
@@ -56,17 +46,6 @@ describe('GrantType', () => {
 
       // Assert
       expect(grantTypeValues).toStrictEqual(grantTypes);
-    });
-
-    test('should return default not empty value if type is not specified', () => {
-      // Arrange
-      const grantTypes = Object.values(GrantType.GRANT_TYPES_BY_VARIANTS);
-
-      // Act
-      const defaultGrantTypeValue = GrantType.createAsDefault().value;
-
-      // Assert
-      expect(grantTypes).toContain(defaultGrantTypeValue);
     });
   });
 });
