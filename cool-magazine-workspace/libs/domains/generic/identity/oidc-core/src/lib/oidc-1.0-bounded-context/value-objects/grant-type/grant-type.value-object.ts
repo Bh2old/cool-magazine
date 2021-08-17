@@ -32,7 +32,9 @@ export class GrantType extends ValueObject {
     return new GrantType(variant);
   }
 
-  public static createMany(variants: Set<GrantTypeVariants>): GrantType[] {
+  public static createMany(
+    variants: Set<GrantTypeVariants>
+  ): Iterable<GrantType> {
     const grantTypes: GrantType[] = [];
 
     variants.forEach((variant) => {

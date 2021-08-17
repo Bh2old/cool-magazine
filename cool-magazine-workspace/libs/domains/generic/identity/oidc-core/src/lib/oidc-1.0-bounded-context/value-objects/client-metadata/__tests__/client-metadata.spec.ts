@@ -47,7 +47,9 @@ describe('ClientMetadata', () => {
       (redirectUris as string[]).push(redirectUriValue);
 
       //Assert
-      expect(redirectUris.length).not.toBe(instance.redirectUrisValues.length);
+      expect((redirectUris as string[]).length).not.toBe(
+        (instance.redirectUrisValues as string[]).length
+      );
     });
   });
 
@@ -64,7 +66,9 @@ describe('ClientMetadata', () => {
       (redirectUris as string[]).push(responseTypeValue);
 
       //Assert
-      expect(redirectUris.length).not.toBe(instance.responseTypesValues.length);
+      expect((redirectUris as string[]).length).not.toBe(
+        (instance.responseTypesValues as string[]).length
+      );
     });
   });
 
@@ -81,7 +85,9 @@ describe('ClientMetadata', () => {
       (redirectUris as string[]).push(grantTypeValue);
 
       //Assert
-      expect(redirectUris.length).not.toBe(instance.grantTypesValues.length);
+      expect((redirectUris as string[]).length).not.toBe(
+        (instance.grantTypesValues as string[]).length
+      );
     });
   });
 });

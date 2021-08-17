@@ -6,17 +6,17 @@ import { IClientMetadataCreateValues } from './models';
 import { ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification } from './specifications';
 export class ClientMetadata extends ValueObject {
   private readonly _redirectUris: RedirectUri[];
-  public get redirectUrisValues(): Readonly<string[]> {
+  public get redirectUrisValues(): Readonly<Iterable<string>> {
     return this._redirectUris.map((redirectUri) => redirectUri.value);
   }
 
   private readonly _responseTypes: ResponseType[];
-  public get responseTypesValues(): Readonly<string[]> {
+  public get responseTypesValues(): Readonly<Iterable<string>> {
     return this._responseTypes.map((responseType) => responseType.value);
   }
 
   private readonly _grantTypes: GrantType[];
-  public get grantTypesValues(): Readonly<string[]> {
+  public get grantTypesValues(): Readonly<Iterable<string>> {
     return this._grantTypes.map((grantType) => grantType.value);
   }
 
@@ -36,13 +36,18 @@ export class ClientMetadata extends ValueObject {
   ): ClientMetadata {
     const {
       redirectUris,
-      responseTypeVariants = ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification.DEFAULT_RESPONSE_TYPE_VARIANTS,
-      grantTypeVariants = ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification.DEFAULT_GRANT_TYPE_VARIANTS,
+      responseTypeVariants = new Set(
+        ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification.DEFAULT_RESPONSE_TYPE_VARIANTS
+      ),
+      grantTypeVariants = new Set(
+        ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification.DEFAULT_GRANT_TYPE_VARIANTS
+      ),
     } = clientMetadataCreateValues;
+
     return new ClientMetadata(
-      RedirectUri.createMany(redirectUris),
-      ResponseType.createMany(responseTypeVariants),
-      GrantType.createMany(grantTypeVariants)
+      [...RedirectUri.createMany(redirectUris)],
+      [...ResponseType.createMany(responseTypeVariants)],
+      [...GrantType.createMany(grantTypeVariants)]
     );
   }
 }

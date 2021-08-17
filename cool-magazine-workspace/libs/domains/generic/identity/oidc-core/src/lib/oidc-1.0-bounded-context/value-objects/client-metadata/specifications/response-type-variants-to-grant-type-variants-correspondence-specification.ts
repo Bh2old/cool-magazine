@@ -31,11 +31,11 @@ export class ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification 
     };
   }
 
-  static get DEFAULT_RESPONSE_TYPE_VARIANTS(): Set<ResponseTypeVariants> {
+  static get DEFAULT_RESPONSE_TYPE_VARIANTS(): Iterable<ResponseTypeVariants> {
     return new Set<ResponseTypeVariants>(['code']);
   }
 
-  static get DEFAULT_GRANT_TYPE_VARIANTS(): Set<GrantTypeVariants> {
+  static get DEFAULT_GRANT_TYPE_VARIANTS(): Iterable<GrantTypeVariants> {
     return new Set<GrantTypeVariants>(['authorizationCode']);
   }
 
@@ -82,7 +82,7 @@ export class ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification 
     grantTypeVariants: Dictionary<GrantTypeVariants, GrantTypeVariants>
   ) {
     const requiredGrantTypeVariants = this._getRequiredGrantTypeVariants(
-      ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification.DEFAULT_RESPONSE_TYPE_VARIANTS
+      ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification.DEFAULT_RESPONSE_TYPE_VARIANTS as Set<ResponseTypeVariants>
     );
     return this._checkGrantTypeVariantsToCorrespondence(
       requiredGrantTypeVariants,
@@ -97,7 +97,9 @@ export class ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification 
       GrantTypeVariants,
       GrantTypeVariants
     >(
-      ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification.DEFAULT_GRANT_TYPE_VARIANTS.entries()
+      (
+        ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification.DEFAULT_GRANT_TYPE_VARIANTS as Set<GrantTypeVariants>
+      ).entries()
     );
     return this._checkGrantTypeVariantsToCorrespondence(
       this._getRequiredGrantTypeVariants(responseTypeVariants),

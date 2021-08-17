@@ -37,7 +37,7 @@ export class ResponseType extends ValueObject {
 
   public static createMany(
     variants: Set<ResponseTypeVariants>
-  ): ResponseType[] {
+  ): Iterable<ResponseType> {
     const responseTypes: ResponseType[] = [];
 
     variants.forEach((variant) => {

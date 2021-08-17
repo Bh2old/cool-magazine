@@ -15,7 +15,7 @@ export class RedirectUri extends ValueObject {
     return new RedirectUri(uri);
   }
 
-  public static createMany(uris: Set<string>): RedirectUri[] {
+  public static createMany(uris: Set<string>): Iterable<RedirectUri> {
     const redirectUris: RedirectUri[] = [];
 
     uris.forEach((uri) => {
