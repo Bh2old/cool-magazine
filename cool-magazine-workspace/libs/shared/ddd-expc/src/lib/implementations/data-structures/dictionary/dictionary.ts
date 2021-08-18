@@ -1,4 +1,8 @@
-export class Dictionary<TKey, TValue> implements Iterable<[TKey, TValue]> {
+import { IExtendedDictionary } from '@bh2old/ddd-expc/abstractions';
+
+export class Dictionary<TKey, TValue>
+  implements IExtendedDictionary<TKey, TValue>
+{
   private readonly _map: Map<TKey, TValue>;
 
   public get count() {
@@ -10,8 +14,8 @@ export class Dictionary<TKey, TValue> implements Iterable<[TKey, TValue]> {
   }
 
   constructor();
-  constructor(iterable: Iterable<[TKey, TValue]>);
-  constructor(iterable?: Iterable<[TKey, TValue]>) {
+  constructor(iterable: Iterable<readonly [TKey, TValue]>);
+  constructor(iterable?: Iterable<readonly [TKey, TValue]>) {
     if (iterable) {
       this._map = new Map(iterable);
     } else {
@@ -19,7 +23,7 @@ export class Dictionary<TKey, TValue> implements Iterable<[TKey, TValue]> {
     }
   }
 
-  add(key: TKey, value: TValue): Dictionary<TKey, TValue> {
+  add(key: TKey, value: TValue): this {
     this._map.set(key, value);
 
     return this;
@@ -37,7 +41,7 @@ export class Dictionary<TKey, TValue> implements Iterable<[TKey, TValue]> {
     }
     return true;
   }
-  
+
   get(key: TKey): TValue | undefined {
     return this._map.get(key);
   }
