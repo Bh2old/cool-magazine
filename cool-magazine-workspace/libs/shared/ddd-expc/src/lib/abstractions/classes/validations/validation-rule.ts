@@ -1,5 +1,5 @@
-import { ISpecification, IValidationRule } from '../interfaces';
-import { SpecificationRule } from './specifications';
+import { ISpecification, IValidationRule } from '../../interfaces';
+import { SpecificationRule } from '../specifications';
 
 export class ValidationRule<TSpecified>
   extends SpecificationRule<TSpecified>
