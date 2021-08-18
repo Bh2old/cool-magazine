@@ -1,5 +1,3 @@
-export * from './aggregate-root';
-export * from './entity';
+export * from './ddd';
 export * from './specifications';
-export * from './value-object';
 export * from './validations';
