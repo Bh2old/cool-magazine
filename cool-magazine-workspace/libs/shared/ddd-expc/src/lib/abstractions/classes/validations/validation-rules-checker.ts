@@ -1,4 +1,5 @@
 import {
+  IDefaultDictionaryConstructor,
   IDictionary,
   IValidationRule,
   IValidationRulesChecker,
@@ -14,10 +15,12 @@ export abstract class ValidationRulesChecker<TVerifiable>
 
   protected constructor(
     verifiableName: string,
-    dictionary: IDictionary<string, IValidationRule<TVerifiable>>
+    dictionary: IDefaultDictionaryConstructor<
+      IDictionary<string, IValidationRule<TVerifiable>>
+    >
   ) {
     this._verifiableName = verifiableName;
-    this._rules = dictionary;
+    this._rules = new dictionary();
   }
 
   check(verifiable: TVerifiable): IValidationRulesCheckingResult {
@@ -34,10 +37,10 @@ export abstract class ValidationRulesChecker<TVerifiable>
     return result;
   }
 
-  addRule(
+  protected addRule(
     ruleName: string,
     rule: IValidationRule<TVerifiable>
-  ): ValidationRulesChecker<TVerifiable> {
+  ): this {
     this._rules.add(ruleName, rule);
 
     return this;
