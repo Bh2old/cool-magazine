@@ -9,7 +9,7 @@ export class ValidationRulesCheckingResult
 {
   private readonly _errors: IValidationRulesCheckingResultError[] = [];
   get errors(): Iterable<IValidationRulesCheckingResultError> {
-    return [...this.errors];
+    return [...this._errors];
   }
 
   private readonly _verifiableName: string;
