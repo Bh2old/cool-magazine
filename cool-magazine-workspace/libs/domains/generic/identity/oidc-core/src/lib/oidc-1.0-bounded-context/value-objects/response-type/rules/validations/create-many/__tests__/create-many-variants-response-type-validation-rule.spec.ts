@@ -1,5 +1,6 @@
-import { CreateManyVariantsResponseTypeValidationRule } from '../rules';
-import { ResponseTypeVariants } from '../types';
+import { CreateManyVariantsResponseTypeVariantsUsage } from '../../../../specifications';
+import { ResponseTypeVariants } from '../../../../types';
+import { CreateManyVariantsResponseTypeValidationRule } from '../create-many-variants-response-type-validation-rule';
 
 describe('CreateManyVariantsResponseTypeValidationRule', () => {
   describe('instance creation', () => {
@@ -16,19 +17,22 @@ describe('CreateManyVariantsResponseTypeValidationRule', () => {
   });
 
   describe('validation', () => {
-    test('should return true if all variants are specified', () => {
+    test('should return true for all valid variants', () => {
       // Arrange
-      const variants = new Set<ResponseTypeVariants>().add('code');
+      const variants =
+        CreateManyVariantsResponseTypeVariantsUsage.getAllValidVariants();
       const instance = new CreateManyVariantsResponseTypeValidationRule();
 
       // Act
-      const result = instance.validate(variants);
+      const result = variants.reduce((isValid, variant) => {
+        return isValid && instance.validate(variant);
+      }, true);
 
       // Assert
       expect(result).toBe(true);
     });
 
-    test('should return false if variants are not specified', () => {
+    test('should return false for all invalid variants', () => {
       // Arrange
       const variants = new Set<ResponseTypeVariants>();
       const instance = new CreateManyVariantsResponseTypeValidationRule();

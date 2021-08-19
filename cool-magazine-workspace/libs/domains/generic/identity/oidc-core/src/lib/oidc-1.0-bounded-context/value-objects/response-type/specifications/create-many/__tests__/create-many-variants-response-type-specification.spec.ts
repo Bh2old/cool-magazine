@@ -1,5 +1,5 @@
-import { CreateManyVariantsResponseTypeSpecification } from '../specifications';
-import { ResponseTypeVariants } from '../types';
+import { CreateManyVariantsResponseTypeSpecification } from '../create-many-variants-response-type-specification';
+import { CreateManyVariantsResponseTypeVariantsUsage } from '../create-many-variants-response-type-variants-usage';
 
 describe('CreateManyVariantsResponseTypeSpecification', () => {
   describe('instance creation', () => {
@@ -18,7 +18,8 @@ describe('CreateManyVariantsResponseTypeSpecification', () => {
   describe('requirements checking', () => {
     test('should return true if all variants are specified', () => {
       // Arrange
-      const variants = new Set<ResponseTypeVariants>().add('code');
+      const variants =
+        CreateManyVariantsResponseTypeVariantsUsage.valid.specified;
       const instance = new CreateManyVariantsResponseTypeSpecification();
 
       // Act
@@ -30,7 +31,8 @@ describe('CreateManyVariantsResponseTypeSpecification', () => {
 
     test('should return false if variants are not specified', () => {
       // Arrange
-      const variants = new Set<ResponseTypeVariants>();
+      const variants =
+        CreateManyVariantsResponseTypeVariantsUsage.invalid.notSpecified;
       const instance = new CreateManyVariantsResponseTypeSpecification();
 
       // Act

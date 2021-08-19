@@ -1,5 +1,5 @@
 import { CompositeSpecification } from '@bh2old/ddd-expc';
-import { ResponseTypeVariants } from '../types';
+import { ResponseTypeVariants } from '../../types';
 
 export class CreateManyVariantsResponseTypeSpecification extends CompositeSpecification<
   Set<ResponseTypeVariants>

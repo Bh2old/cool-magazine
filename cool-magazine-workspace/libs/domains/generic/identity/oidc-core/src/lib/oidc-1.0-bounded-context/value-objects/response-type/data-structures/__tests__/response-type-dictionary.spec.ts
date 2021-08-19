@@ -1,6 +1,6 @@
-import { ResponseTypeDictionary } from '../data-structures';
-import { ResponseType } from '../response-type.value-object';
-import { ResponseTypeVariants } from '../types';
+import { ResponseTypeDictionary } from '..';
+import { ResponseType } from '../../response-type.value-object';
+import { ResponseTypeVariants } from '../../types';
 
 describe('ResponseTypeDictionary', () => {
   describe('instance creation', () => {

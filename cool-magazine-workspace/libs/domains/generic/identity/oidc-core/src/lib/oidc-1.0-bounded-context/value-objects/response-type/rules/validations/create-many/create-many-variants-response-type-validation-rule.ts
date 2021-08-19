@@ -1,6 +1,6 @@
-import { CreateManyVariantsResponseTypeSpecification } from './../../specifications';
 import { ValidationRule } from '@bh2old/ddd-expc';
-import { ResponseTypeVariants } from '../../types';
+import { CreateManyVariantsResponseTypeSpecification } from '../../../specifications';
+import { ResponseTypeVariants } from '../../../types';
 
 export class CreateManyVariantsResponseTypeValidationRule extends ValidationRule<
   Set<ResponseTypeVariants>
