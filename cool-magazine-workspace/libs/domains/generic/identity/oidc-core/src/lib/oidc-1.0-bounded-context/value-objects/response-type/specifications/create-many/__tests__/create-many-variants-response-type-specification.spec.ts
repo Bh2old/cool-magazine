@@ -1,5 +1,5 @@
 import { CreateManyVariantsResponseTypeSpecification } from '../create-many-variants-response-type-specification';
-import { CreateManyVariantsResponseTypeVariantsUsage } from '../create-many-variants-response-type-variants-usage';
+import { CreateManyVariantsResponseTypeSpecificationInvariantTable } from '../create-many-variants-response-type-specification-invariant-table';
 
 describe('CreateManyVariantsResponseTypeSpecification', () => {
   describe('instance creation', () => {
@@ -19,7 +19,8 @@ describe('CreateManyVariantsResponseTypeSpecification', () => {
     test('should return true if all variants are specified', () => {
       // Arrange
       const variants =
-        CreateManyVariantsResponseTypeVariantsUsage.valid.specified;
+        new CreateManyVariantsResponseTypeSpecificationInvariantTable().valid
+          .code;
       const instance = new CreateManyVariantsResponseTypeSpecification();
 
       // Act
@@ -32,7 +33,8 @@ describe('CreateManyVariantsResponseTypeSpecification', () => {
     test('should return false if variants are not specified', () => {
       // Arrange
       const variants =
-        CreateManyVariantsResponseTypeVariantsUsage.invalid.notSpecified;
+        new CreateManyVariantsResponseTypeSpecificationInvariantTable().invalid
+          .emptyCollection;
       const instance = new CreateManyVariantsResponseTypeSpecification();
 
       // Act

@@ -1,5 +1,4 @@
-import { CreateManyVariantsResponseTypeVariantsUsage } from '../../../../specifications';
-import { ResponseTypeVariants } from '../../../../types';
+import { CreateManyVariantsResponseTypeSpecificationInvariantTable } from '../../../../specifications';
 import { CreateManyVariantsResponseTypeValidationRule } from '../create-many-variants-response-type-validation-rule';
 
 describe('CreateManyVariantsResponseTypeValidationRule', () => {
@@ -19,14 +18,21 @@ describe('CreateManyVariantsResponseTypeValidationRule', () => {
   describe('validation', () => {
     test('should return true for all valid variants', () => {
       // Arrange
-      const variants =
-        CreateManyVariantsResponseTypeVariantsUsage.getAllValidVariants();
       const instance = new CreateManyVariantsResponseTypeValidationRule();
+      const getResult = () => {
+        const variants =
+          new CreateManyVariantsResponseTypeSpecificationInvariantTable().getAllValidCandidates();
+
+        for (const variant of variants) {
+          if (!instance.validate(variant)) {
+            return false;
+          }
+          return true;
+        }
+      };
 
       // Act
-      const result = variants.reduce((isValid, variant) => {
-        return isValid && instance.validate(variant);
-      }, true);
+      const result = getResult();
 
       // Assert
       expect(result).toBe(true);
@@ -34,14 +40,24 @@ describe('CreateManyVariantsResponseTypeValidationRule', () => {
 
     test('should return false for all invalid variants', () => {
       // Arrange
-      const variants = new Set<ResponseTypeVariants>();
       const instance = new CreateManyVariantsResponseTypeValidationRule();
+      const getResult = () => {
+        const variants =
+          new CreateManyVariantsResponseTypeSpecificationInvariantTable().getAllInvalidCandidates();
+
+        for (const variant of variants) {
+          if (instance.validate(variant)) {
+            return false;
+          }
+          return true;
+        }
+      };
 
       // Act
-      const result = instance.validate(variants);
+      const result = getResult();
 
       // Assert
-      expect(result).toBe(false);
+      expect(result).toBe(true);
     });
   });
 });
