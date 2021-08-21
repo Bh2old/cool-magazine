@@ -29,11 +29,11 @@ describe('ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification', (
           redirectUris: undefined,
           responseTypeVariants: new Set<ResponseTypeVariants>([
             'code',
-            'idToken',
-            'tokenIdToken',
-            'codeIdToken',
-            'codeToken',
-            'codeTokenIdToken',
+            'id_token',
+            'token id_token',
+            'code id_token',
+            'code token',
+            'code token id_token',
           ]),
           grantTypeVariants: new Set<GrantTypeVariants>([
             'authorizationCode',
@@ -57,11 +57,11 @@ describe('ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification', (
           redirectUris: undefined,
           responseTypeVariants: new Set<ResponseTypeVariants>([
             'code',
-            'idToken',
-            'tokenIdToken',
-            'codeIdToken',
-            'codeToken',
-            'codeTokenIdToken',
+            'id_token',
+            'token id_token',
+            'code id_token',
+            'code token',
+            'code token id_token',
           ]),
           grantTypeVariants: new Set<GrantTypeVariants>(['refreshToken']),
         };
@@ -101,11 +101,11 @@ describe('ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification', (
           redirectUris: undefined,
           responseTypeVariants: new Set<ResponseTypeVariants>([
             'code',
-            'idToken',
-            'tokenIdToken',
-            'codeIdToken',
-            'codeToken',
-            'codeTokenIdToken',
+            'id_token',
+            'token id_token',
+            'code id_token',
+            'code token',
+            'code token id_token',
           ]),
         };
 

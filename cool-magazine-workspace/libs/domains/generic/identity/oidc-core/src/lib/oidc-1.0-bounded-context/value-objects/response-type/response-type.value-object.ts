@@ -3,12 +3,9 @@ import { ResponseTypeVariants } from './types';
 
 export class ResponseType extends ValueObject {
   private readonly _variant: ResponseTypeVariants;
-  public get valueAsVariant(): ResponseTypeVariants {
-    return this._variant;
-  }
 
-  public get value(): string {
-    return ResponseType._RESPONSE_TYPES_BY_VARIANTS[this.valueAsVariant];
+  public get value(): ResponseTypeVariants {
+    return this._variant;
   }
 
   private constructor(variant: ResponseTypeVariants) {
@@ -16,18 +13,18 @@ export class ResponseType extends ValueObject {
     this._variant = variant;
   }
 
-  private static readonly _RESPONSE_TYPES_BY_VARIANTS = {
-    code: 'code',
-    idToken: 'id_token',
-    tokenIdToken: 'token id_token',
-    codeIdToken: 'code id_token',
-    codeToken: 'code token',
-    codeTokenIdToken: 'code token id_token',
+  private static readonly _RESPONSE_TYPES_VARIANTS = {
+    code: true,
+    id_token: true,
+    'token id_token': true,
+    'code id_token': true,
+    'code token': true,
+    'code token id_token': true,
   } as const;
 
-  public static get RESPONSE_TYPES_BY_VARIANTS() {
+  public static get RESPONSE_TYPES_VARIANTS() {
     return {
-      ...this._RESPONSE_TYPES_BY_VARIANTS,
+      ...this._RESPONSE_TYPES_VARIANTS,
     } as const;
   }
 

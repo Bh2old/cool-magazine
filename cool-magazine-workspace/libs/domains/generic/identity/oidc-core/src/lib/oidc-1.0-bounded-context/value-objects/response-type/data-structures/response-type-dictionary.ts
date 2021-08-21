@@ -46,7 +46,7 @@ export class ResponseTypeDictionary
     key: ResponseTypeVariants;
     value: ResponseType;
   } {
-    return { key: uri.valueAsVariant, value: uri };
+    return { key: uri.value, value: uri };
   }
 
   private _createDictionary(
@@ -108,14 +108,17 @@ export class ResponseTypeDictionary
       !isArrayIteratorNextValue &&
       iteratorNextValue &&
       typeof iteratorNextValue === 'string' &&
-      typeof ResponseType.RESPONSE_TYPES_BY_VARIANTS[
-        iteratorNextValue as ResponseTypeVariants
-      ] === 'string';
-
+      Object.prototype.hasOwnProperty.call(
+        ResponseType.RESPONSE_TYPES_VARIANTS,
+        iteratorNextValue
+      );
     const isKeyValueAsVariantAndResponseType: boolean =
       isArrayIteratorNextValue &&
       typeof iterableItemKey === 'string' &&
-      ResponseType.RESPONSE_TYPES_BY_VARIANTS[iterableItemKey] &&
+      Object.prototype.hasOwnProperty.call(
+        ResponseType.RESPONSE_TYPES_VARIANTS,
+        iterableItemKey
+      ) &&
       iterableItemValue instanceof ResponseType;
 
     return {

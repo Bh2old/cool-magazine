@@ -13,19 +13,19 @@ export class ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification 
       get code() {
         return new Set<GrantTypeVariants>(['authorizationCode']);
       },
-      get idToken() {
+      get id_token() {
         return new Set<GrantTypeVariants>(['implicit']);
       },
-      get tokenIdToken() {
+      get 'token id_token'() {
         return new Set<GrantTypeVariants>(['authorizationCode', 'implicit']);
       },
-      get codeIdToken() {
+      get 'code id_token'() {
         return new Set<GrantTypeVariants>(['authorizationCode', 'implicit']);
       },
-      get codeToken() {
+      get 'code token'() {
         return new Set<GrantTypeVariants>(['authorizationCode', 'implicit']);
       },
-      get codeTokenIdToken() {
+      get 'code token id_token'() {
         return new Set<GrantTypeVariants>(['authorizationCode', 'implicit']);
       },
     };

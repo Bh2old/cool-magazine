@@ -43,12 +43,8 @@ describe('ResponseType', () => {
     test('should return not empty string value if type is specified', () => {
       // Arrange
       const responseTypeVariants = Object.keys(
-        ResponseType.RESPONSE_TYPES_BY_VARIANTS
+        ResponseType.RESPONSE_TYPES_VARIANTS
       ) as ResponseTypeVariants[];
-
-      const responseTypes = Object.values(
-        ResponseType.RESPONSE_TYPES_BY_VARIANTS
-      );
 
       // Act
       const responseTypeValues = responseTypeVariants.map(
@@ -56,7 +52,7 @@ describe('ResponseType', () => {
       );
 
       // Assert
-      expect(responseTypeValues).toStrictEqual(responseTypes);
+      expect(responseTypeValues).toStrictEqual(responseTypeVariants);
     });
   });
 });
