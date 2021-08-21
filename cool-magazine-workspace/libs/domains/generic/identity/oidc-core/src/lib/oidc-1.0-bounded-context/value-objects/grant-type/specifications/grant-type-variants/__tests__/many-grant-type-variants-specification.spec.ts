@@ -1,15 +1,15 @@
-import { CreateManyVariantsGrantTypeSpecification } from '../create-many-variants-grant-type-specification';
-import { CreateManyVariantsGrantTypeSpecificationCandidatesExample } from '../create-many-variants-grant-type-specification-candidates-example';
+import { ManyGrantTypeVariantsSpecification } from '../many-grant-type-variants-specification';
+import { CreateManyVariantsGrantTypeSpecificationCandidatesExample } from '../many-grant-type-variants-specification-candidates-example';
 
-describe('CreateManyVariantsGrantTypeSpecification', () => {
+describe('ManyGrantTypeVariantsSpecification', () => {
   describe('instance creation', () => {
     test('should return instance', () => {
       // Arrange
       // Act
-      const instance = new CreateManyVariantsGrantTypeSpecification();
+      const instance = new ManyGrantTypeVariantsSpecification();
 
       // Assert
-      expect(instance).toBeInstanceOf(CreateManyVariantsGrantTypeSpecification);
+      expect(instance).toBeInstanceOf(ManyGrantTypeVariantsSpecification);
     });
   });
 
@@ -17,7 +17,7 @@ describe('CreateManyVariantsGrantTypeSpecification', () => {
     describe('valid variants', () => {
       test('should return true for all variants', () => {
         // Arrange
-        const instance = new CreateManyVariantsGrantTypeSpecification();
+        const instance = new ManyGrantTypeVariantsSpecification();
         const variants =
           new CreateManyVariantsGrantTypeSpecificationCandidatesExample().valid;
         const expected = [];
@@ -42,7 +42,7 @@ describe('CreateManyVariantsGrantTypeSpecification', () => {
     describe('invalid variants', () => {
       test('should return false for all variants', () => {
         // Arrange
-        const instance = new CreateManyVariantsGrantTypeSpecification();
+        const instance = new ManyGrantTypeVariantsSpecification();
         const variants =
           new CreateManyVariantsGrantTypeSpecificationCandidatesExample()
             .invalid;

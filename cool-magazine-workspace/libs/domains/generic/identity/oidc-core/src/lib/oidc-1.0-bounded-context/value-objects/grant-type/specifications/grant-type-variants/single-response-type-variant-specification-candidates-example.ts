@@ -2,7 +2,7 @@ import { ISpecificationCandidatesExample } from '@bh2old/ddd-expc';
 import { GrantType } from '../../grant-type.value-object';
 import { GrantTypeVariants } from '../../types';
 
-export class CreateVariantGrantTypeSpecificationCandidatesExample
+export class SingleGrantTypeVariantSpecificationCandidatesExample
   implements ISpecificationCandidatesExample<GrantTypeVariants>
 {
   get valid() {

@@ -1,7 +1,7 @@
 import { CompositeSpecification } from '@bh2old/ddd-expc';
 import { GrantTypeVariants } from '../../types';
 
-export class CreateManyVariantsGrantTypeSpecification extends CompositeSpecification<
+export class ManyGrantTypeVariantsSpecification extends CompositeSpecification<
   Set<GrantTypeVariants>
 > {
   isSatisfiedBy(candidate: Set<GrantTypeVariants>): boolean {

@@ -1,6 +1,6 @@
 import { CompositeSpecification, Specification } from '@bh2old/ddd-expc';
 import {
-  CreateManyVariantsGrantTypeSpecification,
+  ManyGrantTypeVariantsSpecification,
   GrantTypeVariants,
 } from '../../../../grant-type';
 import { IClientMetadataCreateValues } from '../../../models';
@@ -10,7 +10,7 @@ export class GrantTypeVariantsPropertyClientMetadataCreateValuesSpecification ex
   private readonly _createManyVariantsGrantType =
     new Specification<IClientMetadataCreateValues>(
       (candidate: IClientMetadataCreateValues) => {
-        return new CreateManyVariantsGrantTypeSpecification().isSatisfiedBy(
+        return new ManyGrantTypeVariantsSpecification().isSatisfiedBy(
           candidate.grantTypeVariants as Set<GrantTypeVariants>
         );
       }
