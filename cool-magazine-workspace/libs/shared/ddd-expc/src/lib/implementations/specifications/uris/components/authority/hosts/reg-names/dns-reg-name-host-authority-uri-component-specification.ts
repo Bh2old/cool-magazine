@@ -9,7 +9,7 @@ type DNSRegNameHostAuthorityUriComponentCandidate =
 
 export class DNSRegNameHostAuthorityUriComponentSpecification extends CompositeSpecification<DNSRegNameHostAuthorityUriComponentCandidate> {
   private readonly _dnsRegNameRegExpPattern =
-    '^((?=[a-z0-9-]{1,63}\\.)(xn--)?[a-z0-9]+(-[a-z0-9]+)*\\.)+((?=[a-z0-9-]{2,63}$)((xn--)?[a-z0-9]+))$';
+    '^((?=[a-z0-9-]{1,63}\\.)(xn--)?[a-z0-9]+(-[a-z0-9]+)*\\.)+((?![0-9]{1,63}$)(?=[a-z0-9-]{2,63}$)((xn--)?[a-z0-9]+))$';
   private readonly _dnsRegNameUrlRegExp = new RegExp(
     this._dnsRegNameRegExpPattern
   );
