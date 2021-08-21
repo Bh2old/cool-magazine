@@ -1,13 +1,13 @@
 import { CompositeSpecification } from '@bh2old/ddd-expc';
-import { CreateManyUrisRedirectUriSpecification } from '../../../../redirect-uri';
+import { ManyRedirectUriVariantsSpecification } from '../../../../redirect-uri';
 import { IClientMetadataCreateValues } from '../../../models';
 
 export class RedirectUrisPropertyClientMetadataCreateValuesSpecification extends CompositeSpecification<IClientMetadataCreateValues> {
-  private readonly _createManyUrisRedirectUriSpecification =
-    new CreateManyUrisRedirectUriSpecification();
+  private readonly _manyRedirectUriVariantsSpecification =
+    new ManyRedirectUriVariantsSpecification();
 
   isSatisfiedBy(candidate: IClientMetadataCreateValues): boolean {
-    return this._createManyUrisRedirectUriSpecification.isSatisfiedBy(
+    return this._manyRedirectUriVariantsSpecification.isSatisfiedBy(
       candidate.redirectUris
     );
   }

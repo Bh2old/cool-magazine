@@ -1,17 +1,16 @@
 import { ISpecificationCandidatesExample } from '@bh2old/ddd-expc';
-import { CreateManyUrisRedirectUriSpecificationCandidatesExample } from '../../../../redirect-uri';
+import { ManyRedirectUriVariantsSpecificationCandidatesExample } from '../../../../redirect-uri';
 
 export class RedirectUrisPropertyClientMetadataCreateValuesSpecificationCandidatesExample
   implements ISpecificationCandidatesExample<Set<string>>
 {
-  private readonly _createManyUrisRedirectUriSpecificationCandidatesExample =
-    new CreateManyUrisRedirectUriSpecificationCandidatesExample();
+  private readonly _manyRedirectUriVariantsSpecificationCandidatesExample =
+    new ManyRedirectUriVariantsSpecificationCandidatesExample();
 
   get valid() {
-    return this._createManyUrisRedirectUriSpecificationCandidatesExample.valid;
+    return this._manyRedirectUriVariantsSpecificationCandidatesExample.valid;
   }
   get invalid() {
-    return this._createManyUrisRedirectUriSpecificationCandidatesExample
-      .invalid;
+    return this._manyRedirectUriVariantsSpecificationCandidatesExample.invalid;
   }
 }

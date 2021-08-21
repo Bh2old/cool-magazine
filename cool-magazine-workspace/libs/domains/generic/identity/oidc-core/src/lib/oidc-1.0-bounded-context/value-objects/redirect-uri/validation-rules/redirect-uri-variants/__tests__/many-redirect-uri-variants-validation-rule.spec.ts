@@ -1,15 +1,15 @@
-import { CreateUriRedirectUriSpecificationCandidatesExample } from '../../../../specifications';
-import { CreateUriRedirectUriValidationRule } from '../create-uri-redirect-uri-validation-rule';
+import { ManyRedirectUriVariantsSpecificationCandidatesExample } from '../../../specifications';
+import { ManyRedirectUriVariantsValidationRule } from '../many-redirect-uri-variants-validation-rule';
 
-describe('CreateUriRedirectUriValidationRule', () => {
+describe('ManyRedirectUriVariantsValidationRule', () => {
   describe('instance creation', () => {
     test('should return instance', () => {
       // Arrange
       // Act
-      const instance = new CreateUriRedirectUriValidationRule();
+      const instance = new ManyRedirectUriVariantsValidationRule();
 
       // Assert
-      expect(instance).toBeInstanceOf(CreateUriRedirectUriValidationRule);
+      expect(instance).toBeInstanceOf(ManyRedirectUriVariantsValidationRule);
     });
   });
 
@@ -17,9 +17,9 @@ describe('CreateUriRedirectUriValidationRule', () => {
     describe('valid uris', () => {
       test('should return true for all uri', () => {
         // Arrange
-        const instance = new CreateUriRedirectUriValidationRule();
-        const uris =
-          new CreateUriRedirectUriSpecificationCandidatesExample().valid;
+        const instance = new ManyRedirectUriVariantsValidationRule();
+        const uris = new ManyRedirectUriVariantsSpecificationCandidatesExample()
+          .valid;
         const getResult = () => {
           for (const uri of uris) {
             if (!instance.validate(uri)) {
@@ -41,9 +41,9 @@ describe('CreateUriRedirectUriValidationRule', () => {
     describe('invalid uris', () => {
       test('should return false for all uri', () => {
         // Arrange
-        const instance = new CreateUriRedirectUriValidationRule();
-        const uris =
-          new CreateUriRedirectUriSpecificationCandidatesExample().invalid;
+        const instance = new ManyRedirectUriVariantsValidationRule();
+        const uris = new ManyRedirectUriVariantsSpecificationCandidatesExample()
+          .invalid;
         const getResult = () => {
           for (const uri of uris) {
             if (instance.validate(uri)) {

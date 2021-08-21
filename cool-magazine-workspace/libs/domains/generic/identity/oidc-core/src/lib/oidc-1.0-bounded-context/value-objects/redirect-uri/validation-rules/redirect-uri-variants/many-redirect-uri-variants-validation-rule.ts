@@ -1,11 +1,11 @@
 import { ValidationRule } from '@bh2old/ddd-expc';
-import { CreateManyUrisRedirectUriSpecification } from '../../../specifications';
+import { ManyRedirectUriVariantsSpecification } from '../../specifications';
 
-export class CreateManyUrisRedirectUriValidationRule extends ValidationRule<
+export class ManyRedirectUriVariantsValidationRule extends ValidationRule<
   Set<string>
 > {
   constructor() {
-    const specification = new CreateManyUrisRedirectUriSpecification();
+    const specification = new ManyRedirectUriVariantsSpecification();
     const message =
       `collection: 'at least one uri must be specified', ` +
       `scheme: 'URIs must use the HTTPS scheme, not plain HTTP. Localhost URIs (including localhost IP address URIs) are exempt from this rule.' ,` +

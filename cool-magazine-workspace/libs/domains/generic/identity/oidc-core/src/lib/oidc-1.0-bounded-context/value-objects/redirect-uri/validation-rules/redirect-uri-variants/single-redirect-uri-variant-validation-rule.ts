@@ -1,9 +1,9 @@
 import { ValidationRule } from '@bh2old/ddd-expc';
-import { CreateUriRedirectUriSpecification } from '../../../specifications';
+import { SingleRedirectUriVariantSpecification } from '../../specifications';
 
-export class CreateUriRedirectUriValidationRule extends ValidationRule<string> {
+export class SingleRedirectUriVariantValidationRule extends ValidationRule<string> {
   constructor() {
-    const specification = new CreateUriRedirectUriSpecification();
+    const specification = new SingleRedirectUriVariantSpecification();
     const message =
       `scheme: 'URIs must use the HTTPS scheme, not plain HTTP. Localhost URIs (including localhost IP address URIs) are exempt from this rule.' ,` +
       `host: 'Hosts cannot be raw IP addresses. Localhost IP addresses are exempted from this rule.', ` +

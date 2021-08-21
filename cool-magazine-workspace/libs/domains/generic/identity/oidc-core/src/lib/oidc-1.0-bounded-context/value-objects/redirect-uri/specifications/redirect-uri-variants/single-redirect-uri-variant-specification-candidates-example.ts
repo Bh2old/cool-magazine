@@ -1,6 +1,6 @@
 import { ISpecificationCandidatesExample } from '@bh2old/ddd-expc';
 
-export class CreateUriRedirectUriSpecificationCandidatesExample
+export class SingleRedirectUriVariantSpecificationCandidatesExample
   implements ISpecificationCandidatesExample<string>
 {
   get valid() {

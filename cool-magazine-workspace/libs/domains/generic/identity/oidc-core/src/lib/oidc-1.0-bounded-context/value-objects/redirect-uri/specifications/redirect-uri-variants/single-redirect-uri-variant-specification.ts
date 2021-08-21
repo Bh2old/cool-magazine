@@ -19,7 +19,7 @@ import {
 } from '@bh2old/ddd-expc';
 
 type CheckResultCache = { readonly [candidate: string]: boolean };
-export class CreateUriRedirectUriSpecification extends CompositeSpecification<string> {
+export class SingleRedirectUriVariantSpecification extends CompositeSpecification<string> {
   private readonly _checkResultCache: CheckResultCache = {};
   private readonly _uriReferenceUriUsageParser: IUriReferenceUriUsageParser =
     new UriReferenceUriUsageParser();

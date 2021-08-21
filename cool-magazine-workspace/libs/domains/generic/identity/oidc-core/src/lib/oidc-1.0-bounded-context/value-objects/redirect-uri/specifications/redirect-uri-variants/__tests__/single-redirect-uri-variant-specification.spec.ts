@@ -1,15 +1,15 @@
-import { CreateUriRedirectUriSpecificationCandidatesExample } from '../create-uri-redirect-uri-specification-candidates-example';
-import { CreateUriRedirectUriSpecification } from '../../../specifications';
+import { SingleRedirectUriVariantSpecification } from '../single-redirect-uri-variant-specification';
+import { SingleRedirectUriVariantSpecificationCandidatesExample } from '../single-redirect-uri-variant-specification-candidates-example';
 
-describe('CreateUriRedirectUriSpecification', () => {
+describe('SingleRedirectUriVariantSpecification', () => {
   describe('instance creation', () => {
     test('should return instance', () => {
       // Arrange
       // Act
-      const instance = new CreateUriRedirectUriSpecification();
+      const instance = new SingleRedirectUriVariantSpecification();
 
       // Assert
-      expect(instance).toBeInstanceOf(CreateUriRedirectUriSpecification);
+      expect(instance).toBeInstanceOf(SingleRedirectUriVariantSpecification);
     });
   });
 
@@ -17,9 +17,9 @@ describe('CreateUriRedirectUriSpecification', () => {
     describe('valid uris', () => {
       test('should return true for all uri', () => {
         // Arrange
-        const instance = new CreateUriRedirectUriSpecification();
-        const uris = new CreateUriRedirectUriSpecificationCandidatesExample()
-          .valid;
+        const instance = new SingleRedirectUriVariantSpecification();
+        const uris =
+          new SingleRedirectUriVariantSpecificationCandidatesExample().valid;
         const expected = [];
         const getResult = () => {
           const result = [];
@@ -42,9 +42,9 @@ describe('CreateUriRedirectUriSpecification', () => {
     describe('invalid uris', () => {
       test('should return false for all uri', () => {
         // Arrange
-        const instance = new CreateUriRedirectUriSpecification();
-        const uris = new CreateUriRedirectUriSpecificationCandidatesExample()
-          .invalid;
+        const instance = new SingleRedirectUriVariantSpecification();
+        const uris =
+          new SingleRedirectUriVariantSpecificationCandidatesExample().invalid;
         const expected = [];
         const getResult = () => {
           const result = [];

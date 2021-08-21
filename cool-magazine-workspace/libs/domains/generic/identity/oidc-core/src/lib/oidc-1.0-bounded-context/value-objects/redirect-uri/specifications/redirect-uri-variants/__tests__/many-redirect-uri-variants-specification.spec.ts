@@ -1,17 +1,17 @@
 import {
-  CreateManyUrisRedirectUriSpecification,
-  CreateManyUrisRedirectUriSpecificationCandidatesExample,
-} from '../../../specifications';
+  ManyRedirectUriVariantsSpecification,
+  ManyRedirectUriVariantsSpecificationCandidatesExample,
+} from '../';
 
 describe('CreateManyUrisRedirectUriSpecification', () => {
   describe('instance creation', () => {
     test('should return instance', () => {
       // Arrange
       // Act
-      const instance = new CreateManyUrisRedirectUriSpecification();
+      const instance = new ManyRedirectUriVariantsSpecification();
 
       // Assert
-      expect(instance).toBeInstanceOf(CreateManyUrisRedirectUriSpecification);
+      expect(instance).toBeInstanceOf(ManyRedirectUriVariantsSpecification);
     });
   });
 
@@ -19,9 +19,9 @@ describe('CreateManyUrisRedirectUriSpecification', () => {
     describe('valid uris', () => {
       test('should return true for all uri', () => {
         // Arrange
-        const instance = new CreateManyUrisRedirectUriSpecification();
+        const instance = new ManyRedirectUriVariantsSpecification();
         const uris =
-          new CreateManyUrisRedirectUriSpecificationCandidatesExample().valid;
+          new ManyRedirectUriVariantsSpecificationCandidatesExample().valid;
         const expected = [];
         const getResult = () => {
           const result = [];
@@ -44,9 +44,9 @@ describe('CreateManyUrisRedirectUriSpecification', () => {
     describe('invalid uris', () => {
       test('should return false for all uri', () => {
         // Arrange
-        const instance = new CreateManyUrisRedirectUriSpecification();
+        const instance = new ManyRedirectUriVariantsSpecification();
         const uris =
-          new CreateManyUrisRedirectUriSpecificationCandidatesExample().invalid;
+          new ManyRedirectUriVariantsSpecificationCandidatesExample().invalid;
         const expected = [];
         const getResult = () => {
           const result = [];
