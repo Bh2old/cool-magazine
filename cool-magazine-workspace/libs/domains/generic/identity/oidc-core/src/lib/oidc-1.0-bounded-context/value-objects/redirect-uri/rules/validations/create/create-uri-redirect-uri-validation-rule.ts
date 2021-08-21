@@ -1,5 +1,5 @@
 import { ValidationRule } from '@bh2old/ddd-expc';
-import { CreateUriRedirectUriSpecification } from '../../specifications';
+import { CreateUriRedirectUriSpecification } from '../../../specifications';
 
 export class CreateUriRedirectUriValidationRule extends ValidationRule<string> {
   constructor() {

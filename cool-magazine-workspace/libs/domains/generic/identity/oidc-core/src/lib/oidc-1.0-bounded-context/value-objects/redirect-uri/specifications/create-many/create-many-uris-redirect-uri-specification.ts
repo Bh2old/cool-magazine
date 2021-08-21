@@ -1,5 +1,5 @@
 import { CompositeSpecification } from '@bh2old/ddd-expc';
-import { CreateUriRedirectUriSpecification } from './create-uri-redirect-uri-specification';
+import { CreateUriRedirectUriSpecification } from '../create';
 
 export class CreateManyUrisRedirectUriSpecification extends CompositeSpecification<
   Set<string>

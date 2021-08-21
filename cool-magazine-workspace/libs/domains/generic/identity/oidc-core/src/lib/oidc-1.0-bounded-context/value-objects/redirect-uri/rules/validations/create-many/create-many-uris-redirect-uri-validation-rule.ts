@@ -1,5 +1,5 @@
 import { ValidationRule } from '@bh2old/ddd-expc';
-import { CreateManyUrisRedirectUriSpecification } from '../../specifications';
+import { CreateManyUrisRedirectUriSpecification } from '../../../specifications';
 
 export class CreateManyUrisRedirectUriValidationRule extends ValidationRule<
   Set<string>

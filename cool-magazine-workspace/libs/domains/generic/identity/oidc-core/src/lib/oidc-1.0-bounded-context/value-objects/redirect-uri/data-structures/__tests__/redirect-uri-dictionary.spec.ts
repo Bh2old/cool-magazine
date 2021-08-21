@@ -1,5 +1,5 @@
-import { RedirectUriDictionary } from '../data-structures';
-import { RedirectUri } from '../redirect-uri.value-object';
+import { RedirectUriDictionary } from '../redirect-uri-dictionary';
+import { RedirectUri } from '../../redirect-uri.value-object';
 
 describe('RedirectUriDictionary', () => {
   describe('instance creation', () => {
