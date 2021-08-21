@@ -1,5 +1,5 @@
 import { CreateManyVariantsGrantTypeSpecification } from '../create-many-variants-grant-type-specification';
-import { GrantTypeVariants } from '../../../types';
+import { CreateManyVariantsGrantTypeSpecificationCandidatesExample } from '../create-many-variants-grant-type-specification-candidates-example';
 
 describe('CreateManyVariantsGrantTypeSpecification', () => {
   describe('instance creation', () => {
@@ -14,28 +14,55 @@ describe('CreateManyVariantsGrantTypeSpecification', () => {
   });
 
   describe('requirements checking', () => {
-    test('should return true if all variants are specified', () => {
-      // Arrange
-      const variants = new Set<GrantTypeVariants>().add('authorization_code');
-      const instance = new CreateManyVariantsGrantTypeSpecification();
+    describe('valid variants', () => {
+      test('should return true for all variants', () => {
+        // Arrange
+        const instance = new CreateManyVariantsGrantTypeSpecification();
+        const variants =
+          new CreateManyVariantsGrantTypeSpecificationCandidatesExample().valid;
+        const expected = [];
+        const getResult = () => {
+          const result = [];
+          for (const variant of variants) {
+            expected.push(true);
+            result.push(instance.isSatisfiedBy(variant));
+          }
 
-      // Act
-      const result = instance.isSatisfiedBy(variants);
+          return result;
+        };
 
-      // Assert
-      expect(result).toBe(true);
+        // Act
+        const result = getResult();
+
+        // Assert
+        expect(result).toStrictEqual(expected);
+      });
     });
 
-    test('should return false if variants are not specified', () => {
-      // Arrange
-      const variants = new Set<GrantTypeVariants>();
-      const instance = new CreateManyVariantsGrantTypeSpecification();
+    describe('invalid variants', () => {
+      test('should return false for all variants', () => {
+        // Arrange
+        const instance = new CreateManyVariantsGrantTypeSpecification();
+        const variants =
+          new CreateManyVariantsGrantTypeSpecificationCandidatesExample()
+            .invalid;
+        const expected = [];
+        const getResult = () => {
+          const result = [];
+          for (const variant of variants) {
+            expected.push(false);
+            result.push(instance.isSatisfiedBy(variant));
+          }
 
-      // Act
-      const result = instance.isSatisfiedBy(variants);
+          return result;
+        };
 
-      // Assert
-      expect(result).toBe(false);
+        // Act
+        const result = getResult();
+
+        // Assert
+        expect(result).toStrictEqual(expected);
+      });
     });
   });
 });
