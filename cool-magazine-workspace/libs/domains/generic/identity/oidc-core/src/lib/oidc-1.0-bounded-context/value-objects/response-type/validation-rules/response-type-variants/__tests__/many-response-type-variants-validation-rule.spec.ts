@@ -1,16 +1,16 @@
-import { CreateManyVariantsResponseTypeSpecificationCandidatesExample } from '../../../../specifications';
-import { CreateManyVariantsResponseTypeValidationRule } from '../create-many-variants-response-type-validation-rule';
+import { ManyResponseTypeVariantsSpecificationCandidatesExample } from '../../../specifications';
+import { ManyResponseTypeVariantsValidationRule } from '../many-response-type-variants-validation-rule';
 
-describe('CreateManyVariantsResponseTypeValidationRule', () => {
+describe('ManyResponseTypeVariantsValidationRule', () => {
   describe('instance creation', () => {
     test('should return instance', () => {
       // Arrange
       // Act
-      const instance = new CreateManyVariantsResponseTypeValidationRule();
+      const instance = new ManyResponseTypeVariantsValidationRule();
 
       // Assert
       expect(instance).toBeInstanceOf(
-        CreateManyVariantsResponseTypeValidationRule
+        ManyResponseTypeVariantsValidationRule
       );
     });
   });
@@ -19,10 +19,9 @@ describe('CreateManyVariantsResponseTypeValidationRule', () => {
     describe('valid variants', () => {
       test('should return true for all variants', () => {
         // Arrange
-        const instance = new CreateManyVariantsResponseTypeValidationRule();
+        const instance = new ManyResponseTypeVariantsValidationRule();
         const variants =
-          new CreateManyVariantsResponseTypeSpecificationCandidatesExample()
-            .valid;
+          new ManyResponseTypeVariantsSpecificationCandidatesExample().valid;
         const expected = [];
         const getResult = () => {
           const result = [];
@@ -45,10 +44,9 @@ describe('CreateManyVariantsResponseTypeValidationRule', () => {
     describe('invalid variants', () => {
       test('should return false for all variants', () => {
         // Arrange
-        const instance = new CreateManyVariantsResponseTypeValidationRule();
+        const instance = new ManyResponseTypeVariantsValidationRule();
         const variants =
-          new CreateManyVariantsResponseTypeSpecificationCandidatesExample()
-            .invalid;
+          new ManyResponseTypeVariantsSpecificationCandidatesExample().invalid;
         const expected = [];
         const getResult = () => {
           const result = [];

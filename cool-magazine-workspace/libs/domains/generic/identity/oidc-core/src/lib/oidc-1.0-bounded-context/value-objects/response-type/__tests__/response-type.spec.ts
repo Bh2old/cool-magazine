@@ -1,5 +1,5 @@
 import { ResponseType } from '../response-type.value-object';
-import { CreateManyVariantsResponseTypeSpecificationCandidatesExample } from '../specifications';
+import { ManyResponseTypeVariantsSpecificationCandidatesExample } from '../specifications';
 import { ResponseTypeVariants } from '../types/response-type-variants.type';
 
 describe('ResponseType', () => {
@@ -21,7 +21,7 @@ describe('ResponseType', () => {
       test('should return collection of ResponseTypes from collection of variants', () => {
         // Arrange
         const [firstValidVariants] =
-          new CreateManyVariantsResponseTypeSpecificationCandidatesExample()
+          new ManyResponseTypeVariantsSpecificationCandidatesExample()
             .valid;
 
         const expected: ResponseType[] = [];

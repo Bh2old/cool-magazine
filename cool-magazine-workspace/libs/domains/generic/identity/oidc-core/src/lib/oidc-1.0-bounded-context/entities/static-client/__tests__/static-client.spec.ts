@@ -13,7 +13,7 @@ describe('StaticClient', () => {
 
     const redirectUriValue = 'http://qwerty.mn/';
     const responseTypeValue = 'code';
-    const grantTypeValue = 'authorizationCode';
+    const grantTypeValue = 'authorization_code';
 
     clientRegistrationData = {
       id,

@@ -1,21 +1,19 @@
 import { ISpecificationCandidatesExample } from '@bh2old/ddd-expc';
 import {
-  CreateManyVariantsResponseTypeSpecificationCandidatesExample,
+  ManyResponseTypeVariantsSpecificationCandidatesExample,
   ResponseTypeVariants,
 } from '../../../../response-type';
 
 export class ResponseTypeVariantsPropertyClientMetadataCreateValuesSpecificationCandidatesExample
   implements ISpecificationCandidatesExample<Set<ResponseTypeVariants>>
 {
-  private readonly _createManyVariantsResponseTypeSpecificationCandidatesExample =
-    new CreateManyVariantsResponseTypeSpecificationCandidatesExample();
+  private readonly _manyResponseTypeVariantsSpecificationCandidatesExample =
+    new ManyResponseTypeVariantsSpecificationCandidatesExample();
 
   get valid() {
-    return this._createManyVariantsResponseTypeSpecificationCandidatesExample
-      .valid;
+    return this._manyResponseTypeVariantsSpecificationCandidatesExample.valid;
   }
   get invalid() {
-    return this._createManyVariantsResponseTypeSpecificationCandidatesExample
-      .invalid;
+    return this._manyResponseTypeVariantsSpecificationCandidatesExample.invalid;
   }
 }
