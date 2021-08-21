@@ -1,4 +1,4 @@
-import { CreateManyVariantsResponseTypeSpecificationInvariantTable } from '../../../../specifications';
+import { CreateManyVariantsResponseTypeSpecificationCandidatesExample } from '../../../../specifications';
 import { CreateManyVariantsResponseTypeValidationRule } from '../create-many-variants-response-type-validation-rule';
 
 describe('CreateManyVariantsResponseTypeValidationRule', () => {
@@ -16,48 +16,56 @@ describe('CreateManyVariantsResponseTypeValidationRule', () => {
   });
 
   describe('validation', () => {
-    test('should return true for all valid variants', () => {
-      // Arrange
-      const instance = new CreateManyVariantsResponseTypeValidationRule();
-      const getResult = () => {
+    describe('valid variants', () => {
+      test('should return true for all variants', () => {
+        // Arrange
+        const instance = new CreateManyVariantsResponseTypeValidationRule();
         const variants =
-          new CreateManyVariantsResponseTypeSpecificationInvariantTable().getAllValidCandidates();
-
-        for (const variant of variants) {
-          if (!instance.validate(variant)) {
-            return false;
+          new CreateManyVariantsResponseTypeSpecificationCandidatesExample()
+            .valid;
+        const expected = [];
+        const getResult = () => {
+          const result = [];
+          for (const variant of variants) {
+            expected.push(true);
+            result.push(instance.validate(variant));
           }
-          return true;
-        }
-      };
 
-      // Act
-      const result = getResult();
+          return result;
+        };
 
-      // Assert
-      expect(result).toBe(true);
+        // Act
+        const result = getResult();
+
+        // Assert
+        expect(result).toStrictEqual(expected);
+      });
     });
 
-    test('should return false for all invalid variants', () => {
-      // Arrange
-      const instance = new CreateManyVariantsResponseTypeValidationRule();
-      const getResult = () => {
+    describe('invalid variants', () => {
+      test('should return false for all variants', () => {
+        // Arrange
+        const instance = new CreateManyVariantsResponseTypeValidationRule();
         const variants =
-          new CreateManyVariantsResponseTypeSpecificationInvariantTable().getAllInvalidCandidates();
-
-        for (const variant of variants) {
-          if (instance.validate(variant)) {
-            return false;
+          new CreateManyVariantsResponseTypeSpecificationCandidatesExample()
+            .invalid;
+        const expected = [];
+        const getResult = () => {
+          const result = [];
+          for (const variant of variants) {
+            expected.push(false);
+            result.push(instance.validate(variant));
           }
-          return true;
-        }
-      };
 
-      // Act
-      const result = getResult();
+          return result;
+        };
 
-      // Assert
-      expect(result).toBe(true);
+        // Act
+        const result = getResult();
+
+        // Assert
+        expect(result).toStrictEqual(expected);
+      });
     });
   });
 });

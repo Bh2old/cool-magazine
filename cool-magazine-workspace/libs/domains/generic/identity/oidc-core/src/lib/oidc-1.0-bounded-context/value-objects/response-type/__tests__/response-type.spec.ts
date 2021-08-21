@@ -1,5 +1,5 @@
 import { ResponseType } from '../response-type.value-object';
-import { CreateManyVariantsResponseTypeSpecificationInvariantTable } from '../specifications';
+import { CreateManyVariantsResponseTypeSpecificationCandidatesExample } from '../specifications';
 import { ResponseTypeVariants } from '../types/response-type-variants.type';
 
 describe('ResponseType', () => {
@@ -20,18 +20,18 @@ describe('ResponseType', () => {
     describe('many different instances', () => {
       test('should return collection of ResponseTypes from collection of variants', () => {
         // Arrange
-        const variants =
-          new CreateManyVariantsResponseTypeSpecificationInvariantTable().valid
-            .code;
+        const [firstValidVariants] =
+          new CreateManyVariantsResponseTypeSpecificationCandidatesExample()
+            .valid;
 
         const expected: ResponseType[] = [];
 
-        variants.forEach((variant) => {
+        firstValidVariants.forEach((variant) => {
           expected.push(ResponseType.create(variant));
         });
 
         // Act
-        const instances = ResponseType.createMany(variants);
+        const instances = ResponseType.createMany(firstValidVariants);
 
         // Assert
         expect(instances).toStrictEqual(expected);

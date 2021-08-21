@@ -1,2 +1,2 @@
 export * from './specification';
-export * from './specification-invariant-table';
+export * from './specification-candidates-example';

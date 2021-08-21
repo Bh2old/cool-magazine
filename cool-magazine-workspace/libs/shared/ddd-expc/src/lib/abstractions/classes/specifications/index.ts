@@ -7,4 +7,3 @@ export * from './or-specification';
 export * from './down-cast-specification-chain-helper';
 export * from './specification';
 export * from './specification-rule';
-export * from './specification-invariant-table';
