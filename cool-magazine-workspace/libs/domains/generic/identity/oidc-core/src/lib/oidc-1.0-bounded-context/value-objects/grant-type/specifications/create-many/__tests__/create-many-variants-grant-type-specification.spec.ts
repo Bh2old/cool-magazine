@@ -1,5 +1,5 @@
-import { CreateManyVariantsGrantTypeSpecification } from '../specifications';
-import { GrantTypeVariants } from '../types';
+import { CreateManyVariantsGrantTypeSpecification } from '../create-many-variants-grant-type-specification';
+import { GrantTypeVariants } from '../../../types';
 
 describe('CreateManyVariantsGrantTypeSpecification', () => {
   describe('instance creation', () => {

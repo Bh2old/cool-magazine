@@ -1,5 +1,5 @@
 import { CompositeSpecification } from '@bh2old/ddd-expc';
-import { GrantTypeVariants } from '../types';
+import { GrantTypeVariants } from '../../types';
 
 export class CreateManyVariantsGrantTypeSpecification extends CompositeSpecification<
   Set<GrantTypeVariants>

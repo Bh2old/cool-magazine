@@ -1,5 +1,5 @@
-import { CreateManyVariantsGrantTypeValidationRule } from '../rules';
-import { GrantTypeVariants } from '../types';
+import { CreateManyVariantsGrantTypeValidationRule } from '../create-many-variants-grant-type-validation-rule';
+import { GrantTypeVariants } from '../../../../types';
 
 describe('CreateManyVariantsGrantTypeValidationRule', () => {
   describe('instance creation', () => {

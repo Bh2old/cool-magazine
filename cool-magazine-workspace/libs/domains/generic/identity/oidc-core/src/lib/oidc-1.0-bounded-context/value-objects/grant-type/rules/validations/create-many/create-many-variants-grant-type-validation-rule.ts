@@ -1,6 +1,6 @@
-import { CreateManyVariantsGrantTypeSpecification } from './../../specifications';
+import { CreateManyVariantsGrantTypeSpecification } from '../../../specifications';
 import { ValidationRule } from '@bh2old/ddd-expc';
-import { GrantTypeVariants } from '../../types';
+import { GrantTypeVariants } from '../../../types';
 
 export class CreateManyVariantsGrantTypeValidationRule extends ValidationRule<
   Set<GrantTypeVariants>

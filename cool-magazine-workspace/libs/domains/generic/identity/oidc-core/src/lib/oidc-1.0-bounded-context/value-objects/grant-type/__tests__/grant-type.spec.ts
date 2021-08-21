@@ -1,5 +1,5 @@
 import { GrantType } from '../grant-type.value-object';
-import { GrantTypeVariants } from '../types/grant-type-variants.type';
+import { GrantTypeVariants } from '../types';
 
 describe('GrantType', () => {
   describe('instance creation', () => {

@@ -1,6 +1,6 @@
-import { GrantTypeDictionary } from '../data-structures';
-import { GrantType } from '../grant-type.value-object';
-import { GrantTypeVariants } from '../types';
+import { GrantTypeDictionary } from '../grant-type-dictionary';
+import { GrantType } from '../../grant-type.value-object';
+import { GrantTypeVariants } from '../../types';
 
 describe('GrantTypeDictionary', () => {
   describe('instance creation', () => {
@@ -104,9 +104,7 @@ describe('GrantTypeDictionary', () => {
         const instance = new GrantTypeDictionary(iterableObject);
 
         // Assert
-        expect(instance.get(grantTypeVariant).value).toBe(
-          grantTypeVariant
-        );
+        expect(instance.get(grantTypeVariant).value).toBe(grantTypeVariant);
       });
 
       test('should return immutable instance if specified iterable object', () => {
