@@ -1,6 +1,6 @@
 import { CompositeSpecification } from '@bh2old/ddd-expc';
-import { CreateManyUrisRedirectUriSpecification } from '../../redirect-uri';
-import { IClientMetadataCreateValues } from '../models';
+import { CreateManyUrisRedirectUriSpecification } from '../../../../redirect-uri';
+import { IClientMetadataCreateValues } from '../../../models';
 
 export class RedirectUrisPropertyClientMetadataCreateValuesSpecification extends CompositeSpecification<IClientMetadataCreateValues> {
   private readonly _createManyUrisRedirectUriSpecification =

@@ -1,6 +1,6 @@
 import { CompositeSpecification } from '@bh2old/ddd-expc';
-import { CreateManyVariantsResponseTypeSpecification } from '../../response-type';
-import { IClientMetadataCreateValues } from '../models';
+import { CreateManyVariantsResponseTypeSpecification } from '../../../../response-type';
+import { IClientMetadataCreateValues } from '../../../models';
 
 export class ResponseTypeVariantsPropertyClientMetadataCreateValuesSpecification extends CompositeSpecification<IClientMetadataCreateValues> {
   private readonly _createManyVariantsResponseTypeSpecification =

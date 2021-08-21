@@ -1,7 +1,7 @@
 import { CompositeSpecification, Dictionary } from '@bh2old/ddd-expc';
-import { GrantTypeVariants } from '../../grant-type';
-import { ResponseTypeVariants } from '../../response-type';
-import { IClientMetadataCreateValues } from '../models';
+import { GrantTypeVariants } from '../../../grant-type';
+import { ResponseTypeVariants } from '../../../response-type';
+import { IClientMetadataCreateValues } from '../../models';
 
 type ResponseTypeVariantsToGrantTypeVariantsCorrespondence = {
   readonly [variant in ResponseTypeVariants]: Set<GrantTypeVariants>;

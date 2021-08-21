@@ -1,4 +1,1 @@
-export * from './redirect-uris-property-client-metadata-create-values-specification';
-export * from './response-type-variants-property-client-metadata-create-values-specification';
-export * from './grant-type-variants-property-client-metadata-create-values-specification';
-export * from './response-type-variants-to-grant-type-variants-correspondence-specification';
+export * from './client-metadata-create-values';

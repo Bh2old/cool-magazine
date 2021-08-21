@@ -2,9 +2,9 @@ import { CompositeSpecification, Specification } from '@bh2old/ddd-expc';
 import {
   CreateManyVariantsGrantTypeSpecification,
   GrantTypeVariants,
-} from '../../grant-type';
-import { IClientMetadataCreateValues } from '../models';
-import { ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification } from './response-type-variants-to-grant-type-variants-correspondence-specification';
+} from '../../../../grant-type';
+import { IClientMetadataCreateValues } from '../../../models';
+import { ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification } from '../response-type-variants-to-grant-type-variants-correspondence-specification';
 
 export class GrantTypeVariantsPropertyClientMetadataCreateValuesSpecification extends CompositeSpecification<IClientMetadataCreateValues> {
   private readonly _createManyVariantsGrantType =
