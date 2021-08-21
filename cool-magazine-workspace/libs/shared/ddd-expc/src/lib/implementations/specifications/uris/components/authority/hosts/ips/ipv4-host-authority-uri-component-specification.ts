@@ -8,7 +8,7 @@ type IPv4HostAuthorityUriComponentCandidate =
   | string;
 
 export class IPv4HostAuthorityUriComponentSpecification extends CompositeSpecification<IPv4HostAuthorityUriComponentCandidate> {
-  private readonly _ipv4RegExpPattern = '^(?<ipv4>(\\d{1,3}\\.){3}\\d{1,3})$';
+  private readonly _ipv4RegExpPattern = '^(?<ipv4>([0-255]{1,3}\\.){3}[0-255]{1,3})$';
   private readonly _ipv4RegExp = new RegExp(this._ipv4RegExpPattern);
 
   isSatisfiedBy(candidate: IPv4HostAuthorityUriComponentCandidate): boolean {
