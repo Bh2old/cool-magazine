@@ -3,12 +3,9 @@ import { GrantTypeVariants } from './types';
 
 export class GrantType extends ValueObject {
   private readonly _variant: GrantTypeVariants;
-  public get valueAsVariant(): GrantTypeVariants {
-    return this._variant;
-  }
 
-  public get value(): string {
-    return GrantType._GRANT_TYPES_BY_VARIANTS[this.valueAsVariant];
+  public get value(): GrantTypeVariants {
+    return this._variant;
   }
 
   private constructor(variant: GrantTypeVariants) {
@@ -16,15 +13,15 @@ export class GrantType extends ValueObject {
     this._variant = variant;
   }
 
-  private static readonly _GRANT_TYPES_BY_VARIANTS = {
-    authorizationCode: 'authorization_code',
-    implicit: 'implicit',
-    refreshToken: 'refresh_token',
+  private static readonly _GRANT_TYPES_VARIANTS = {
+    authorization_code: true,
+    implicit: true,
+    refresh_token: true,
   } as const;
 
-  public static get GRANT_TYPES_BY_VARIANTS() {
+  public static get GRANT_TYPES_VARIANTS() {
     return {
-      ...this._GRANT_TYPES_BY_VARIANTS,
+      ...this._GRANT_TYPES_VARIANTS,
     } as const;
   }
 

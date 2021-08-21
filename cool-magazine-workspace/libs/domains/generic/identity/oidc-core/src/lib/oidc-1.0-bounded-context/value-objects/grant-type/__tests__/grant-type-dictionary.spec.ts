@@ -19,7 +19,7 @@ describe('GrantTypeDictionary', () => {
     describe('constructor overload with Iterable<[GrantTypeVariants, GrantType]> param', () => {
       test('should return instance of GrantTypeDictionary if iterable argument is specified', () => {
         // Arrange
-        const grantTypeVariant = 'authorizationCode';
+        const grantTypeVariant = 'authorization_code';
         const newItem = GrantType.create(grantTypeVariant);
         const iterableObject: Iterable<[GrantTypeVariants, GrantType]> = [
           [grantTypeVariant, newItem],
@@ -34,7 +34,7 @@ describe('GrantTypeDictionary', () => {
 
       test('should return instance that contains elements from specified iterable object', () => {
         // Arrange
-        const grantTypeVariant = 'authorizationCode';
+        const grantTypeVariant = 'authorization_code';
         const newItem = GrantType.create(grantTypeVariant);
         const iterableObject: Iterable<[GrantTypeVariants, GrantType]> = [
           [grantTypeVariant, newItem],
@@ -49,7 +49,7 @@ describe('GrantTypeDictionary', () => {
 
       test('should return immutable instance if specified iterable object', () => {
         // Arrange
-        const grantTypeVariant = 'authorizationCode';
+        const grantTypeVariant = 'authorization_code';
         const newItem = GrantType.create(grantTypeVariant);
         const variantForItemForMutation = 'implicit';
         const itemForMutation = GrantType.create(variantForItemForMutation);
@@ -67,7 +67,7 @@ describe('GrantTypeDictionary', () => {
 
       test('should return instance that contains mutable elements from the specified iterable object', () => {
         // Arrange
-        const grantTypeVariant = 'authorizationCode';
+        const grantTypeVariant = 'authorization_code';
         const newItem = GrantType.create(grantTypeVariant);
         const iterableObject: Iterable<[GrantTypeVariants, GrantType]> = [
           [grantTypeVariant, newItem],
@@ -85,7 +85,7 @@ describe('GrantTypeDictionary', () => {
     describe('constructor overload with Iterable<ResponseTypeVariants> param', () => {
       test('should return instance of GrantTypeDictionary if iterable argument is specified', () => {
         // Arrange
-        const grantTypeVariant = 'authorizationCode';
+        const grantTypeVariant = 'authorization_code';
         const iterableObject: Iterable<GrantTypeVariants> = [grantTypeVariant];
 
         // Act
@@ -97,21 +97,21 @@ describe('GrantTypeDictionary', () => {
 
       test('should return instance that contains elements from specified iterable object', () => {
         // Arrange
-        const grantTypeVariant = 'authorizationCode';
+        const grantTypeVariant = 'authorization_code';
         const iterableObject: Iterable<GrantTypeVariants> = [grantTypeVariant];
 
         // Act
         const instance = new GrantTypeDictionary(iterableObject);
 
         // Assert
-        expect(instance.get(grantTypeVariant).valueAsVariant).toBe(
+        expect(instance.get(grantTypeVariant).value).toBe(
           grantTypeVariant
         );
       });
 
       test('should return immutable instance if specified iterable object', () => {
         // Arrange
-        const grantTypeVariant: GrantTypeVariants = 'authorizationCode';
+        const grantTypeVariant: GrantTypeVariants = 'authorization_code';
         const variantForItemForMutation: GrantTypeVariants = 'implicit';
         const iterableObject: GrantTypeVariants[] = [grantTypeVariant];
 
@@ -129,7 +129,7 @@ describe('GrantTypeDictionary', () => {
     test('should return same instance of GrantTypeDictionary if uniq type', () => {
       // Arrange
       const dictionary = new GrantTypeDictionary();
-      const newItem = GrantType.create('authorizationCode');
+      const newItem = GrantType.create('authorization_code');
 
       // Act
       const result = dictionary.add(newItem);
@@ -141,7 +141,7 @@ describe('GrantTypeDictionary', () => {
     test('should replace the existing item with a new one if not uniq type', () => {
       // Arrange
       const dictionary = new GrantTypeDictionary();
-      const grantTypeVariant = 'authorizationCode';
+      const grantTypeVariant = 'authorization_code';
       const newItem = GrantType.create(grantTypeVariant);
       const itemForMutation = GrantType.create(grantTypeVariant);
       dictionary.add(newItem);
@@ -158,7 +158,7 @@ describe('GrantTypeDictionary', () => {
     test('should return true if key exists', () => {
       // Arrange
       const dictionary = new GrantTypeDictionary();
-      const grantTypeVariant = 'authorizationCode';
+      const grantTypeVariant = 'authorization_code';
       const newItem = GrantType.create(grantTypeVariant);
       dictionary.add(newItem);
 
@@ -173,7 +173,7 @@ describe('GrantTypeDictionary', () => {
       // Arrange
       const dictionary = new GrantTypeDictionary();
       const notAddedGrantTypeVariant = 'implicit';
-      const addedGrantTypeVariant = 'authorizationCode';
+      const addedGrantTypeVariant = 'authorization_code';
       const newItem = GrantType.create(addedGrantTypeVariant);
       dictionary.add(newItem);
 
@@ -189,7 +189,7 @@ describe('GrantTypeDictionary', () => {
     test('should return item if key exist', () => {
       // Arrange
       const dictionary = new GrantTypeDictionary();
-      const grantTypeVariant = 'authorizationCode';
+      const grantTypeVariant = 'authorization_code';
       const newItem = GrantType.create(grantTypeVariant);
       dictionary.add(newItem);
 
@@ -203,7 +203,7 @@ describe('GrantTypeDictionary', () => {
     test('should return undefined if key not exist', () => {
       // Arrange
       const dictionary = new GrantTypeDictionary();
-      const grantTypeVariant = 'authorizationCode';
+      const grantTypeVariant = 'authorization_code';
       // Act
       const result = dictionary.get(grantTypeVariant);
 
@@ -216,7 +216,7 @@ describe('GrantTypeDictionary', () => {
     test('should implement an iterable protocol for collection of dictionary items values', () => {
       // Arrange
       const dictionary = new GrantTypeDictionary();
-      const grantTypeVariant = 'authorizationCode';
+      const grantTypeVariant = 'authorization_code';
       const newItem = GrantType.create(grantTypeVariant);
       dictionary.add(newItem);
 
@@ -230,7 +230,7 @@ describe('GrantTypeDictionary', () => {
     test('should implement an iterator protocol for collection of dictionary items values', () => {
       // Arrange
       const dictionary = new GrantTypeDictionary();
-      const grantTypeVariant = 'authorizationCode';
+      const grantTypeVariant = 'authorization_code';
       const newItem = GrantType.create(grantTypeVariant);
       const expected = { value: newItem, done: false };
       dictionary.add(newItem);
@@ -258,7 +258,7 @@ describe('GrantTypeDictionary', () => {
 
     test('should return immutable instance', () => {
       // Arrange
-      const responseTypeVariant = 'authorizationCode';
+      const responseTypeVariant = 'authorization_code';
       const newItem = GrantType.create(responseTypeVariant);
       const variantForItemForMutation = 'implicit';
       const itemForMutation = GrantType.create(variantForItemForMutation);
@@ -277,7 +277,7 @@ describe('GrantTypeDictionary', () => {
 
     test('should return instance that contains mutable elements', () => {
       // Arrange
-      const responseTypeVariant = 'authorizationCode';
+      const responseTypeVariant = 'authorization_code';
       const newItem = GrantType.create(responseTypeVariant);
       const iterableObject: Iterable<[GrantTypeVariants, GrantType]> = [
         [responseTypeVariant, newItem],

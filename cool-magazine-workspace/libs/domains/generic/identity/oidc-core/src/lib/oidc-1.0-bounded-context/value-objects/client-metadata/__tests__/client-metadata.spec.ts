@@ -9,7 +9,7 @@ describe('ClientMetadata', () => {
   beforeEach(() => {
     const redirectUriValue = 'http://qwerty.mn/';
     const responseTypeValue = 'code';
-    const grantTypeValue = 'authorizationCode';
+    const grantTypeValue = 'authorization_code';
 
     BEFORE_EACH_clientMetadataCreateValues = {
       redirectUris: new Set<string>().add(redirectUriValue),
@@ -78,7 +78,7 @@ describe('ClientMetadata', () => {
       const instance = ClientMetadata.create(
         BEFORE_EACH_clientMetadataCreateValues
       );
-      const grantTypeValue = 'authorizationCode';
+      const grantTypeValue = 'authorization_code';
 
       // Act
       const redirectUris = instance.grantTypesValues;

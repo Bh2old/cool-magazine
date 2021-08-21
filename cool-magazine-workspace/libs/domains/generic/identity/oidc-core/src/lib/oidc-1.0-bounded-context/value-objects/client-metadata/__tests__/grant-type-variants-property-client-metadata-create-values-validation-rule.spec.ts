@@ -38,7 +38,7 @@ describe('GrantTypeVariantsPropertyClientMetadataCreateValuesValidationRule', ()
       const variants: IClientMetadataCreateValues = {
         redirectUris: new Set<string>(),
         grantTypeVariants: new Set<GrantTypeVariants>().add(
-          'authorizationCode'
+          'authorization_code'
         ),
       };
 

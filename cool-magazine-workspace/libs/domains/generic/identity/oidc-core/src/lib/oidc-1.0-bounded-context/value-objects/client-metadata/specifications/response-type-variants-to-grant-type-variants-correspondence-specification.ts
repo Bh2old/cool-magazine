@@ -11,22 +11,22 @@ export class ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification 
   private get _correspondence(): ResponseTypeVariantsToGrantTypeVariantsCorrespondence {
     return {
       get code() {
-        return new Set<GrantTypeVariants>(['authorizationCode']);
+        return new Set<GrantTypeVariants>(['authorization_code']);
       },
       get id_token() {
         return new Set<GrantTypeVariants>(['implicit']);
       },
       get 'token id_token'() {
-        return new Set<GrantTypeVariants>(['authorizationCode', 'implicit']);
+        return new Set<GrantTypeVariants>(['authorization_code', 'implicit']);
       },
       get 'code id_token'() {
-        return new Set<GrantTypeVariants>(['authorizationCode', 'implicit']);
+        return new Set<GrantTypeVariants>(['authorization_code', 'implicit']);
       },
       get 'code token'() {
-        return new Set<GrantTypeVariants>(['authorizationCode', 'implicit']);
+        return new Set<GrantTypeVariants>(['authorization_code', 'implicit']);
       },
       get 'code token id_token'() {
-        return new Set<GrantTypeVariants>(['authorizationCode', 'implicit']);
+        return new Set<GrantTypeVariants>(['authorization_code', 'implicit']);
       },
     };
   }
@@ -36,7 +36,7 @@ export class ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification 
   }
 
   static get DEFAULT_GRANT_TYPE_VARIANTS(): Iterable<GrantTypeVariants> {
-    return new Set<GrantTypeVariants>(['authorizationCode']);
+    return new Set<GrantTypeVariants>(['authorization_code']);
   }
 
   isSatisfiedBy(candidate: IClientMetadataCreateValues): boolean {

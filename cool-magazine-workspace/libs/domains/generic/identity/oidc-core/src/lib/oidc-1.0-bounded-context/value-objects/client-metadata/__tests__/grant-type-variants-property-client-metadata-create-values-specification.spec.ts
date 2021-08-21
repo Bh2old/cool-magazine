@@ -53,7 +53,7 @@ describe('GrantTypeVariantsPropertyClientMetadataCreateValuesSpecification', () 
             'code token id_token',
           ]),
           grantTypeVariants: new Set<GrantTypeVariants>([
-            'authorizationCode',
+            'authorization_code',
             'implicit',
           ]),
         };
@@ -80,7 +80,7 @@ describe('GrantTypeVariantsPropertyClientMetadataCreateValuesSpecification', () 
             'code token',
             'code token id_token',
           ]),
-          grantTypeVariants: new Set<GrantTypeVariants>(['refreshToken']),
+          grantTypeVariants: new Set<GrantTypeVariants>(['refresh_token']),
         };
 
         // Act
@@ -143,9 +143,9 @@ describe('GrantTypeVariantsPropertyClientMetadataCreateValuesSpecification', () 
         const values: IClientMetadataCreateValues = {
           redirectUris: undefined,
           grantTypeVariants: new Set<GrantTypeVariants>([
-            'authorizationCode',
+            'authorization_code',
             'implicit',
-            'refreshToken',
+            'refresh_token',
           ]),
         };
 
@@ -165,7 +165,7 @@ describe('GrantTypeVariantsPropertyClientMetadataCreateValuesSpecification', () 
           redirectUris: undefined,
           grantTypeVariants: new Set<GrantTypeVariants>([
             'implicit',
-            'refreshToken',
+            'refresh_token',
           ]),
         };
 

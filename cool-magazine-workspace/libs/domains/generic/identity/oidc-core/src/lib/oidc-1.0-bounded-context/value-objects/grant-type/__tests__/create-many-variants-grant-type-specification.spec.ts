@@ -16,7 +16,7 @@ describe('CreateManyVariantsGrantTypeSpecification', () => {
   describe('requirements checking', () => {
     test('should return true if all variants are specified', () => {
       // Arrange
-      const variants = new Set<GrantTypeVariants>().add('authorizationCode');
+      const variants = new Set<GrantTypeVariants>().add('authorization_code');
       const instance = new CreateManyVariantsGrantTypeSpecification();
 
       // Act

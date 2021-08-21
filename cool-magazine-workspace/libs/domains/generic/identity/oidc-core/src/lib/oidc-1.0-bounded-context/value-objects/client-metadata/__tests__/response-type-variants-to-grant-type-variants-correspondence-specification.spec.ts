@@ -36,7 +36,7 @@ describe('ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification', (
             'code token id_token',
           ]),
           grantTypeVariants: new Set<GrantTypeVariants>([
-            'authorizationCode',
+            'authorization_code',
             'implicit',
           ]),
         };
@@ -63,7 +63,7 @@ describe('ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification', (
             'code token',
             'code token id_token',
           ]),
-          grantTypeVariants: new Set<GrantTypeVariants>(['refreshToken']),
+          grantTypeVariants: new Set<GrantTypeVariants>(['refresh_token']),
         };
 
         // Act
@@ -126,9 +126,9 @@ describe('ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification', (
         const values: IClientMetadataCreateValues = {
           redirectUris: undefined,
           grantTypeVariants: new Set<GrantTypeVariants>([
-            'authorizationCode',
+            'authorization_code',
             'implicit',
-            'refreshToken',
+            'refresh_token',
           ]),
         };
 
@@ -148,7 +148,7 @@ describe('ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification', (
           redirectUris: undefined,
           grantTypeVariants: new Set<GrantTypeVariants>([
             'implicit',
-            'refreshToken',
+            'refresh_token',
           ]),
         };
 

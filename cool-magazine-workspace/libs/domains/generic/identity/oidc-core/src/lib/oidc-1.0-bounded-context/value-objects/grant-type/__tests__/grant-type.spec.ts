@@ -6,7 +6,7 @@ describe('GrantType', () => {
     describe('single instance', () => {
       test('should return instance of GrantType with specifying type', () => {
         // Arrange
-        const params = 'authorizationCode';
+        const params = 'authorization_code';
 
         // Act
         const instance = GrantType.create(params);
@@ -18,7 +18,7 @@ describe('GrantType', () => {
     describe('many different instances', () => {
       test('should return collection of GrantTypes from collection of variants', () => {
         // Arrange
-        const variant = 'authorizationCode';
+        const variant = 'authorization_code';
         const variants = new Set<GrantTypeVariants>().add(variant);
         const expected = [GrantType.create(variant)];
         // Act
@@ -34,10 +34,8 @@ describe('GrantType', () => {
     test('should return not empty string value if type is specified', () => {
       // Arrange
       const grantTypeVariants = Object.keys(
-        GrantType.GRANT_TYPES_BY_VARIANTS
+        GrantType.GRANT_TYPES_VARIANTS
       ) as GrantTypeVariants[];
-
-      const grantTypes = Object.values(GrantType.GRANT_TYPES_BY_VARIANTS);
 
       // Act
       const grantTypeValues = grantTypeVariants.map(
@@ -45,7 +43,7 @@ describe('GrantType', () => {
       );
 
       // Assert
-      expect(grantTypeValues).toStrictEqual(grantTypes);
+      expect(grantTypeValues).toStrictEqual(grantTypeVariants);
     });
   });
 });

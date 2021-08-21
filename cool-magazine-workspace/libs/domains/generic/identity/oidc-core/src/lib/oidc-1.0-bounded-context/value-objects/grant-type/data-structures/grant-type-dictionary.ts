@@ -42,7 +42,7 @@ export class GrantTypeDictionary implements ICloneable<GrantTypeDictionary> {
     key: GrantTypeVariants;
     value: GrantType;
   } {
-    return { key: uri.valueAsVariant, value: uri };
+    return { key: uri.value, value: uri };
   }
 
   private _createDictionary(
@@ -104,14 +104,18 @@ export class GrantTypeDictionary implements ICloneable<GrantTypeDictionary> {
       iteratorNextValue &&
       !isArrayIteratorNextValue &&
       typeof iteratorNextValue === 'string' &&
-      typeof GrantType.GRANT_TYPES_BY_VARIANTS[
-        iteratorNextValue as VariantForGrantTypeCreation
-      ] === 'string';
+      Object.prototype.hasOwnProperty.call(
+        GrantType.GRANT_TYPES_VARIANTS,
+        iteratorNextValue
+      );
 
     const isKeyValueAsVariantAndGrantType: boolean =
       isArrayIteratorNextValue &&
       typeof iterableItemKey === 'string' &&
-      GrantType.GRANT_TYPES_BY_VARIANTS[iterableItemKey] &&
+      Object.prototype.hasOwnProperty.call(
+        GrantType.GRANT_TYPES_VARIANTS,
+        iterableItemKey
+      ) &&
       iterableItemValue instanceof GrantType;
 
     return {
