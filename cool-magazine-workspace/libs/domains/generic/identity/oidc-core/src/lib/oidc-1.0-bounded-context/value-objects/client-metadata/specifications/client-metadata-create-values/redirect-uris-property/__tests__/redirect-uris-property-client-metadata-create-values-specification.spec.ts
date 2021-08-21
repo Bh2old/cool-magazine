@@ -1,4 +1,4 @@
-import { RedirectUrisPropertyClientMetadataCreateValuesSpecification } from '../specifications';
+import { RedirectUrisPropertyClientMetadataCreateValuesSpecification } from '../../../../specifications';
 
 describe('RedirectUrisPropertyClientMetadataCreateValuesSpecification', () => {
   describe('instance creation', () => {

@@ -1,6 +1,6 @@
 import { ValidationRule } from '@bh2old/ddd-expc';
-import { IClientMetadataCreateValues } from '../../models';
-import { GrantTypeVariantsPropertyClientMetadataCreateValuesSpecification } from '../../specifications';
+import { IClientMetadataCreateValues } from '../../../models';
+import { GrantTypeVariantsPropertyClientMetadataCreateValuesSpecification } from '../../../specifications';
 
 export class GrantTypeVariantsPropertyClientMetadataCreateValuesValidationRule extends ValidationRule<IClientMetadataCreateValues> {
   constructor() {

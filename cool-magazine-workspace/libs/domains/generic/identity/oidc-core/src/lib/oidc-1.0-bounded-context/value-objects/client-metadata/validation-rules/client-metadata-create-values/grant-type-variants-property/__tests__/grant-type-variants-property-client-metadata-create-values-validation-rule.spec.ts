@@ -1,30 +1,30 @@
-import { ResponseTypeVariants } from '../../response-type';
-import { IClientMetadataCreateValues } from '../models';
-import { ResponseTypeVariantsPropertyClientMetadataCreateValuesValidationRule } from '../rules';
+import { GrantTypeVariants } from '../../../../../grant-type';
+import { IClientMetadataCreateValues } from '../../../../models';
+import { GrantTypeVariantsPropertyClientMetadataCreateValuesValidationRule } from '../grant-type-variants-property-client-metadata-create-values-validation-rule';
 
-describe('ResponseTypeVariantsPropertyClientMetadataCreateValuesValidationRule', () => {
+describe('GrantTypeVariantsPropertyClientMetadataCreateValuesValidationRule', () => {
   describe('instance creation', () => {
     test('should return instance', () => {
       // Arrange
       // Act
       const instance =
-        new ResponseTypeVariantsPropertyClientMetadataCreateValuesValidationRule();
+        new GrantTypeVariantsPropertyClientMetadataCreateValuesValidationRule();
 
       // Assert
       expect(instance).toBeInstanceOf(
-        ResponseTypeVariantsPropertyClientMetadataCreateValuesValidationRule
+        GrantTypeVariantsPropertyClientMetadataCreateValuesValidationRule
       );
     });
   });
 
-  describe('requirements checking', () => {
+  describe('validation', () => {
     test('should return true if variants are undefined', () => {
       // Arrange
       const variants: IClientMetadataCreateValues = {
         redirectUris: new Set<string>(),
       };
       const instance =
-        new ResponseTypeVariantsPropertyClientMetadataCreateValuesValidationRule();
+        new GrantTypeVariantsPropertyClientMetadataCreateValuesValidationRule();
 
       // Act
       const result = instance.validate(variants);
@@ -37,11 +37,13 @@ describe('ResponseTypeVariantsPropertyClientMetadataCreateValuesValidationRule',
       // Arrange
       const variants: IClientMetadataCreateValues = {
         redirectUris: new Set<string>(),
-        responseTypeVariants: new Set<ResponseTypeVariants>().add('code'),
+        grantTypeVariants: new Set<GrantTypeVariants>().add(
+          'authorization_code'
+        ),
       };
 
       const instance =
-        new ResponseTypeVariantsPropertyClientMetadataCreateValuesValidationRule();
+        new GrantTypeVariantsPropertyClientMetadataCreateValuesValidationRule();
 
       // Act
       const result = instance.validate(variants);
@@ -54,11 +56,11 @@ describe('ResponseTypeVariantsPropertyClientMetadataCreateValuesValidationRule',
       // Arrange
       const variants: IClientMetadataCreateValues = {
         redirectUris: new Set<string>(),
-        responseTypeVariants: new Set<ResponseTypeVariants>(),
+        grantTypeVariants: new Set<GrantTypeVariants>(),
       };
 
       const instance =
-        new ResponseTypeVariantsPropertyClientMetadataCreateValuesValidationRule();
+        new GrantTypeVariantsPropertyClientMetadataCreateValuesValidationRule();
 
       // Act
       const result = instance.validate(variants);

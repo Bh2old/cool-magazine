@@ -1,6 +1,6 @@
 import { ValidationRule } from '@bh2old/ddd-expc';
-import { IClientMetadataCreateValues } from '../../models';
-import { RedirectUrisPropertyClientMetadataCreateValuesSpecification } from '../../specifications';
+import { IClientMetadataCreateValues } from '../../../models';
+import { RedirectUrisPropertyClientMetadataCreateValuesSpecification } from '../../../specifications';
 
 export class RedirectUrisPropertyClientMetadataCreateValuesValidationRule extends ValidationRule<IClientMetadataCreateValues> {
   constructor() {

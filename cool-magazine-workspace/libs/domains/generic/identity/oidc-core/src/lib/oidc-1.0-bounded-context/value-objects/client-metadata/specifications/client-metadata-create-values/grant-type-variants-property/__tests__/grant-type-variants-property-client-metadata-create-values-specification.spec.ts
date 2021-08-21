@@ -1,29 +1,46 @@
-import { IClientMetadataCreateValues } from './../models';
-import { ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification } from '../specifications';
-import { ResponseTypeVariants } from '../../response-type';
-import { GrantTypeVariants } from '../../grant-type';
+import { GrantTypeVariants } from '../../../../../grant-type';
+import { ResponseTypeVariants } from '../../../../../response-type';
+import { IClientMetadataCreateValues } from '../../../../models';
+import { GrantTypeVariantsPropertyClientMetadataCreateValuesSpecification } from '../../../../specifications';
 
-describe('ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification', () => {
+describe('GrantTypeVariantsPropertyClientMetadataCreateValuesSpecification', () => {
   describe('instance creation', () => {
     test('should return instance', () => {
       // Arrange
       // Act
       const instance =
-        new ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification();
+        new GrantTypeVariantsPropertyClientMetadataCreateValuesSpecification();
 
       // Assert
       expect(instance).toBeInstanceOf(
-        ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification
+        GrantTypeVariantsPropertyClientMetadataCreateValuesSpecification
       );
     });
   });
 
   describe('requirements checking', () => {
+    test('should return false if grant type variants are empty collection', () => {
+      // Arrange
+      const variants: IClientMetadataCreateValues = {
+        redirectUris: new Set<string>(),
+        grantTypeVariants: new Set<GrantTypeVariants>(),
+      };
+
+      const instance =
+        new GrantTypeVariantsPropertyClientMetadataCreateValuesSpecification();
+
+      // Act
+      const result = instance.isSatisfiedBy(variants);
+
+      // Assert
+      expect(result).toBe(false);
+    });
+
     describe('case where both types of variants are present', () => {
       test('should return true if variants satisfy to correspondence', () => {
         // Arrange
         const instance =
-          new ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification();
+          new GrantTypeVariantsPropertyClientMetadataCreateValuesSpecification();
 
         const values: IClientMetadataCreateValues = {
           redirectUris: undefined,
@@ -51,7 +68,7 @@ describe('ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification', (
       test('should return false if variants don not satisfy to correspondence', () => {
         // Arrange
         const instance =
-          new ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification();
+          new GrantTypeVariantsPropertyClientMetadataCreateValuesSpecification();
 
         const values: IClientMetadataCreateValues = {
           redirectUris: undefined,
@@ -78,7 +95,7 @@ describe('ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification', (
       test('should return true if variants satisfy to correspondence', () => {
         // Arrange
         const instance =
-          new ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification();
+          new GrantTypeVariantsPropertyClientMetadataCreateValuesSpecification();
 
         const values: IClientMetadataCreateValues = {
           redirectUris: undefined,
@@ -95,7 +112,7 @@ describe('ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification', (
       test('should return false if variants don not satisfy to correspondence', () => {
         // Arrange
         const instance =
-          new ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification();
+          new GrantTypeVariantsPropertyClientMetadataCreateValuesSpecification();
 
         const values: IClientMetadataCreateValues = {
           redirectUris: undefined,
@@ -121,7 +138,7 @@ describe('ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification', (
       test('should return true if variants satisfy to correspondence', () => {
         // Arrange
         const instance =
-          new ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification();
+          new GrantTypeVariantsPropertyClientMetadataCreateValuesSpecification();
 
         const values: IClientMetadataCreateValues = {
           redirectUris: undefined,
@@ -142,7 +159,7 @@ describe('ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification', (
       test('should return false if variants don not satisfy to correspondence', () => {
         // Arrange
         const instance =
-          new ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification();
+          new GrantTypeVariantsPropertyClientMetadataCreateValuesSpecification();
 
         const values: IClientMetadataCreateValues = {
           redirectUris: undefined,
@@ -164,7 +181,7 @@ describe('ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification', (
       test('should return true if variants satisfy to correspondence', () => {
         // Arrange
         const instance =
-          new ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification();
+          new GrantTypeVariantsPropertyClientMetadataCreateValuesSpecification();
 
         const values: IClientMetadataCreateValues = {
           redirectUris: undefined,

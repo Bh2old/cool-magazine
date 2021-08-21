@@ -1,18 +1,18 @@
-import { ResponseTypeVariants } from '../../response-type';
-import { IClientMetadataCreateValues } from '../models';
-import { ResponseTypeVariantsPropertyClientMetadataCreateValuesSpecification } from '../specifications';
+import { ResponseTypeVariants } from '../../../../../response-type';
+import { IClientMetadataCreateValues } from '../../../../models';
+import { ResponseTypeVariantsPropertyClientMetadataCreateValuesValidationRule } from '../response-type-variants-property-client-metadata-create-values-validation-rule';
 
-describe('ResponseTypeVariantsPropertyClientMetadataCreateValuesSpecification', () => {
+describe('ResponseTypeVariantsPropertyClientMetadataCreateValuesValidationRule', () => {
   describe('instance creation', () => {
     test('should return instance', () => {
       // Arrange
       // Act
       const instance =
-        new ResponseTypeVariantsPropertyClientMetadataCreateValuesSpecification();
+        new ResponseTypeVariantsPropertyClientMetadataCreateValuesValidationRule();
 
       // Assert
       expect(instance).toBeInstanceOf(
-        ResponseTypeVariantsPropertyClientMetadataCreateValuesSpecification
+        ResponseTypeVariantsPropertyClientMetadataCreateValuesValidationRule
       );
     });
   });
@@ -24,10 +24,10 @@ describe('ResponseTypeVariantsPropertyClientMetadataCreateValuesSpecification', 
         redirectUris: new Set<string>(),
       };
       const instance =
-        new ResponseTypeVariantsPropertyClientMetadataCreateValuesSpecification();
+        new ResponseTypeVariantsPropertyClientMetadataCreateValuesValidationRule();
 
       // Act
-      const result = instance.isSatisfiedBy(variants);
+      const result = instance.validate(variants);
 
       // Assert
       expect(result).toBe(true);
@@ -41,10 +41,10 @@ describe('ResponseTypeVariantsPropertyClientMetadataCreateValuesSpecification', 
       };
 
       const instance =
-        new ResponseTypeVariantsPropertyClientMetadataCreateValuesSpecification();
+        new ResponseTypeVariantsPropertyClientMetadataCreateValuesValidationRule();
 
       // Act
-      const result = instance.isSatisfiedBy(variants);
+      const result = instance.validate(variants);
 
       // Assert
       expect(result).toBe(true);
@@ -58,10 +58,10 @@ describe('ResponseTypeVariantsPropertyClientMetadataCreateValuesSpecification', 
       };
 
       const instance =
-        new ResponseTypeVariantsPropertyClientMetadataCreateValuesSpecification();
+        new ResponseTypeVariantsPropertyClientMetadataCreateValuesValidationRule();
 
       // Act
-      const result = instance.isSatisfiedBy(variants);
+      const result = instance.validate(variants);
 
       // Assert
       expect(result).toBe(false);

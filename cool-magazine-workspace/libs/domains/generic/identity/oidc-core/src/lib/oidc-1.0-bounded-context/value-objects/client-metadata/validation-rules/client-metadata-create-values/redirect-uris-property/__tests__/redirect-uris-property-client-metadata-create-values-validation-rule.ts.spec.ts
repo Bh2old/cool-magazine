@@ -1,4 +1,4 @@
-import { RedirectUrisPropertyClientMetadataCreateValuesValidationRule } from '../rules';
+import { RedirectUrisPropertyClientMetadataCreateValuesValidationRule } from '../redirect-uris-property-client-metadata-create-values-validation-rule';
 
 describe('RedirectUrisPropertyClientMetadataCreateValuesValidationRule', () => {
   describe('instance creation', () => {
