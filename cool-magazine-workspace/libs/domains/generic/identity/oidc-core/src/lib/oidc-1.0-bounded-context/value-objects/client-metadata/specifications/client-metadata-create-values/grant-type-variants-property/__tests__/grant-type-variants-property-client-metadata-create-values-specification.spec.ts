@@ -1,7 +1,10 @@
 import { GrantTypeVariants } from '../../../../../grant-type';
 import { ResponseTypeVariants } from '../../../../../response-type';
 import { IClientMetadataCreateValues } from '../../../../models';
-import { GrantTypeVariantsPropertyClientMetadataCreateValuesSpecification } from '../../../../specifications';
+import {
+  GrantTypeVariantsPropertyClientMetadataCreateValuesSpecification,
+  GrantTypeVariantsPropertyClientMetadataCreateValuesSpecificationCandidatesExample,
+} from '../../../../specifications';
 
 describe('GrantTypeVariantsPropertyClientMetadataCreateValuesSpecification', () => {
   describe('instance creation', () => {
@@ -36,162 +39,66 @@ describe('GrantTypeVariantsPropertyClientMetadataCreateValuesSpecification', () 
       expect(result).toBe(false);
     });
 
-    describe('case where both types of variants are present', () => {
-      test('should return true if variants satisfy to correspondence', () => {
-        // Arrange
-        const instance =
-          new GrantTypeVariantsPropertyClientMetadataCreateValuesSpecification();
-
-        const values: IClientMetadataCreateValues = {
-          redirectUris: undefined,
-          responseTypeVariants: new Set<ResponseTypeVariants>([
-            'code',
-            'id_token',
-            'token id_token',
-            'code id_token',
-            'code token',
-            'code token id_token',
-          ]),
-          grantTypeVariants: new Set<GrantTypeVariants>([
-            'authorization_code',
-            'implicit',
-          ]),
-        };
-
-        // Act
-        const result = instance.isSatisfiedBy(values);
-
-        // Assert
-        expect(result).toBe(true);
+    describe('requirements checking', () => {
+      describe('valid variants', () => {
+        test('should return true for all variants', () => {
+          // Arrange
+          const instance =
+            new GrantTypeVariantsPropertyClientMetadataCreateValuesSpecification();
+          const variants =
+            new GrantTypeVariantsPropertyClientMetadataCreateValuesSpecificationCandidatesExample()
+              .valid;
+          const expected = [];
+          const getResult = () => {
+            const result = [];
+            for (const grantTypeVariants of variants) {
+              expected.push(true);
+              result.push(
+                instance.isSatisfiedBy({
+                  redirectUris: new Set(),
+                  grantTypeVariants,
+                })
+              );
+            }
+            return result;
+          };
+          // Act
+          const result = getResult();
+          // Assert
+          expect(result).toStrictEqual(expected);
+        });
       });
 
-      test('should return false if variants don not satisfy to correspondence', () => {
-        // Arrange
-        const instance =
-          new GrantTypeVariantsPropertyClientMetadataCreateValuesSpecification();
+      describe('invalid variants', () => {
+        test('should return false for all variants', () => {
+          // Arrange
+          const instance =
+            new GrantTypeVariantsPropertyClientMetadataCreateValuesSpecification();
+          const variants =
+            new GrantTypeVariantsPropertyClientMetadataCreateValuesSpecificationCandidatesExample()
+              .invalid;
+          const expected = [];
+          const getResult = () => {
+            const result = [];
+            for (const grantTypeVariants of variants) {
+              expected.push(false);
+              result.push(
+                instance.isSatisfiedBy({
+                  redirectUris: new Set(),
+                  grantTypeVariants,
+                })
+              );
+            }
 
-        const values: IClientMetadataCreateValues = {
-          redirectUris: undefined,
-          responseTypeVariants: new Set<ResponseTypeVariants>([
-            'code',
-            'id_token',
-            'token id_token',
-            'code id_token',
-            'code token',
-            'code token id_token',
-          ]),
-          grantTypeVariants: new Set<GrantTypeVariants>(['refresh_token']),
-        };
+            return result;
+          };
 
-        // Act
-        const result = instance.isSatisfiedBy(values);
+          // Act
+          const result = getResult();
 
-        // Assert
-        expect(result).toBe(false);
-      });
-    });
-
-    describe('case where only response type variants are present', () => {
-      test('should return true if variants satisfy to correspondence', () => {
-        // Arrange
-        const instance =
-          new GrantTypeVariantsPropertyClientMetadataCreateValuesSpecification();
-
-        const values: IClientMetadataCreateValues = {
-          redirectUris: undefined,
-          responseTypeVariants: new Set<ResponseTypeVariants>(['code']),
-        };
-
-        // Act
-        const result = instance.isSatisfiedBy(values);
-
-        // Assert
-        expect(result).toBe(true);
-      });
-
-      test('should return false if variants don not satisfy to correspondence', () => {
-        // Arrange
-        const instance =
-          new GrantTypeVariantsPropertyClientMetadataCreateValuesSpecification();
-
-        const values: IClientMetadataCreateValues = {
-          redirectUris: undefined,
-          responseTypeVariants: new Set<ResponseTypeVariants>([
-            'code',
-            'id_token',
-            'token id_token',
-            'code id_token',
-            'code token',
-            'code token id_token',
-          ]),
-        };
-
-        // Act
-        const result = instance.isSatisfiedBy(values);
-
-        // Assert
-        expect(result).toBe(false);
-      });
-    });
-
-    describe('case where only grant type variants are present', () => {
-      test('should return true if variants satisfy to correspondence', () => {
-        // Arrange
-        const instance =
-          new GrantTypeVariantsPropertyClientMetadataCreateValuesSpecification();
-
-        const values: IClientMetadataCreateValues = {
-          redirectUris: undefined,
-          grantTypeVariants: new Set<GrantTypeVariants>([
-            'authorization_code',
-            'implicit',
-            'refresh_token',
-          ]),
-        };
-
-        // Act
-        const result = instance.isSatisfiedBy(values);
-
-        // Assert
-        expect(result).toBe(true);
-      });
-
-      test('should return false if variants don not satisfy to correspondence', () => {
-        // Arrange
-        const instance =
-          new GrantTypeVariantsPropertyClientMetadataCreateValuesSpecification();
-
-        const values: IClientMetadataCreateValues = {
-          redirectUris: undefined,
-          grantTypeVariants: new Set<GrantTypeVariants>([
-            'implicit',
-            'refresh_token',
-          ]),
-        };
-
-        // Act
-        const result = instance.isSatisfiedBy(values);
-
-        // Assert
-        expect(result).toBe(false);
-      });
-    });
-
-    describe('case where both types of variants are not present', () => {
-      test('should return true if variants satisfy to correspondence', () => {
-        // Arrange
-        const instance =
-          new GrantTypeVariantsPropertyClientMetadataCreateValuesSpecification();
-
-        const values: IClientMetadataCreateValues = {
-          redirectUris: undefined,
-        };
-
-        // Act
-        const result = instance.isSatisfiedBy(values);
-
-        // Assert
-        expect(result).toBe(true);
+          // Assert
+          expect(result).toStrictEqual(expected);
+        });
       });
     });
   });

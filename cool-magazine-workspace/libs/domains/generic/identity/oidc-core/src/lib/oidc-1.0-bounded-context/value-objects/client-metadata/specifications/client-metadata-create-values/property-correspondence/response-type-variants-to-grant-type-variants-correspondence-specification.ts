@@ -1,14 +1,14 @@
 import { CompositeSpecification, Dictionary } from '@bh2old/ddd-expc';
-import { GrantTypeVariants } from '../../../grant-type';
-import { ResponseTypeVariants } from '../../../response-type';
-import { IClientMetadataCreateValues } from '../../models';
+import { GrantTypeVariants } from '../../../../grant-type';
+import { ResponseTypeVariants } from '../../../../response-type';
+import { IClientMetadataCreateValues } from '../../../models';
 
 type ResponseTypeVariantsToGrantTypeVariantsCorrespondence = {
   readonly [variant in ResponseTypeVariants]: Set<GrantTypeVariants>;
 };
 
 export class ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification extends CompositeSpecification<IClientMetadataCreateValues> {
-  private get _correspondence(): ResponseTypeVariantsToGrantTypeVariantsCorrespondence {
+  private get correspondence(): ResponseTypeVariantsToGrantTypeVariantsCorrespondence {
     return {
       get code() {
         return new Set<GrantTypeVariants>(['authorization_code']);
@@ -45,7 +45,7 @@ export class ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification 
     const hasGrantTypeVariants = candidate.grantTypeVariants !== undefined;
 
     if (!hasResponseTypeVariants && !hasGrantTypeVariants) {
-      return true;
+      return this._checkDefaultResponseTypeVariantsToDefaultGrantTypeVariantCorrespondence();
     }
 
     if (!hasGrantTypeVariants) {
@@ -76,6 +76,17 @@ export class ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification 
     checkableVariants: Dictionary<GrantTypeVariants, GrantTypeVariants>
   ) {
     return checkableVariants.hasKeys(requiredVariants);
+  }
+
+  private _checkDefaultResponseTypeVariantsToDefaultGrantTypeVariantCorrespondence() {
+    return this._checkResponseTypeVariantsToGrantTypeVariantCorrespondence(
+      ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification.DEFAULT_RESPONSE_TYPE_VARIANTS as Set<ResponseTypeVariants>,
+      new Dictionary<GrantTypeVariants, GrantTypeVariants>(
+        (
+          ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification.DEFAULT_GRANT_TYPE_VARIANTS as Set<GrantTypeVariants>
+        ).entries()
+      )
+    );
   }
 
   private _checkDefaultResponseTypeVariantsToGrantTypeVariantsCorrespondence(
@@ -124,7 +135,7 @@ export class ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification 
     responseTypeVariants.forEach((variant) => {
       satisfiedGrantTypeVariants = [
         ...satisfiedGrantTypeVariants,
-        ...this._correspondence[variant],
+        ...this.correspondence[variant],
       ];
     });
     return new Set<GrantTypeVariants>(satisfiedGrantTypeVariants);

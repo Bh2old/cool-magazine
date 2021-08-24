@@ -1,4 +1,7 @@
-import { RedirectUrisPropertyClientMetadataCreateValuesSpecification } from '../../../../specifications';
+import {
+  RedirectUrisPropertyClientMetadataCreateValuesSpecification,
+  RedirectUrisPropertyClientMetadataCreateValuesSpecificationCandidatesExample,
+} from '../../../../specifications';
 
 describe('RedirectUrisPropertyClientMetadataCreateValuesSpecification', () => {
   describe('instance creation', () => {
@@ -16,142 +19,58 @@ describe('RedirectUrisPropertyClientMetadataCreateValuesSpecification', () => {
   });
 
   describe('requirements checking', () => {
-    test('should return true if all uris are valid', () => {
-      // Arrange
-      const uris = {
-        redirectUris: new Set<string>()
-          .add('http://localhost:1234/path')
-          .add('http://127.0.0.1:1234/path')
-          .add('https://domain.dom/path'),
-      };
-      const instance =
-        new RedirectUrisPropertyClientMetadataCreateValuesSpecification();
+    describe('valid uris', () => {
+      test('should return true for all uri', () => {
+        // Arrange
+        const instance =
+          new RedirectUrisPropertyClientMetadataCreateValuesSpecification();
+        const uris =
+          new RedirectUrisPropertyClientMetadataCreateValuesSpecificationCandidatesExample()
+            .valid;
+        const expected = [];
+        const getResult = () => {
+          const result = [];
+          for (const redirectUris of uris) {
+            expected.push(true);
+            result.push(instance.isSatisfiedBy({ redirectUris }));
+          }
 
-      // Act
-      const result = instance.isSatisfiedBy(uris);
+          return result;
+        };
 
-      // Assert
-      expect(result).toBe(true);
+        // Act
+        const result = getResult();
+
+        // Assert
+        expect(result).toStrictEqual(expected);
+      });
     });
 
-    test('should return false if uris are not specified', () => {
-      // Arrange
-      const uris = {
-        redirectUris: new Set<string>(),
-      };
-      const instance =
-        new RedirectUrisPropertyClientMetadataCreateValuesSpecification();
+    describe('invalid uris', () => {
+      test('should return false for all uri', () => {
+        // Arrange
+        const instance =
+          new RedirectUrisPropertyClientMetadataCreateValuesSpecification();
+        const uris =
+          new RedirectUrisPropertyClientMetadataCreateValuesSpecificationCandidatesExample()
+            .invalid;
+        const expected = [];
+        const getResult = () => {
+          const result = [];
+          for (const redirectUris of uris) {
+            expected.push(false);
+            result.push(instance.isSatisfiedBy({ redirectUris }));
+          }
 
-      // Act
-      const result = instance.isSatisfiedBy(uris);
+          return result;
+        };
 
-      // Assert
-      expect(result).toBe(false);
-    });
+        // Act
+        const result = getResult();
 
-    test('should return false if at least one not localhost uri does not contain https scheme', () => {
-      // Arrange
-      const uris = {
-        redirectUris: new Set<string>()
-          .add('http://localhost:1234/path')
-          .add('https://domain.dom/path')
-          .add('http://domain.dom/path'),
-      };
-      const instance =
-        new RedirectUrisPropertyClientMetadataCreateValuesSpecification();
-
-      // Act
-      const result = instance.isSatisfiedBy(uris);
-
-      // Assert
-      expect(result).toBe(false);
-    });
-
-    test('should return false if at least one not localhost uri contains ipv4 host', () => {
-      // Arrange
-      const uris = {
-        redirectUris: new Set<string>()
-          .add('https://domain.dom/path')
-          .add('http://127.0.0.1:1234/path')
-          .add('https://123.5.6.7:1234/path'),
-      };
-      const instance =
-        new RedirectUrisPropertyClientMetadataCreateValuesSpecification();
-
-      // Act
-      const result = instance.isSatisfiedBy(uris);
-
-      // Assert
-      expect(result).toBe(false);
-    });
-
-    test('should return false if at least one not localhost uri contains ipv6 host', () => {
-      // Arrange
-      const uris = {
-        redirectUris: new Set<string>()
-          .add('https://domain.dom/path')
-          .add('http://127.0.0.1:1234/path')
-          .add('https://[1:2:3:4:5:6:7:8]/path'),
-      };
-      const instance =
-        new RedirectUrisPropertyClientMetadataCreateValuesSpecification();
-
-      // Act
-      const result = instance.isSatisfiedBy(uris);
-
-      // Assert
-      expect(result).toBe(false);
-    });
-
-    test('should return false if at least one uri is not absolute', () => {
-      // Arrange
-      const uris = {
-        redirectUris: new Set<string>()
-          .add('https://domain.dom/path')
-          .add('domain.com/path'),
-      };
-      const instance =
-        new RedirectUrisPropertyClientMetadataCreateValuesSpecification();
-
-      // Act
-      const result = instance.isSatisfiedBy(uris);
-
-      // Assert
-      expect(result).toBe(false);
-    });
-
-    test('should return false if at least one uri contains traversal path', () => {
-      // Arrange
-      const uris = {
-        redirectUris: new Set<string>()
-          .add('https://domain.dom/path')
-          .add('https://domain.com/../file.png'),
-      };
-      const instance =
-        new RedirectUrisPropertyClientMetadataCreateValuesSpecification();
-
-      // Act
-      const result = instance.isSatisfiedBy(uris);
-
-      // Assert
-      expect(result).toBe(false);
-    });
-
-    test('should return false if at least one uri contains authority user info', () => {
-      // Arrange
-      const uris = {
-        redirectUris: new Set<string>()
-          .add('https://domain.dom/path')
-          .add('https://log:pas@domain.com'),
-      };
-      const instance =
-        new RedirectUrisPropertyClientMetadataCreateValuesSpecification();
-
-      // Act
-      const result = instance.isSatisfiedBy(uris);
-
-      // Assert
-      expect(result).toBe(false);
+        // Assert
+        expect(result).toStrictEqual(expected);
+      });
     });
   });
 });

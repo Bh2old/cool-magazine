@@ -1,8 +1,11 @@
 import { ISpecificationCandidatesExample } from '@bh2old/ddd-expc';
 import { ManyRedirectUriVariantsSpecificationCandidatesExample } from '../../../../redirect-uri';
+import { IClientMetadataCreateValues } from '../../../models';
+
+type PropertyType = IClientMetadataCreateValues['redirectUris'];
 
 export class RedirectUrisPropertyClientMetadataCreateValuesSpecificationCandidatesExample
-  implements ISpecificationCandidatesExample<Set<string>>
+  implements ISpecificationCandidatesExample<PropertyType>
 {
   private readonly _manyRedirectUriVariantsSpecificationCandidatesExample =
     new ManyRedirectUriVariantsSpecificationCandidatesExample();

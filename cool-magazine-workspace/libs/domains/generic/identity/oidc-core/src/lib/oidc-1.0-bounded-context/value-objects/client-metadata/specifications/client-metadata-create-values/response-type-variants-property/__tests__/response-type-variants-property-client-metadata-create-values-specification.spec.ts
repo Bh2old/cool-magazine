@@ -1,6 +1,9 @@
 import { ResponseTypeVariants } from '../../../../../response-type';
 import { IClientMetadataCreateValues } from '../../../../models';
-import { ResponseTypeVariantsPropertyClientMetadataCreateValuesSpecification } from '../../../../specifications';
+import {
+  ResponseTypeVariantsPropertyClientMetadataCreateValuesSpecification,
+  ResponseTypeVariantsPropertyClientMetadataCreateValuesSpecificationCandidatesExample,
+} from '../../../../specifications';
 
 describe('ResponseTypeVariantsPropertyClientMetadataCreateValuesSpecification', () => {
   describe('instance creation', () => {
@@ -18,53 +21,65 @@ describe('ResponseTypeVariantsPropertyClientMetadataCreateValuesSpecification', 
   });
 
   describe('requirements checking', () => {
-    test('should return true if variants are undefined', () => {
-      // Arrange
-      const variants: IClientMetadataCreateValues = {
-        redirectUris: new Set<string>(),
-      };
-      const instance =
-        new ResponseTypeVariantsPropertyClientMetadataCreateValuesSpecification();
-
-      // Act
-      const result = instance.isSatisfiedBy(variants);
-
-      // Assert
-      expect(result).toBe(true);
+    describe('valid variants', () => {
+      test('should return true for all variants', () => {
+        // Arrange
+        const instance =
+          new ResponseTypeVariantsPropertyClientMetadataCreateValuesSpecification();
+        const variants =
+          new ResponseTypeVariantsPropertyClientMetadataCreateValuesSpecificationCandidatesExample()
+            .valid;
+        const expected = [];
+        const getResult = () => {
+          const result = [];
+          for (const responseTypeVariants of variants) {
+            expected.push(true);
+            result.push(
+              instance.isSatisfiedBy({
+                redirectUris: new Set(),
+                responseTypeVariants,
+              })
+            );
+          }
+          return result;
+        };
+        // Act
+        const result = getResult();
+        // Assert
+        expect(result).toStrictEqual(expected);
+      });
     });
 
-    test('should return true if variants are specified', () => {
-      // Arrange
-      const variants: IClientMetadataCreateValues = {
-        redirectUris: new Set<string>(),
-        responseTypeVariants: new Set<ResponseTypeVariants>().add('code'),
-      };
+    describe('invalid variants', () => {
+      test('should return false for all variants', () => {
+        // Arrange
+        const instance =
+          new ResponseTypeVariantsPropertyClientMetadataCreateValuesSpecification();
+        const variants =
+          new ResponseTypeVariantsPropertyClientMetadataCreateValuesSpecificationCandidatesExample()
+            .invalid;
+        const expected = [];
+        const getResult = () => {
+          const result = [];
+          for (const responseTypeVariants of variants) {
+            expected.push(false);
+            result.push(
+              instance.isSatisfiedBy({
+                redirectUris: new Set(),
+                responseTypeVariants,
+              })
+            );
+          }
 
-      const instance =
-        new ResponseTypeVariantsPropertyClientMetadataCreateValuesSpecification();
+          return result;
+        };
 
-      // Act
-      const result = instance.isSatisfiedBy(variants);
+        // Act
+        const result = getResult();
 
-      // Assert
-      expect(result).toBe(true);
-    });
-
-    test('should return false if variants are not specified', () => {
-      // Arrange
-      const variants: IClientMetadataCreateValues = {
-        redirectUris: new Set<string>(),
-        responseTypeVariants: new Set<ResponseTypeVariants>(),
-      };
-
-      const instance =
-        new ResponseTypeVariantsPropertyClientMetadataCreateValuesSpecification();
-
-      // Act
-      const result = instance.isSatisfiedBy(variants);
-
-      // Assert
-      expect(result).toBe(false);
+        // Assert
+        expect(result).toStrictEqual(expected);
+      });
     });
   });
 });

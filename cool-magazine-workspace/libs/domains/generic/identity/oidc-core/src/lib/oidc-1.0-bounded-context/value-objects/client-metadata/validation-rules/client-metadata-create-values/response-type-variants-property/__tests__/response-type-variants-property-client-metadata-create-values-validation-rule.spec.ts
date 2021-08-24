@@ -1,5 +1,4 @@
-import { ResponseTypeVariants } from '../../../../../response-type';
-import { IClientMetadataCreateValues } from '../../../../models';
+import { ResponseTypeVariantsPropertyClientMetadataCreateValuesSpecificationCandidatesExample } from '../../../../specifications';
 import { ResponseTypeVariantsPropertyClientMetadataCreateValuesValidationRule } from '../response-type-variants-property-client-metadata-create-values-validation-rule';
 
 describe('ResponseTypeVariantsPropertyClientMetadataCreateValuesValidationRule', () => {
@@ -18,53 +17,65 @@ describe('ResponseTypeVariantsPropertyClientMetadataCreateValuesValidationRule',
   });
 
   describe('requirements checking', () => {
-    test('should return true if variants are undefined', () => {
-      // Arrange
-      const variants: IClientMetadataCreateValues = {
-        redirectUris: new Set<string>(),
-      };
-      const instance =
-        new ResponseTypeVariantsPropertyClientMetadataCreateValuesValidationRule();
-
-      // Act
-      const result = instance.validate(variants);
-
-      // Assert
-      expect(result).toBe(true);
+    describe('valid variants', () => {
+      test('should return true for all variants', () => {
+        // Arrange
+        const instance =
+          new ResponseTypeVariantsPropertyClientMetadataCreateValuesValidationRule();
+        const variants =
+          new ResponseTypeVariantsPropertyClientMetadataCreateValuesSpecificationCandidatesExample()
+            .valid;
+        const expected = [];
+        const getResult = () => {
+          const result = [];
+          for (const responseTypeVariants of variants) {
+            expected.push(true);
+            result.push(
+              instance.validate({
+                redirectUris: new Set(),
+                responseTypeVariants,
+              })
+            );
+          }
+          return result;
+        };
+        // Act
+        const result = getResult();
+        // Assert
+        expect(result).toStrictEqual(expected);
+      });
     });
 
-    test('should return true if variants are specified', () => {
-      // Arrange
-      const variants: IClientMetadataCreateValues = {
-        redirectUris: new Set<string>(),
-        responseTypeVariants: new Set<ResponseTypeVariants>().add('code'),
-      };
+    describe('invalid variants', () => {
+      test('should return false for all variants', () => {
+        // Arrange
+        const instance =
+          new ResponseTypeVariantsPropertyClientMetadataCreateValuesValidationRule();
+        const variants =
+          new ResponseTypeVariantsPropertyClientMetadataCreateValuesSpecificationCandidatesExample()
+            .invalid;
+        const expected = [];
+        const getResult = () => {
+          const result = [];
+          for (const responseTypeVariants of variants) {
+            expected.push(false);
+            result.push(
+              instance.validate({
+                redirectUris: new Set(),
+                responseTypeVariants,
+              })
+            );
+          }
 
-      const instance =
-        new ResponseTypeVariantsPropertyClientMetadataCreateValuesValidationRule();
+          return result;
+        };
 
-      // Act
-      const result = instance.validate(variants);
+        // Act
+        const result = getResult();
 
-      // Assert
-      expect(result).toBe(true);
-    });
-
-    test('should return false if variants are not specified', () => {
-      // Arrange
-      const variants: IClientMetadataCreateValues = {
-        redirectUris: new Set<string>(),
-        responseTypeVariants: new Set<ResponseTypeVariants>(),
-      };
-
-      const instance =
-        new ResponseTypeVariantsPropertyClientMetadataCreateValuesValidationRule();
-
-      // Act
-      const result = instance.validate(variants);
-
-      // Assert
-      expect(result).toBe(false);
+        // Assert
+        expect(result).toStrictEqual(expected);
+      });
     });
   });
 });

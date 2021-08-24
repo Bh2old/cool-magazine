@@ -3,15 +3,21 @@ import {
   ManyResponseTypeVariantsSpecificationCandidatesExample,
   ResponseTypeVariants,
 } from '../../../../response-type';
+import { IClientMetadataCreateValues } from '../../../models';
+
+type PropertyType = IClientMetadataCreateValues['responseTypeVariants'];
 
 export class ResponseTypeVariantsPropertyClientMetadataCreateValuesSpecificationCandidatesExample
-  implements ISpecificationCandidatesExample<Set<ResponseTypeVariants>>
+  implements ISpecificationCandidatesExample<PropertyType>
 {
   private readonly _manyResponseTypeVariantsSpecificationCandidatesExample =
     new ManyResponseTypeVariantsSpecificationCandidatesExample();
 
   get valid() {
-    return this._manyResponseTypeVariantsSpecificationCandidatesExample.valid;
+    return [
+      undefined,
+      ...this._manyResponseTypeVariantsSpecificationCandidatesExample.valid,
+    ];
   }
   get invalid() {
     return this._manyResponseTypeVariantsSpecificationCandidatesExample.invalid;
