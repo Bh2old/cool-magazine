@@ -1,2 +1,2 @@
 export * from './client-id.value-object';
-export * from './rules';
+export * from './validation-rules';

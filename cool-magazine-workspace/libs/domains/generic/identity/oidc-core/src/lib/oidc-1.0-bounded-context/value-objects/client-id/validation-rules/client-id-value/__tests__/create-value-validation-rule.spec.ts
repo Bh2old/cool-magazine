@@ -1,4 +1,4 @@
-import { CreateValueClientIdValidationRule } from '../rules';
+import { CreateValueClientIdValidationRule } from '../create-value-client-id-validation-rule';
 
 describe('CreateValueClientIdValidationRule', () => {
   describe('instance creation', () => {
