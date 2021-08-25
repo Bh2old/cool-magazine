@@ -1,1 +1,2 @@
-export * from "./client-secret.value-object";
+export * from './validation-rules';
+export * from './client-secret.value-object';
