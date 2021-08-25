@@ -28,7 +28,7 @@ describe('ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification', (
           new ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecificationCandidatesExample()
             .valid;
 
-        const expected = [];
+        const expected: boolean[] = [];
         const getResult = () => {
           const result = [];
           for (const {
@@ -66,7 +66,7 @@ describe('ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification', (
           new ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecificationCandidatesExample()
             .invalid;
 
-        const expected = [];
+        const expected: boolean[] = [];
         const getResult = () => {
           const result = [];
           for (const {

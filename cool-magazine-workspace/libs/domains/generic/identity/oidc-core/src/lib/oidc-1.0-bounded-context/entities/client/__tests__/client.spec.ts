@@ -40,8 +40,8 @@ describe('Client', () => {
       const mutationPropertyKey = 'mutation';
       const mutationPropertyValue = 'i mutated';
       // Act
-      const metadata = staticClient.metadata;
-      (metadata as unknown)[mutationPropertyKey] = mutationPropertyValue;
+      const metadata: Record<string, unknown> = staticClient.metadata;
+      metadata[mutationPropertyKey] = mutationPropertyValue;
 
       //Assert
       expect(staticClient.metadata).not.toHaveProperty(

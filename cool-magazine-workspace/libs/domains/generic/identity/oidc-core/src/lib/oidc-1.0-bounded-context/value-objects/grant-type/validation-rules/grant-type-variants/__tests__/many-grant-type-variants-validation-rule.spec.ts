@@ -22,7 +22,7 @@ describe('ManyGrantTypeVariantsValidationRule', () => {
         const instance = new ManyGrantTypeVariantsValidationRule();
         const variants =
           new CreateManyVariantsGrantTypeSpecificationCandidatesExample().valid;
-        const expected = [];
+        const expected: boolean[] = [];
         const getResult = () => {
           const result = [];
           for (const variant of variants) {
@@ -48,7 +48,7 @@ describe('ManyGrantTypeVariantsValidationRule', () => {
         const variants =
           new CreateManyVariantsGrantTypeSpecificationCandidatesExample()
             .invalid;
-        const expected = [];
+        const expected: boolean[] = [];
         const getResult = () => {
           const result = [];
           for (const variant of variants) {

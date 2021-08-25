@@ -104,7 +104,9 @@ describe('GrantTypeDictionary', () => {
         const instance = new GrantTypeDictionary(iterableObject);
 
         // Assert
-        expect(instance.get(grantTypeVariant).value).toBe(grantTypeVariant);
+        expect((instance.get(grantTypeVariant) as GrantType).value).toBe(
+          grantTypeVariant
+        );
       });
 
       test('should return immutable instance if specified iterable object', () => {

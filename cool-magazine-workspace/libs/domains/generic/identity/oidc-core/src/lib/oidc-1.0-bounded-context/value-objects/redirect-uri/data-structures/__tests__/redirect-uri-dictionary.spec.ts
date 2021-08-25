@@ -102,7 +102,7 @@ describe('RedirectUriDictionary', () => {
         const instance = new RedirectUriDictionary(iterableObject);
 
         // Assert
-        expect(instance.get(uri).value).toBe(uri);
+        expect((instance.get(uri) as RedirectUri).value).toBe(uri);
       });
 
       test('should return immutable instance if specified iterable object', () => {

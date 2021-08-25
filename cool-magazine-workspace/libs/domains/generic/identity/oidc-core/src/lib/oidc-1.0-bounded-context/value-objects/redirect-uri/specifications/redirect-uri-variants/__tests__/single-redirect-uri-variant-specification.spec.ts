@@ -20,7 +20,7 @@ describe('SingleRedirectUriVariantSpecification', () => {
         const instance = new SingleRedirectUriVariantSpecification();
         const uris =
           new SingleRedirectUriVariantSpecificationCandidatesExample().valid;
-        const expected = [];
+        const expected: string[] = [];
         const getResult = () => {
           const result = [];
           for (const uri of uris) {
@@ -45,7 +45,7 @@ describe('SingleRedirectUriVariantSpecification', () => {
         const instance = new SingleRedirectUriVariantSpecification();
         const uris =
           new SingleRedirectUriVariantSpecificationCandidatesExample().invalid;
-        const expected = [];
+        const expected: string[] = [];
         const getResult = () => {
           const result = [];
           for (const uri of uris) {

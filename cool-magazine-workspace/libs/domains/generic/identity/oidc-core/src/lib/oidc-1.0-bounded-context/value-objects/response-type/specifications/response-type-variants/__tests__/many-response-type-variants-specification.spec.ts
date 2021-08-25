@@ -25,7 +25,7 @@ describe('ManyResponseTypeVariantsSpecification', () => {
         const variants =
           new ManyResponseTypeVariantsSpecificationCandidatesExample()
             .valid;
-        const expected = [];
+        const expected: boolean[] = [];
         const getResult = () => {
           const result = [];
           for (const variant of variants) {
@@ -51,7 +51,7 @@ describe('ManyResponseTypeVariantsSpecification', () => {
         const variants =
           new ManyResponseTypeVariantsSpecificationCandidatesExample()
             .invalid;
-        const expected = [];
+        const expected: boolean[] = [];
         const getResult = () => {
           const result = [];
           for (const variant of variants) {

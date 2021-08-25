@@ -20,7 +20,7 @@ describe('ManyGrantTypeVariantsSpecification', () => {
         const instance = new ManyGrantTypeVariantsSpecification();
         const variants =
           new CreateManyVariantsGrantTypeSpecificationCandidatesExample().valid;
-        const expected = [];
+        const expected: boolean[] = [];
         const getResult = () => {
           const result = [];
           for (const variant of variants) {
@@ -46,7 +46,7 @@ describe('ManyGrantTypeVariantsSpecification', () => {
         const variants =
           new CreateManyVariantsGrantTypeSpecificationCandidatesExample()
             .invalid;
-        const expected = [];
+        const expected: boolean[] = [];
         const getResult = () => {
           const result = [];
           for (const variant of variants) {

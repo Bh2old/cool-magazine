@@ -25,7 +25,7 @@ describe('ResponseTypeVariantsPropertyClientMetadataCreateValuesValidationRule',
         const variants =
           new ResponseTypeVariantsPropertyClientMetadataCreateValuesSpecificationCandidatesExample()
             .valid;
-        const expected = [];
+        const expected: boolean[] = [];
         const getResult = () => {
           const result = [];
           for (const responseTypeVariants of variants) {
@@ -54,7 +54,7 @@ describe('ResponseTypeVariantsPropertyClientMetadataCreateValuesValidationRule',
         const variants =
           new ResponseTypeVariantsPropertyClientMetadataCreateValuesSpecificationCandidatesExample()
             .invalid;
-        const expected = [];
+        const expected: boolean[] = [];
         const getResult = () => {
           const result = [];
           for (const responseTypeVariants of variants) {

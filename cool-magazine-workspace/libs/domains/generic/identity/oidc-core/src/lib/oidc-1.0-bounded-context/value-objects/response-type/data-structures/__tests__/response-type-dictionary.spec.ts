@@ -109,7 +109,7 @@ describe('ResponseTypeDictionary', () => {
         const instance = new ResponseTypeDictionary(iterableObject);
 
         // Assert
-        expect(instance.get(responseTypeVariant).value).toBe(
+        expect((instance.get(responseTypeVariant) as ResponseType).value).toBe(
           responseTypeVariant
         );
       });

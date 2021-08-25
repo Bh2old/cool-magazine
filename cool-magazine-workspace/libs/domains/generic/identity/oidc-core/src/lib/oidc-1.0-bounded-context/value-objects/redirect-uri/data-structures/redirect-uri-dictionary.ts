@@ -93,7 +93,7 @@ export class RedirectUriDictionary
   } {
     const hasIterable = iterable !== undefined;
 
-    const iterator = hasIterable ? iterable[Symbol.iterator]() : false;
+    const iterator = hasIterable ? iterable && iterable[Symbol.iterator]() : false;
     const iteratorNextValue = iterator && iterator.next().value;
 
     const isArrayIteratorNextValue: boolean =

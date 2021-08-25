@@ -48,7 +48,7 @@ describe('GrantTypeVariantsPropertyClientMetadataCreateValuesSpecification', () 
           const variants =
             new GrantTypeVariantsPropertyClientMetadataCreateValuesSpecificationCandidatesExample()
               .valid;
-          const expected = [];
+          const expected: boolean[] = [];
           const getResult = () => {
             const result = [];
             for (const grantTypeVariants of variants) {
@@ -77,7 +77,7 @@ describe('GrantTypeVariantsPropertyClientMetadataCreateValuesSpecification', () 
           const variants =
             new GrantTypeVariantsPropertyClientMetadataCreateValuesSpecificationCandidatesExample()
               .invalid;
-          const expected = [];
+          const expected: boolean[] = [];
           const getResult = () => {
             const result = [];
             for (const grantTypeVariants of variants) {

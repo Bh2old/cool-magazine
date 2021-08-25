@@ -62,8 +62,8 @@ describe('StaticClientsConfig', () => {
         staticClientsConfigCreateData
       );
 
-      const clonedClientsForMutation: unknown[] =
-        staticClientsConfig.clients as unknown[];
+      const clonedClientsForMutation: Record<string, unknown>[] =
+        staticClientsConfig.clients as Record<string, unknown>[];
 
       // Act
       const indexMutatedItem = 0;

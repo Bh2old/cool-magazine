@@ -22,7 +22,7 @@ describe('CreateManyUrisRedirectUriSpecification', () => {
         const instance = new ManyRedirectUriVariantsSpecification();
         const uris =
           new ManyRedirectUriVariantsSpecificationCandidatesExample().valid;
-        const expected = [];
+        const expected: boolean[] = [];
         const getResult = () => {
           const result = [];
           for (const uri of uris) {
@@ -47,7 +47,7 @@ describe('CreateManyUrisRedirectUriSpecification', () => {
         const instance = new ManyRedirectUriVariantsSpecification();
         const uris =
           new ManyRedirectUriVariantsSpecificationCandidatesExample().invalid;
-        const expected = [];
+        const expected: boolean[] = [];
         const getResult = () => {
           const result = [];
           for (const uri of uris) {

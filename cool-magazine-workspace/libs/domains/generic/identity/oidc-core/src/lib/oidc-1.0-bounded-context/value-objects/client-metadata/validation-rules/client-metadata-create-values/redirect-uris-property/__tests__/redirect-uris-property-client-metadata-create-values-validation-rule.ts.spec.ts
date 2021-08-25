@@ -25,7 +25,7 @@ describe('RedirectUrisPropertyClientMetadataCreateValuesValidationRule', () => {
         const uris =
           new RedirectUrisPropertyClientMetadataCreateValuesSpecificationCandidatesExample()
             .valid;
-        const expected = [];
+        const expected: boolean[] = [];
         const getResult = () => {
           const result = [];
           for (const redirectUris of uris) {
@@ -52,7 +52,7 @@ describe('RedirectUrisPropertyClientMetadataCreateValuesValidationRule', () => {
         const uris =
           new RedirectUrisPropertyClientMetadataCreateValuesSpecificationCandidatesExample()
             .invalid;
-        const expected = [];
+        const expected: boolean[] = [];
         const getResult = () => {
           const result = [];
           for (const redirectUris of uris) {
