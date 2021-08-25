@@ -15,6 +15,6 @@ interface IClient {
 
 type ClientId = IClient['id'];
 
-export interface IStaticClientsConfigCreateData {
+export interface IClientsConfigCreateData {
   clients: Map<ClientId, IClient>;
 }

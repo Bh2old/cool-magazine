@@ -1,1 +1,1 @@
-export * from "./static-clients-config";
+export * from "./clients-config";

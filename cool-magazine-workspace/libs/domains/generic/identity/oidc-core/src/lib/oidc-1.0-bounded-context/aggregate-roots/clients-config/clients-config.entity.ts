@@ -1,6 +1,6 @@
 import { AggregateRoot } from '@bh2old/ddd-expc';
 import { Client } from '../../entities';
-import { IStaticClientsConfigCreateData } from './models';
+import { IClientsConfigCreateData } from './models';
 
 type ClientProperties = {
   readonly id: Client['id'];
@@ -8,7 +8,7 @@ type ClientProperties = {
   readonly metadata: Client['metadata'];
 };
 
-export class StaticClientsConfig extends AggregateRoot {
+export class ClientsConfig extends AggregateRoot {
   private readonly _clients: Client[];
   public get clients(): ClientProperties[] {
     return this._clients.map((client) => {
@@ -26,13 +26,13 @@ export class StaticClientsConfig extends AggregateRoot {
   }
 
   static create(
-    staticClientsConfigCreateData: IStaticClientsConfigCreateData
-  ): StaticClientsConfig {
+    staticClientsConfigCreateData: IClientsConfigCreateData
+  ): ClientsConfig {
     const clients: Client[] = [];
     for (const client of staticClientsConfigCreateData.clients.values()) {
       clients.push(Client.create(client));
     }
 
-    return new StaticClientsConfig(clients);
+    return new ClientsConfig(clients);
   }
 }

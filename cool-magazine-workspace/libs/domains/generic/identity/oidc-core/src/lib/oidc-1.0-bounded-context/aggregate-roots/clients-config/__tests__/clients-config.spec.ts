@@ -2,11 +2,11 @@ import {
   GrantTypeVariants,
   ResponseTypeVariants,
 } from '../../../value-objects';
-import { IStaticClientsConfigCreateData } from '../models';
-import { StaticClientsConfig } from '../static-clients-config.entity';
+import { IClientsConfigCreateData } from '../models';
+import { ClientsConfig } from '../clients-config.entity';
 
 describe('StaticClientsConfig', () => {
-  let staticClientsConfigCreateData: IStaticClientsConfigCreateData;
+  let staticClientsConfigCreateData: IClientsConfigCreateData;
 
   beforeEach(() => {
     const id = '123';
@@ -34,15 +34,15 @@ describe('StaticClientsConfig', () => {
   describe('instance creation', () => {
     test('should return instance of StaticClientsConfig', () => {
       expect(
-        StaticClientsConfig.create(staticClientsConfigCreateData)
-      ).toBeInstanceOf(StaticClientsConfig);
+        ClientsConfig.create(staticClientsConfigCreateData)
+      ).toBeInstanceOf(ClientsConfig);
     });
   });
 
   describe('getting clients', () => {
     test('should return collection which does not mutate internal collection if changed', () => {
       // Arrange
-      const staticClientsConfig = StaticClientsConfig.create(
+      const staticClientsConfig = ClientsConfig.create(
         staticClientsConfigCreateData
       );
 
@@ -58,7 +58,7 @@ describe('StaticClientsConfig', () => {
 
     test('should return collection which does not mutate item of internal collection if received item changed', () => {
       // Arrange
-      const staticClientsConfig = StaticClientsConfig.create(
+      const staticClientsConfig = ClientsConfig.create(
         staticClientsConfigCreateData
       );
 
