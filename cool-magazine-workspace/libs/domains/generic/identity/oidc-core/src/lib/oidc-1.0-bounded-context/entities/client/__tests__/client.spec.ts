@@ -3,9 +3,9 @@ import {
   ResponseTypeVariants,
 } from '../../../value-objects';
 import { IClientRegistrationData } from '../models';
-import { StaticClient } from '../static-client.entity';
+import { Client } from '../client.entity';
 
-describe('StaticClient', () => {
+describe('Client', () => {
   let clientRegistrationData: IClientRegistrationData;
 
   beforeEach(() => {
@@ -28,17 +28,15 @@ describe('StaticClient', () => {
   });
 
   describe('instance creation', () => {
-    test('should return instance of StaticClient', () => {
-      expect(StaticClient.create(clientRegistrationData)).toBeInstanceOf(
-        StaticClient
-      );
+    test('should return instance of Client', () => {
+      expect(Client.create(clientRegistrationData)).toBeInstanceOf(Client);
     });
   });
 
   describe('get metadata', () => {
     test('should return immutable metadata', () => {
       // Arrange
-      const staticClient = StaticClient.create(clientRegistrationData);
+      const staticClient = Client.create(clientRegistrationData);
       const mutationPropertyKey = 'mutation';
       const mutationPropertyValue = 'i mutated';
       // Act
@@ -54,9 +52,9 @@ describe('StaticClient', () => {
   });
 
   describe('getting immutable clone of yourself ', () => {
-    test('should return cloned instance of StaticClient', () => {
+    test('should return cloned instance of Client', () => {
       // Arrange
-      const staticClient = StaticClient.create(clientRegistrationData);
+      const staticClient = Client.create(clientRegistrationData);
 
       // Act
       const clonedStaticClient = staticClient.clone();

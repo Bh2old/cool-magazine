@@ -10,7 +10,7 @@ type Metadata = {
   readonly responseTypesValues: ClientMetadata['responseTypesValues'];
 };
 
-export class StaticClient extends Entity implements ICloneable<StaticClient> {
+export class Client extends Entity implements ICloneable<Client> {
   private readonly _id: ClientId;
   public get id(): Id {
     return this._id.value;
@@ -41,12 +41,12 @@ export class StaticClient extends Entity implements ICloneable<StaticClient> {
     this._metadata = metadata;
   }
 
-  clone(): StaticClient {
-    return new StaticClient(this._id, this._secret, this._metadata);
+  clone(): Client {
+    return new Client(this._id, this._secret, this._metadata);
   }
 
-  static create(clientRegistrationData: IClientRegistrationData): StaticClient {
-    return new StaticClient(
+  static create(clientRegistrationData: IClientRegistrationData): Client {
+    return new Client(
       ClientId.create(clientRegistrationData.id),
       clientRegistrationData.secret
         ? ClientSecret.create(clientRegistrationData.secret)

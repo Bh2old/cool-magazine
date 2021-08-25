@@ -1,16 +1,16 @@
 import { AggregateRoot } from '@bh2old/ddd-expc';
-import { StaticClient } from '../../entities/static-client';
+import { Client } from '../../entities';
 import { IStaticClientsConfigCreateData } from './models';
 
-type Client = {
-  readonly id: StaticClient['id'];
-  readonly secret: StaticClient['secret'];
-  readonly metadata: StaticClient['metadata'];
+type ClientProperties = {
+  readonly id: Client['id'];
+  readonly secret: Client['secret'];
+  readonly metadata: Client['metadata'];
 };
 
 export class StaticClientsConfig extends AggregateRoot {
-  private readonly _clients: StaticClient[];
-  public get clients(): Client[] {
+  private readonly _clients: Client[];
+  public get clients(): ClientProperties[] {
     return this._clients.map((client) => {
       return {
         id: client.id,
@@ -20,7 +20,7 @@ export class StaticClientsConfig extends AggregateRoot {
     });
   }
 
-  private constructor(clients: StaticClient[]) {
+  private constructor(clients: Client[]) {
     super();
     this._clients = clients;
   }
@@ -28,9 +28,9 @@ export class StaticClientsConfig extends AggregateRoot {
   static create(
     staticClientsConfigCreateData: IStaticClientsConfigCreateData
   ): StaticClientsConfig {
-    const clients: StaticClient[] = [];
+    const clients: Client[] = [];
     for (const client of staticClientsConfigCreateData.clients.values()) {
-      clients.push(StaticClient.create(client));
+      clients.push(Client.create(client));
     }
 
     return new StaticClientsConfig(clients);
