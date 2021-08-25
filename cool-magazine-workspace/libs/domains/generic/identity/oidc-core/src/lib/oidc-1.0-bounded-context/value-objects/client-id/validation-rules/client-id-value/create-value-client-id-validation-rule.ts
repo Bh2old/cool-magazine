@@ -1,8 +1,8 @@
-import { LengthStringSpecification, ValidationRule } from '@bh2old/ddd-expc';
+import { LengthStringSpecification, ValidationRuleBase } from '@bh2old/ddd-expc';
 
 type StringLength = { readonly min: number };
 
-export class CreateValueClientIdValidationRule extends ValidationRule<string> {
+export class CreateValueClientIdValidationRule extends ValidationRuleBase<string> {
   private static readonly _STRING_LENGTH: StringLength = {
     min: 6,
   } as const;

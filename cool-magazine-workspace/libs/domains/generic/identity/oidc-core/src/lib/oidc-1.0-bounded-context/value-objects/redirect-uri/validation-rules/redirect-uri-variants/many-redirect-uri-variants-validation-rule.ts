@@ -1,7 +1,7 @@
-import { ValidationRule } from '@bh2old/ddd-expc';
+import { ValidationRuleBase } from '@bh2old/ddd-expc';
 import { ManyRedirectUriVariantsSpecification } from '../../specifications';
 
-export class ManyRedirectUriVariantsValidationRule extends ValidationRule<
+export class ManyRedirectUriVariantsValidationRule extends ValidationRuleBase<
   Set<string>
 > {
   constructor() {

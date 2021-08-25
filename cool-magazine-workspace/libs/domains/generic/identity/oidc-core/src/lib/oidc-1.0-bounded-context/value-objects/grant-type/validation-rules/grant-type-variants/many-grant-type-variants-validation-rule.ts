@@ -1,8 +1,8 @@
 import { ManyGrantTypeVariantsSpecification } from '../../specifications';
-import { ValidationRule } from '@bh2old/ddd-expc';
+import { ValidationRuleBase } from '@bh2old/ddd-expc';
 import { GrantTypeVariants } from '../../types';
 
-export class ManyGrantTypeVariantsValidationRule extends ValidationRule<
+export class ManyGrantTypeVariantsValidationRule extends ValidationRuleBase<
   Set<GrantTypeVariants>
 > {
   constructor() {

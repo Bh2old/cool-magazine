@@ -1,8 +1,8 @@
-import { ValidationRule } from '@bh2old/ddd-expc';
+import { ValidationRuleBase } from '@bh2old/ddd-expc';
 import { ManyResponseTypeVariantsSpecification } from '../../specifications';
 import { ResponseTypeVariants } from '../../types';
 
-export class ManyResponseTypeVariantsValidationRule extends ValidationRule<
+export class ManyResponseTypeVariantsValidationRule extends ValidationRuleBase<
   Set<ResponseTypeVariants>
 > {
   constructor() {

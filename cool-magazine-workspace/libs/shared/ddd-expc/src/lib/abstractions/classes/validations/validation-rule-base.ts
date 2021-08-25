@@ -1,7 +1,7 @@
 import { ISpecification, IValidationRule } from '../../interfaces';
 import { SpecificationRule } from '../specifications';
 
-export class ValidationRule<TSpecified>
+export class ValidationRuleBase<TSpecified>
   extends SpecificationRule<TSpecified>
   implements IValidationRule<TSpecified>
 {

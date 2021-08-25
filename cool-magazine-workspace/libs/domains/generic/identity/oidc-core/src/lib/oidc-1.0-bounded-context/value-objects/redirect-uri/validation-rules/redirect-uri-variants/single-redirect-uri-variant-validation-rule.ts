@@ -1,7 +1,7 @@
-import { ValidationRule } from '@bh2old/ddd-expc';
+import { ValidationRuleBase } from '@bh2old/ddd-expc';
 import { SingleRedirectUriVariantSpecification } from '../../specifications';
 
-export class SingleRedirectUriVariantValidationRule extends ValidationRule<string> {
+export class SingleRedirectUriVariantValidationRule extends ValidationRuleBase<string> {
   constructor() {
     const specification = new SingleRedirectUriVariantSpecification();
     const message =

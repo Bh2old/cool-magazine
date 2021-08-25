@@ -1,8 +1,8 @@
-import { ValidationRule } from '@bh2old/ddd-expc';
+import { ValidationRuleBase } from '@bh2old/ddd-expc';
 import { IClientMetadataCreateValues } from '../../../models';
 import { ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification } from '../../../specifications';
 
-export class ResponseTypeVariantsToGrantTypeVariantsCorrespondenceValidationRule extends ValidationRule<IClientMetadataCreateValues> {
+export class ResponseTypeVariantsToGrantTypeVariantsCorrespondenceValidationRule extends ValidationRuleBase<IClientMetadataCreateValues> {
   constructor() {
     const specification =
       new ResponseTypeVariantsToGrantTypeVariantsCorrespondenceSpecification();
