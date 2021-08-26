@@ -33,6 +33,13 @@
     },
     "shared-ddd-expc": {
       "tags": ["ddd-expc"]
+    },
+    "web-oidc-admin": {
+      "tags": ["apps", "web", "oidc-admin"]
+    },
+    "web-oidc-admin-e2e": {
+      "tags": [],
+      "implicitDependencies": ["web-oidc-admin"]
     }
   },
   "targetDependencies": {

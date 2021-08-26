@@ -180,10 +180,144 @@
           }
         }
       }
+    },
+    "web-oidc-admin": {
+      "projectType": "application",
+      "root": "apps/web/oidc-admin",
+      "sourceRoot": "apps/web/oidc-admin/src",
+      "prefix": "app",
+      "targets": {
+        "build": {
+          "executor": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/web/oidc-admin",
+            "index": "apps/web/oidc-admin/src/index.html",
+            "main": "apps/web/oidc-admin/src/main.ts",
+            "polyfills": "apps/web/oidc-admin/src/polyfills.ts",
+            "tsConfig": "apps/web/oidc-admin/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/web/oidc-admin/src/favicon.ico",
+              "apps/web/oidc-admin/src/assets"
+            ],
+            "styles": ["apps/web/oidc-admin/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/web/oidc-admin/src/environments/environment.ts",
+                  "with": "apps/web/oidc-admin/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "executor": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "web-oidc-admin:build:production"
+            },
+            "development": {
+              "browserTarget": "web-oidc-admin:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "executor": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "web-oidc-admin:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/web/oidc-admin/src/**/*.ts",
+              "apps/web/oidc-admin/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/web/oidc-admin"],
+          "options": {
+            "jestConfig": "apps/web/oidc-admin/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "web-oidc-admin-e2e": {
+      "root": "apps/web/oidc-admin-e2e",
+      "sourceRoot": "apps/web/oidc-admin-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/web/oidc-admin-e2e/cypress.json",
+            "devServerTarget": "web-oidc-admin:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "web-oidc-admin:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/web/oidc-admin-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
     }
   },
   "cli": {
     "defaultCollection": "@nrwl/nest"
   },
-  "defaultProject": "services-identity-service"
+  "defaultProject": "services-identity-service",
+  "generators": {
+    "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  }
 }
