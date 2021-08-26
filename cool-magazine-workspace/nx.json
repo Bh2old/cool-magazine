@@ -22,6 +22,9 @@
     "adapter-identity-node-oidc-provider": {
       "tags": ["adapter", "identity", "node-oidc-provider"]
     },
+    "domains-generic-identity-oidc-admin-site": {
+      "tags": ["generic", "subdomain", "identity", "oidc-admin-site"]
+    },
     "generic-subdomain-identity-oidc-core": {
       "tags": ["generic", "subdomain", "identity", "oidc-core"]
     },

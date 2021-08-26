@@ -22,6 +22,9 @@
       "@cool-magazine/adapter-identity-node-oidc-provider": [
         "libs/adapters/identity/node-oidc-provider/src/index.ts"
       ],
+      "@cool-magazine/generic-subdomain-oidc-admin-site": [
+        "libs/domains/generic/identity/oidc-admin-site/src/index.ts"
+      ],
       "@cool-magazine/generic-subdomain-oidc-core": [
         "libs/domains/generic/identity/oidc-core/src/index.ts"
       ]
