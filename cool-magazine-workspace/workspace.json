@@ -181,6 +181,31 @@
         }
       }
     },
+    "shared-styles": {
+      "projectType": "library",
+      "root": "libs/shared/styles",
+      "sourceRoot": "libs/shared/styles/src",
+      "prefix": "cool-magazine",
+      "targets": {
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/styles"],
+          "options": {
+            "jestConfig": "libs/shared/styles/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/styles/src/**/*.ts",
+              "libs/shared/styles/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "web-oidc-admin": {
       "projectType": "application",
       "root": "apps/web/oidc-admin",
@@ -202,6 +227,9 @@
               "apps/web/oidc-admin/src/assets"
             ],
             "styles": ["apps/web/oidc-admin/src/styles.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["libs/shared/styles/src/lib"]
+            },
             "scripts": []
           },
           "configurations": {

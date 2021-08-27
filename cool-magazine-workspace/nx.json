@@ -34,8 +34,12 @@
     "shared-ddd-expc": {
       "tags": ["ddd-expc"]
     },
+    "shared-styles": {
+      "tags": []
+    },
     "web-oidc-admin": {
-      "tags": ["apps", "web", "oidc-admin"]
+      "tags": ["apps", "web", "oidc-admin"],
+      "implicitDependencies": ["shared-styles"]
     },
     "web-oidc-admin-e2e": {
       "tags": [],

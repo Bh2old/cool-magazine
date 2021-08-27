@@ -27,7 +27,8 @@
       ],
       "@cool-magazine/generic-subdomain-oidc-core": [
         "libs/domains/generic/identity/oidc-core/src/index.ts"
-      ]
+      ],
+      "@cool-magazine/shared-styles": ["libs/shared/styles/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
