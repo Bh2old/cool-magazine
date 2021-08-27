@@ -55,7 +55,6 @@ $footer-row-size: map.get($grid-core-layout-sizes, 'footer-row');
 
   &__footer {
     grid-area: footer;
-    background-color: yellow;
     overflow: hidden;
   }
 }

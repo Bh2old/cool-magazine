@@ -16,7 +16,7 @@ $host-border-bottom-right-radius: $core-layout-components-border-radius;
   border-bottom-right-radius: $host-border-bottom-right-radius;
   border-bottom-left-radius: $host-border-bottom-left-radius;
   background-color: $surface-color;
-  box-shadow: $box-shadow-size $box-shadow-color;
+  box-shadow: $bottom-box-shadow-size $box-shadow-color;
   overflow: hidden;
   box-sizing: border-box;
 }
