@@ -37,7 +37,6 @@ $footer-row-size: map.get($grid-core-layout-sizes, 'footer-row');
 
   &__navigation {
     grid-area: navigation;
-    background-color: saddlebrown;
     overflow: hidden;
   }
 
