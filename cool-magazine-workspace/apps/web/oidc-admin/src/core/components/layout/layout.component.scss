@@ -1,0 +1,40 @@
+@use "sass:map";
+@import 'variables/idents.variables';
+
+$row-indent: map.get($core-layout-indent, 'rows');
+$column-indent: map.get($core-layout-indent, 'column');
+
+:host(.layout) {
+  height: 100%;
+  display: grid;
+  grid-template-areas:
+    'header header header'
+    'navigation main sidebar'
+    'footer footer footer';
+  grid-template-columns: max-content auto max-content;
+  grid-template-rows: max-content auto max-content;
+  grid-gap: $row-indent $column-indent;
+}
+
+.layout {
+  &__header {
+    grid-area: header;
+    background-color: blueviolet;
+  }
+  &__navigation {
+    grid-area: navigation;
+    background-color: saddlebrown;
+  }
+  &__main {
+    grid-area: main;
+    background-color: forestgreen;
+  }
+  &__sidebar {
+    grid-area: sidebar;
+    background-color: gold;
+  }
+  &__footer {
+    grid-area: footer;
+    background-color: yellow;
+  }
+}
