@@ -1,40 +1,61 @@
 @use "sass:map";
-@import 'variables/idents.variables';
+@import 'variables/gutters.variables';
+@import 'variables/sizes.variables';
+@import 'variables/colors.variables';
 
-$row-indent: map.get($core-layout-indent, 'rows');
-$column-indent: map.get($core-layout-indent, 'column');
+$row-gutter: map.get($core-layout-gutters, 'rows');
+$column-gutter: map.get($core-layout-gutters, 'column');
+
+$navigation-column-size: map.get($grid-core-layout-sizes, 'navigation-column');
+$main-column-size: map.get($grid-core-layout-sizes, 'main-column');
+$sidebar-column-size: map.get($grid-core-layout-sizes, 'sidebar-column');
+$header-row-size: map.get($grid-core-layout-sizes, 'header-row');
+$main-row-size: map.get($grid-core-layout-sizes, 'main-row');
+$footer-row-size: map.get($grid-core-layout-sizes, 'footer-row');
 
 :host(.layout) {
+  background-color: $background-color;
   height: 100%;
+  width: 100%;
   display: grid;
+  grid-auto-flow: unset;
   grid-template-areas:
     'header header header'
     'navigation main sidebar'
     'footer footer footer';
-  grid-template-columns: max-content auto max-content;
-  grid-template-rows: max-content auto max-content;
-  grid-gap: $row-indent $column-indent;
+  grid-template-columns: [navigation-column-start] $navigation-column-size [navigation-column-end main-column-start] $main-column-size [main-column-end sidebar-column-start] $sidebar-column-size [sidebar-column-end];
+  grid-template-rows: [header-row-start] 80px [header-row-end main-row-start] auto [main-row-end footer-row-start] max-content [footer-row-end];
+  gap: $row-gutter $column-gutter;
+  overflow: hidden;
 }
 
 .layout {
   &__header {
     grid-area: header;
-    background-color: blueviolet;
+    overflow: hidden;
   }
+
   &__navigation {
     grid-area: navigation;
     background-color: saddlebrown;
+    overflow: hidden;
   }
+
   &__main {
     grid-area: main;
     background-color: forestgreen;
+    overflow: hidden;
   }
+
   &__sidebar {
     grid-area: sidebar;
     background-color: gold;
+    overflow: hidden;
   }
+
   &__footer {
     grid-area: footer;
     background-color: yellow;
+    overflow: hidden;
   }
 }

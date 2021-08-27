@@ -1,0 +1,11 @@
+$grid-core-layout-sizes: (
+  'navigation-column': fit-content(240px),
+  'main-column': 1fr,
+  'sidebar-column': max-content,
+  'header-row': 80px,
+  'main-row': minmax(100vh, 1fr),
+  'footer-row': fit-content(240px),
+);
+
+$core-layout-components-border-radius: 16px;
+$box-shadow-size: inset 0px -1px 0px 0px;
