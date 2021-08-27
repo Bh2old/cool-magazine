@@ -2,13 +2,14 @@ $grid-core-layout-sizes: (
   'navigation-column': fit-content(240px),
   'main-column': 1fr,
   'sidebar-column': max-content,
-  'header-row': 80px,
+  'header-row': 40px,
   'main-row': minmax(100vh, 1fr),
   'footer-row': fit-content(240px),
 );
 
-$core-layout-components-border-radius: 16px;
-$bottom-box-shadow-size: inset 0px -1px 0px 0px;
-$top-box-shadow-size: inset 0px 1px 0px 0px;
-$right-box-shadow-size: inset -1px 0px 0px 0px;
-$left-box-shadow-size: inset 1px 0px 0px 0px;
+$core-layout-components-border-radius: 0;
+
+$bottom-box-shadow-size: inset 0px -1px 1px 0px;
+$top-box-shadow-size: inset 0px 1px 1px 0px;
+$right-box-shadow-size: inset -1px 0px 1px 0px;
+$left-box-shadow-size: inset 1px 0px 1px 0px;

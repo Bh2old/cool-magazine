@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { FooterComponentModule } from '../footer/footer-component.module';
 import { HeaderComponentModule } from '../header/header-component.module';
+import { MainComponentModule } from '../main/main-component.module';
 import { NavigationComponentModule } from '../navigation/navigation-component.module';
 import { LayoutComponent } from './layout.component';
 
@@ -9,10 +9,10 @@ import { LayoutComponent } from './layout.component';
   declarations: [LayoutComponent],
   exports: [LayoutComponent],
   imports: [
-    RouterModule,
     HeaderComponentModule,
     NavigationComponentModule,
     FooterComponentModule,
+    MainComponentModule,
   ],
 })
 export class LayoutComponentModule {}

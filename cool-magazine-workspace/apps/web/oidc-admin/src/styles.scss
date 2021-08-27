@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'variables/colors.variables';
+
 html,
 body,
 app-root {
@@ -8,4 +10,8 @@ app-root {
   padding: 0;
   display: block;
   box-sizing: border-box;
+}
+
+html {
+  background-color: $background-color;
 }

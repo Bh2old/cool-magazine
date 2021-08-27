@@ -14,7 +14,6 @@ $main-row-size: map.get($grid-core-layout-sizes, 'main-row');
 $footer-row-size: map.get($grid-core-layout-sizes, 'footer-row');
 
 :host(.layout) {
-  background-color: $background-color;
   height: 100%;
   width: 100%;
   display: grid;
@@ -42,13 +41,11 @@ $footer-row-size: map.get($grid-core-layout-sizes, 'footer-row');
 
   &__main {
     grid-area: main;
-    background-color: forestgreen;
     overflow: hidden;
   }
 
   &__sidebar {
     grid-area: sidebar;
-    background-color: gold;
     overflow: hidden;
   }
 
