@@ -5,4 +5,4 @@ import { NavigationComponent } from './navigation.component';
   declarations: [NavigationComponent],
   exports: [NavigationComponent],
 })
-export class NavigationModule {}
+export class NavigationComponentModule {}
