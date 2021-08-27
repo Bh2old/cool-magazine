@@ -1,0 +1,20 @@
+@import 'variables/gutters.variables';
+@import 'variables/sizes.variables';
+@import 'variables/colors.variables';
+
+:host {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  padding: $core-layout-components-side-gutter;
+  border-radius: $core-layout-components-border-radius;
+  box-shadow: $top-box-shadow-size $box-shadow-color,
+    $right-box-shadow-size $box-shadow-color,
+    $bottom-box-shadow-size $box-shadow-color,
+    $left-box-shadow-size $box-shadow-color;
+  overflow: hidden;
+  box-sizing: border-box;
+}
