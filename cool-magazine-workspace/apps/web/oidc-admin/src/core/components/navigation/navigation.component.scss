@@ -1,6 +1,8 @@
+@use "sass:map";
 @import 'variables/gutters.variables';
 @import 'variables/sizes.variables';
 @import 'variables/colors.variables';
+@import 'variables/typography.variables';
 
 :host {
   width: 100%;
@@ -10,8 +12,70 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 0 $core-layout-components-side-gutter 0;
   background-color: $surface-color;
   overflow: hidden;
   box-sizing: border-box;
+}
+.nav {
+  width: 100%;
+  &__list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.nav-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  padding-inline-start: 0;
+
+  &__element {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: left;
+
+    &:hover {
+      background-color: $hover-overlay-color;
+    }
+  }
+
+  &__link {
+    padding: $list-elements-gutter;
+    flex-grow: 2;
+  }
+}
+
+$nav-link-font-size: map.get($nav-link-font-scale, 'font-size');
+$nav-link-font-weight-normal: map.get(
+  $nav-link-font-scale,
+  'font-weight-normal'
+);
+$nav-link-font-weight-active: map.get(
+  $nav-link-font-scale,
+  'font-weight-active'
+);
+$nav-link-letter-spacing: map.get($nav-link-font-scale, 'letter-spacing');
+
+.nav-link {
+  color: $secondary-color;
+  font-size: $nav-link-font-size;
+  font-weight: $nav-link-font-weight-normal;
+  letter-spacing: $nav-link-letter-spacing;
+  text-decoration: none;
+  white-space: nowrap;
+
+  &_active {
+    font-weight: $nav-link-font-weight-active;
+    background-color: $active-overlay-color;
+  }
 }

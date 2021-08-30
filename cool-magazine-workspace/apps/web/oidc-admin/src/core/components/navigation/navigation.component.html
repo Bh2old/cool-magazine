@@ -1,1 +1,14 @@
-<p>navigation works!</p>
+<nav class="nav">
+  <ul class="nav__list nav-list">
+    <li class="nav-list__element">
+      <a class="nav-list__link nav-link" [routerLink]="homeLink" routerLinkActive="nav-link_active"
+        [routerLinkActiveOptions]="{exact:
+        true}">Home</a>
+    </li>
+    <li class="nav-list__element">
+      <a class="nav-list__link nav-link" [routerLink]="clientsLink" routerLinkActive="nav-link_active"
+        [routerLinkActiveOptions]="{exact:
+        true}">Clients</a>
+    </li>
+  </ul>
+</nav>
