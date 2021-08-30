@@ -1,14 +1,8 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { CoreComponentsModule } from './components/core-components.module';
+import { CoreComponentsModule } from './components';
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot([], {
-      initialNavigation: 'enabledBlocking',
-    }),
-    CoreComponentsModule,
-  ],
+  imports: [CoreComponentsModule],
   exports: [CoreComponentsModule],
 })
 export class CoreModule {}

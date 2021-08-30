@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { FooterComponentModule } from '../footer/footer-component.module';
-import { HeaderComponentModule } from '../header/header-component.module';
-import { MainComponentModule } from '../main/main-component.module';
-import { NavigationComponentModule } from '../navigation/navigation-component.module';
+import { FooterComponentModule } from '../footer';
+import { HeaderComponentModule } from '../header';
+import { MainComponentModule } from '../main';
+import { NavigationComponentModule } from '../navigation';
 import { LayoutComponent } from './layout.component';
 
 @NgModule({
