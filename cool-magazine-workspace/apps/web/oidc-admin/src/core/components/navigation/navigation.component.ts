@@ -1,7 +1,13 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { ClientsAppRouteLink, HomeAppRouteLink } from '../../routing';
+import { NAVIGATION_COMPONENT_SHOW_HIDE_TRIGGER } from './animations';
+import {
+  INavigationComponentService,
+  NAVIGATION_COMPONENT_SERVICE_TOKEN,
+} from './services';
 
 @Component({
+  animations: [NAVIGATION_COMPONENT_SHOW_HIDE_TRIGGER],
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss'],
@@ -19,4 +25,11 @@ export class NavigationComponent {
   get clientsLink() {
     return this._clientsLink;
   }
+
+  readonly isShow$ = this._navigationServiceService.isShow$;
+
+  constructor(
+    @Inject(NAVIGATION_COMPONENT_SERVICE_TOKEN)
+    private readonly _navigationServiceService: INavigationComponentService
+  ) {}
 }
