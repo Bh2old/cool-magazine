@@ -7,13 +7,14 @@ import {
   RootAppRouting,
   WildcardAppRoute,
 } from '../core';
-import { ClientsListComponent } from './clients';
-import { HomePageComponent } from './home-page/home-page.component';
+import { HomePageComponent } from './home-page';
 import { PageNotFoundComponent } from './page-not-found';
 
 const pointsRootAppRouting: IPointsRootAppRouting = {
   home: new HomeAppRoute(HomePageComponent),
-  clients: new ClientsAppRoute(ClientsListComponent),
+  clients: new ClientsAppRoute(() =>
+    import('./clients').then((module) => module.ClientsListModule)
+  ),
   wildcard: new WildcardAppRoute(PageNotFoundComponent),
 } as const;
 

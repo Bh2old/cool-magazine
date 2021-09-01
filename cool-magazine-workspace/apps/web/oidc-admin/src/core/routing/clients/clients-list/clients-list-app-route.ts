@@ -6,17 +6,17 @@ import {
   RunGuardsAndResolvers,
   UrlMatcher,
 } from '@angular/router';
-import { AppRouteBase } from '../abstractions';
-import { CLIENTS_APP_ROUTE_ID } from './clients-app-route-id';
+import { AppRouteBase } from '../../abstractions';
+import { CLIENTS_LIST_APP_ROUTE_ID } from './clients-list-app-route-id';
 import {
-  ClientsAppRouteLink,
-  ClientsAppRoutePathTokens,
-} from './clients-app-route-link';
+  ClientsListAppRouteLink,
+  ClientsListAppRoutePathTokens,
+} from './clients-list-app-route-link';
 
 type AngularRouteComponent = Route['component'];
 
-export class ClientsAppRoute extends AppRouteBase<ClientsAppRoutePathTokens> {
-  component?: AngularRouteComponent;
+export class ClientsListAppRoute extends AppRouteBase<ClientsListAppRoutePathTokens> {
+  component: AngularRouteComponent;
   pathMatch?: string | undefined;
   matcher?: UrlMatcher | undefined;
   redirectTo?: string | undefined;
@@ -30,10 +30,10 @@ export class ClientsAppRoute extends AppRouteBase<ClientsAppRoutePathTokens> {
   loadChildren?: LoadChildren | undefined;
   runGuardsAndResolvers?: RunGuardsAndResolvers | undefined;
 
-  constructor(loadChildren?: LoadChildren | undefined) {
+  constructor(component: AngularRouteComponent) {
     const data = {};
-    super(CLIENTS_APP_ROUTE_ID, data, new ClientsAppRouteLink());
+    super(CLIENTS_LIST_APP_ROUTE_ID, data, new ClientsListAppRouteLink());
 
-    this.loadChildren = loadChildren;
+    this.component = component;
   }
 }
