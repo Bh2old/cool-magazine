@@ -31,6 +31,9 @@
     "services-identity-service": {
       "tags": ["identity-service"]
     },
+    "shared-angular-cdk": {
+      "tags": ["shared", "angular", "cdk", "angular-cdk"]
+    },
     "shared-ddd-expc": {
       "tags": ["ddd-expc"]
     },

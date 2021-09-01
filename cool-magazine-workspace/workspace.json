@@ -150,6 +150,47 @@
         }
       }
     },
+    "shared-angular-cdk": {
+      "projectType": "library",
+      "root": "libs/shared/angular-cdk",
+      "sourceRoot": "libs/shared/angular-cdk/src",
+      "prefix": "cmcdk",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/shared/angular-cdk"],
+          "options": {
+            "project": "libs/shared/angular-cdk/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/shared/angular-cdk/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/shared/angular-cdk/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/angular-cdk"],
+          "options": {
+            "jestConfig": "libs/shared/angular-cdk/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/angular-cdk/src/**/*.ts",
+              "libs/shared/angular-cdk/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "shared-ddd-expc": {
       "root": ".",
       "sourceRoot": "libs/shared/ddd-expc/src",
