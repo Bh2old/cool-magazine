@@ -1,0 +1,34 @@
+@use "sass:map";
+@import 'variables/typography.variables';
+
+$text-button-font-size: map.get($text-button-font-scale, 'font-size');
+$text-button-font-weight: map.get($text-button-font-scale, 'font-weight');
+$text-button-letter-spacing: map.get($text-button-font-scale, 'letter-spacing');
+
+.text-button {
+  &__button {
+    display: block;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    font-size: $text-button-font-size;
+    font-weight: $text-button-font-weight;
+    letter-spacing: $text-button-letter-spacing;
+    text-transform: uppercase;
+    color: black;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    box-sizing: border-box;
+
+    &:active {
+      border: none;
+    }
+  }
+
+  &__content {
+    padding: 8px 12px;
+    display: block;
+  }
+}
