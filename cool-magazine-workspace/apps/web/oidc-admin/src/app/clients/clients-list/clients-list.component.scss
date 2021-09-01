@@ -1,0 +1,35 @@
+@import 'variables/gutters.variables';
+@import 'variables/sizes.variables';
+@import 'variables/colors.variables';
+
+:host(.clients-list-layout) {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap-reverse;
+}
+
+.clients-list-layout {
+  &__primary {
+    padding: $from-header-to-main-content-gutter 0 0
+      $from-navigation-to-main-content-gutter;
+    flex-grow: 3;
+    margin-right: 40px;
+  }
+  &__secondary {
+    background-color: $secondary-background-color;
+    flex-grow: 1;
+  }
+}
+
+.primary-layout {
+  &__header {
+  }
+  &__body {
+    margin-top: 28px;
+  }
+}
+
+.secondary-layout {
+}
