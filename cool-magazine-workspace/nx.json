@@ -31,6 +31,9 @@
     "services-identity-service": {
       "tags": ["identity-service"]
     },
+    "services-oidc-admin-bff": {
+      "tags": []
+    },
     "shared-angular-cdk": {
       "tags": ["shared", "angular", "cdk", "angular-cdk"]
     },

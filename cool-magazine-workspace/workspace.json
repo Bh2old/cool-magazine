@@ -150,6 +150,56 @@
         }
       }
     },
+    "services-oidc-admin-bff": {
+      "root": "apps/services/oidc-admin-bff",
+      "sourceRoot": "apps/services/oidc-admin-bff/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/services/oidc-admin-bff",
+            "main": "apps/services/oidc-admin-bff/src/main.ts",
+            "tsConfig": "apps/services/oidc-admin-bff/tsconfig.app.json",
+            "assets": ["apps/services/oidc-admin-bff/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/services/oidc-admin-bff/src/environments/environment.ts",
+                  "with": "apps/services/oidc-admin-bff/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "services-oidc-admin-bff:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/services/oidc-admin-bff/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/services/oidc-admin-bff"],
+          "options": {
+            "jestConfig": "apps/services/oidc-admin-bff/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "shared-angular-cdk": {
       "projectType": "library",
       "root": "libs/shared/angular-cdk",
@@ -316,7 +366,10 @@
               "browserTarget": "web-oidc-admin:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "proxyConfig": "apps/web/oidc-admin/proxy.conf.json"
+          }
         },
         "extract-i18n": {
           "executor": "@angular-devkit/build-angular:extract-i18n",
