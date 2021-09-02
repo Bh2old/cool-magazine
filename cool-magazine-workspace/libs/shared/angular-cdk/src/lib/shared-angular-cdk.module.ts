@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CmCdkAccordionModule } from './components';
 
 @NgModule({
-  imports: [CommonModule],
+  exports: [CmCdkAccordionModule],
 })
 export class SharedAngularCdkModule {}

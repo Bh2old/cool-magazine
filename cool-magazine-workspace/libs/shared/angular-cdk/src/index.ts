@@ -1,1 +1,1 @@
-export * from './lib/shared-angular-cdk.module';
+export * from './lib';
