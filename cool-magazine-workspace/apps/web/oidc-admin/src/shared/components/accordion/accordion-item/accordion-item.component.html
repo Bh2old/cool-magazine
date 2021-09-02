@@ -1,0 +1,10 @@
+<div class="accordion-item__header">
+  <app-accordion-item-header>
+    <ng-content select="[item-header]"></ng-content>
+  </app-accordion-item-header>
+</div>
+<div class="accordion-item__content" [@expandCollapse]="isExpanded">
+  <app-accordion-item-content>
+    <ng-content select="[item-content]"></ng-content>
+  </app-accordion-item-content>
+</div>

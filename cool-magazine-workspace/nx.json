@@ -42,7 +42,7 @@
     },
     "web-oidc-admin": {
       "tags": ["apps", "web", "oidc-admin"],
-      "implicitDependencies": ["shared-styles"]
+      "implicitDependencies": ["shared-styles", "shared-angular-cdk"]
     },
     "web-oidc-admin-e2e": {
       "tags": [],
