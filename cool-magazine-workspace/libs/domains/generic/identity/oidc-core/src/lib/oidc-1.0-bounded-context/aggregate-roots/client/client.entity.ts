@@ -1,4 +1,4 @@
-import { Entity, ICloneable } from '@bh2old/ddd-expc';
+import { AggregateRoot, ICloneable } from '@bh2old/ddd-expc';
 import { ClientId, ClientMetadata, ClientSecret } from '../../value-objects';
 import { IClientRegistrationData } from './models';
 
@@ -10,7 +10,7 @@ type Metadata = {
   readonly responseTypesValues: ClientMetadata['responseTypesValues'];
 };
 
-export class Client extends Entity implements ICloneable<Client> {
+export class Client extends AggregateRoot implements ICloneable<Client> {
   private readonly _id: ClientId;
   public get id(): Id {
     return this._id.value;
