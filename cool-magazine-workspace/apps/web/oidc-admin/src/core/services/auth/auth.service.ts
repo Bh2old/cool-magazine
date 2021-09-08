@@ -1,41 +1,42 @@
-import { Inject } from '@angular/core';
-import { ENVIRONMENT_TOKEN } from '../../../environments/environment.token';
-import {
-  AUTH_STORAGE_TOKEN,
-  ENVIRONMENT_LOCATION_SERVICE_TOKEN,
-  IEnvironmentLocationService,
-  IEnvironmentStorage,
-} from '../abstractions';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { IAuthStorageService } from '../auth-storage';
 import { IEnvironment } from './../../../environments/environment.token';
 import { IAuthService } from './i-auth-service';
 
 export class AuthService implements IAuthService {
-  private readonly _tokenKey = '2barbie';
-  private _token = this._storage.getItem(this._tokenKey);
-
-  constructor(
-    @Inject(ENVIRONMENT_LOCATION_SERVICE_TOKEN)
-    private readonly _location: IEnvironmentLocationService,
-    @Inject(ENVIRONMENT_TOKEN)
-    private readonly _environment: IEnvironment,
-    @Inject(AUTH_STORAGE_TOKEN)
-    private readonly _storage: IEnvironmentStorage<string, string>
-  ) {}
-
-  get isAuthorized() {
-    return !!this._token;
+  get absoluteUrlToAuthorization() {
+    return this._environment.loginUrl;
   }
 
-  public runAuthorization() {
-    this._location.redirect(this._environment.authApiUrl);
+  get isAuthorized() {
+    return !!this._storage.getToken();
+  }
+
+  get token() {
+    return `Bearer ${this._storage.getToken()}`;
+  }
+
+  constructor(
+    private readonly _environment: IEnvironment,
+    private readonly _storage: IAuthStorageService,
+    private readonly _http: HttpClient
+  ) {
+    console.log(_environment, '_environment');
   }
 
   public completeAuthorization(token: string) {
-    this._saveToken(token);
+    this._storage.saveToken(token);
   }
 
-  private _saveToken(token: string) {
-    this._storage.setItem(this._tokenKey, token);
-    this._token = token;
+  public resetAuthorization(): void {
+    this._storage.deleteToken();
+  }
+
+  public validateToken(token: string): Observable<boolean> {
+    return this._http
+      .get<boolean>(this._environment.bff.jwtValidateUrl(token))
+      .pipe(catchError(() => [false]));
   }
 }

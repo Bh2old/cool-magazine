@@ -7,6 +7,7 @@ import {
   UrlMatcher,
 } from '@angular/router';
 import { AppRouteBase } from '../abstractions';
+import { AuthGuard } from '../guards';
 import { CLIENTS_APP_ROUTE_ID } from './clients-app-route-id';
 import {
   ClientsAppRouteLink,
@@ -30,10 +31,12 @@ export class ClientsAppRoute extends AppRouteBase<ClientsAppRoutePathTokens> {
   loadChildren?: LoadChildren | undefined;
   runGuardsAndResolvers?: RunGuardsAndResolvers | undefined;
 
-  constructor(loadChildren?: LoadChildren | undefined) {
+  constructor(loadChildren: LoadChildren) {
     const data = {};
     super(CLIENTS_APP_ROUTE_ID, data, new ClientsAppRouteLink());
 
     this.loadChildren = loadChildren;
+    this.canLoad = [AuthGuard];
+    this.canActivateChild = [AuthGuard];
   }
 }

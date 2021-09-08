@@ -1,20 +1,21 @@
-import { Controller, Get, Header, Redirect, Res } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Header,
+  HttpStatus,
+  Redirect,
+  UseGuards,
+} from '@nestjs/common';
+import { User } from '../shared';
 
 import { AppService } from './app.service';
+import { JwtAuthGuard } from './auth/auth.-jwt.guard';
 
-@Controller('redirect')
+@Controller('app')
 export class AppController {
   constructor(private readonly appService: AppService) {}
-  auth =
-    `http://localhost:4444/oidc/auth` +
-    `?client_id=bff` +
-    `&redirect_uri=http://localhost:3333/redirect/tokenCallback` +
-    `&response_type=code` +
-    `&scope=openid profile` +
-    `&nonce=123` +
-    `&state=321`;
 
-  @Get('identity')
+  @Get()
   @Redirect(
     `http://localhost:4444/oidc/auth` +
       `?client_id=bff` +
@@ -25,8 +26,8 @@ export class AppController {
       `&state=321`,
     302
   )
-  getIdentity(@Res() res) {
-    return 'xyu';
+  getLogin() {
+    return HttpStatus.FOUND;
   }
 
   @Get('tokenCallback')
@@ -40,13 +41,16 @@ export class AppController {
     return this.appService.getData();
   }
 
-  @Get('*')
-  @Header('Cache-Control', 'no-cache, no-store, must-revalidate')
-  @Header('Clear-Site-Data', 'cache')
-  @Header('Pragma', 'no-cache')
-  @Header('Expires', '0')
-  getPoshelNahui() {
-    console.log(4);
-    return 'getPoshelNahui';
+  @Get('test1')
+  test1(@User() user: any) {
+    console.log(user, 'test1');
+    return user;
+  }
+
+  @Get('test2')
+  @UseGuards(JwtAuthGuard)
+  test2(@User() user: any) {
+    console.log(user, 'test2');
+    return user;
   }
 }

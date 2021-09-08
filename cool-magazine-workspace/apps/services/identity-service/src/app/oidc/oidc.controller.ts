@@ -8,7 +8,7 @@ const configuration = {
     {
       client_id: 'bff',
       client_secret: 'bff',
-      redirect_uris: ['http://localhost:3333/redirect/tokenCallback'],
+      redirect_uris: ['http://localhost:3333/bff/auth/tokenCallback'],
       // + other client properties
     },
   ],

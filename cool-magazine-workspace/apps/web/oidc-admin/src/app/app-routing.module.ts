@@ -4,6 +4,7 @@ import {
   ClientsAppRoute,
   HomeAppRoute,
   IPointsRootAppRouting,
+  AuthAppRoute,
   RootAppRouting,
   WildcardAppRoute,
 } from '../core';
@@ -15,12 +16,15 @@ const pointsRootAppRouting: IPointsRootAppRouting = {
   clients: new ClientsAppRoute(() =>
     import('./clients').then((module) => module.ClientsListModule)
   ),
+  auth: new AuthAppRoute(() =>
+    import('./auth').then((module) => module.AuthModule)
+  ),
   wildcard: new WildcardAppRoute(PageNotFoundComponent),
 } as const;
 
 const ROUTES: Routes = new RootAppRouting(pointsRootAppRouting).getRoutes();
-
 @NgModule({
+  exports: [RouterModule],
   imports: [
     RouterModule.forRoot(ROUTES, {
       initialNavigation: 'enabledBlocking',

@@ -1,3 +1,4 @@
+export * from './interceptors';
 export * from './components';
 export * from './core.module';
 export * from './routing';
