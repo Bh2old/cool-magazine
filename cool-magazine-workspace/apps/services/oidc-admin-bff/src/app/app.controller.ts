@@ -53,4 +53,11 @@ export class AppController {
     console.log(user, 'test2');
     return user;
   }
+
+  @Get('clients')
+  @UseGuards(JwtAuthGuard)
+  getClients(@User() user: any) {
+    console.log(user, 'test2');
+    return true;
+  }
 }

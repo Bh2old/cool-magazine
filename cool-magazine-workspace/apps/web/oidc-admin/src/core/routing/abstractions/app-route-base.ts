@@ -48,10 +48,12 @@ export abstract class AppRouteBase<
   ) {
     this.data = {
       ...data,
-      ...({
-        appRouteIdSymbol: appRouteIdSymbol,
-        appRouteLink: appRouteLink,
-      } as const),
+      get appRouteIdSymbol() {
+        return appRouteIdSymbol;
+      },
+      get appRouteLink() {
+        return appRouteLink;
+      },
     };
   }
 }

@@ -22,9 +22,7 @@ export class AuthService implements IAuthService {
     private readonly _environment: IEnvironment,
     private readonly _storage: IAuthStorageService,
     private readonly _http: HttpClient
-  ) {
-    console.log(_environment, '_environment');
-  }
+  ) {}
 
   public completeAuthorization(token: string) {
     this._storage.saveToken(token);

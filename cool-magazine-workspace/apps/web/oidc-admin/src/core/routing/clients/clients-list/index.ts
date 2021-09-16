@@ -1,3 +1,4 @@
+export * from './resolvers';
 export * from './clients-list-app-route-id';
 export * from './clients-list-app-route-link';
 export * from './clients-list-app-route';

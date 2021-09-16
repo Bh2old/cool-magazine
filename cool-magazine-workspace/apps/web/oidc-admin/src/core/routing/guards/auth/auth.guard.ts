@@ -20,7 +20,6 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   ]);
 
   private get _isAuthorization() {
-    console.log(this._authService, 'this._authService.isAuthorized');
     return this._authService.isAuthorized;
   }
 

@@ -9,6 +9,7 @@ export const environment: IEnvironment = {
   clientsApiUrl: 'http://localhost:4200/bff/clients',
   loginUrl: 'http://localhost:3333/bff/auth/login',
   bff: {
+    clientsUrl: 'http://localhost:4200/bff/app/clients',
     endPointUrl: 'http://localhost:4200/bff/',
     jwtValidateUrl: (jwt: string) =>
       `http://localhost:4200/bff/auth/jwtValidate/${jwt}`,

@@ -9,6 +9,7 @@ export interface IEnvironment {
   readonly loginUrl: string;
   readonly bff: {
     endPointUrl: string;
+    clientsUrl: string;
     jwtValidateUrl: (jwt: string) => string;
   };
 }

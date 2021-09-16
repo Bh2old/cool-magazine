@@ -36,7 +36,7 @@ export class ClientsAppRoute extends AppRouteBase<ClientsAppRoutePathTokens> {
     super(CLIENTS_APP_ROUTE_ID, data, new ClientsAppRouteLink());
 
     this.loadChildren = loadChildren;
-    this.canLoad = [AuthGuard];
-    this.canActivateChild = [AuthGuard];
+    // this.canLoad = [AuthGuard];
+    // this.canActivateChild = [AuthGuard];
   }
 }

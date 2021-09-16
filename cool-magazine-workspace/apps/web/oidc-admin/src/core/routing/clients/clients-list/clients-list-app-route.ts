@@ -12,6 +12,7 @@ import {
   ClientsListAppRouteLink,
   ClientsListAppRoutePathTokens,
 } from './clients-list-app-route-link';
+import { ClientsListRouteDataResolver } from './resolvers';
 
 type AngularRouteComponent = Route['component'];
 
@@ -35,5 +36,6 @@ export class ClientsListAppRoute extends AppRouteBase<ClientsListAppRoutePathTok
     super(CLIENTS_LIST_APP_ROUTE_ID, data, new ClientsListAppRouteLink());
 
     this.component = component;
+    // this.resolve = { clients: ClientsListRouteDataResolver };
   }
 }

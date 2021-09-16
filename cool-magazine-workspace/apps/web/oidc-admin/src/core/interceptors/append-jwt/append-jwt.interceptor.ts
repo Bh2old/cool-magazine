@@ -25,14 +25,13 @@ export class AppendJwtInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    console.log(request, 'request');
     if (!request.url.startsWith(this._bffEndPointUrl)) {
       return next.handle(request);
     }
 
     const setHeaders = { Authorization: this._authService.token };
     const tokenizedRequest = request.clone({ setHeaders });
-    console.log(tokenizedRequest, 'tokenizedRequest');
+
     return next.handle(tokenizedRequest);
   }
 }
